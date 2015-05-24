@@ -36,6 +36,9 @@ INSTALLED_APPS += (
     'true_false',
     'multichoice',
     'allaccess',
+    'andablog',
+    'markitup',  # For entry content
+    'taggit', # For entry tags
 )
 
 MIDDLEWARE_CLASSES += (

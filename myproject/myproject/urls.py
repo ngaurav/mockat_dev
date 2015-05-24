@@ -20,5 +20,7 @@ urlpatterns = [
     url(r'^quiz/', include('quiz.urls')),
     url(r'^accounts/', include('allaccess.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('spirit.urls', namespace="spirit", app_name="spirit")),
+    url(r'^markitup/', include('markitup.urls')),
+    (r'^blog/', include('andablog.urls', namespace='andablog')),
+    url(r'^', include('spirit.urls')),
 ]
