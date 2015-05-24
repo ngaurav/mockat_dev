@@ -35,6 +35,7 @@ INSTALLED_APPS += (
     'essay',
     'true_false',
     'multichoice',
+    'allaccess',
 )
 
 MIDDLEWARE_CLASSES += (

@@ -17,5 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^quiz/', include('quiz.urls')),
+    url(r'^accounts/', include('allaccess.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('spirit.urls', namespace="spirit", app_name="spirit")),
 ]
