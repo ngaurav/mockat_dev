@@ -37,7 +37,7 @@ INSTALLED_APPS += (
     'multichoice',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES += (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'djconfig.context_processors.config',
             ],
         },
     },

@@ -97,10 +97,6 @@ MIDDLEWARE_CLASSES += (
     'djconfig.middleware.DjConfigLocMemMiddleware',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS += (
-    'djconfig.context_processors.config',
-)
-
 # django-haystack
 
 INSTALLED_APPS += (
