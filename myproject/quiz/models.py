@@ -13,21 +13,6 @@ from django.conf import settings
 from model_utils.managers import InheritanceManager
 
 
-class CategoryManager(models.Manager):
-
-    def create_category(self, category):
-        new_category = self.create(category=re.sub('\s+', '-', category)
-                                   .lower())
-        return new_category
-
-    def new_category(self, category):
-        new_category = self.create(category=re.sub('\s+', '-', category)
-                                   .lower())
-
-        new_category.save()
-        return new_category
-
-
 @python_2_unicode_compatible
 class Category(models.Model):
 
@@ -35,8 +20,6 @@ class Category(models.Model):
         verbose_name=_("Category"),
         max_length=250, blank=True,
         unique=True, null=True)
-
-    objects = CategoryManager()
 
     class Meta:
         verbose_name = _("Category")
@@ -56,8 +39,6 @@ class SubCategory(models.Model):
     category = models.ForeignKey(
         Category, null=True, blank=True,
         verbose_name=_("Category"))
-
-    objects = CategoryManager()
 
     class Meta:
         verbose_name = _("Sub-Category")
