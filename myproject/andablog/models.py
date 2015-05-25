@@ -12,6 +12,7 @@ from markitup.fields import MarkupField
 from model_utils.models import TimeStampedModel
 from taggit.managers import TaggableManager
 
+from quiz.models import Category
 
 class Entry(TimeStampedModel):
     """
@@ -25,6 +26,12 @@ class Entry(TimeStampedModel):
     published_timestamp = models.DateTimeField(blank=True, null=True, editable=False)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, editable=True)
     tags = TaggableManager(blank=True)
+
+    category = models.ForeignKey(Category, null=True, editable=True)
+    rank = models.PositiveSmallIntegerField(
+        blank=False, null=False,
+        unique=False, default=1,
+        verbose_name=_("Page Rank"))
 
     def __str__(self):
         return self.title

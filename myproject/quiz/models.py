@@ -14,6 +14,17 @@ from model_utils.managers import InheritanceManager
 
 
 @python_2_unicode_compatible
+class Domain(models.Model):
+
+    domain = models.CharField(
+        verbose_name=_("Domain"),
+        max_length=250, blank=True, null=True)
+
+    def __str__(self):
+        return self.domain
+
+
+@python_2_unicode_compatible
 class Category(models.Model):
 
     category = models.CharField(
@@ -24,6 +35,11 @@ class Category(models.Model):
     domain = models.ForeignKey(
         Domain, null=True, blank=True,
         verbose_name=_("Domain"))
+
+    rank = models.PositiveSmallIntegerField(
+        blank=False, null=False,
+        unique=False, default=1,
+        verbose_name=_("Rank"))
 
     slug = models.SlugField(unique=True, editable=False)
 
@@ -38,17 +54,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category
-
-
-@python_2_unicode_compatible
-class Domain(models.Model):
-
-    domain = models.CharField(
-        verbose_name=_("Domain"),
-        max_length=250, blank=True, null=True)
-
-    def __str__(self):
-        return self.domain
 
 
 @python_2_unicode_compatible
