@@ -21,6 +21,10 @@ class Category(models.Model):
         max_length=250, blank=True,
         unique=True, null=True)
 
+    domain = models.ForeignKey(
+        Domain, null=True, blank=True,
+        verbose_name=_("Domain"))
+
     slug = models.SlugField(unique=True, editable=False)
 
     class Meta:
@@ -37,22 +41,14 @@ class Category(models.Model):
 
 
 @python_2_unicode_compatible
-class SubCategory(models.Model):
+class Domain(models.Model):
 
-    sub_category = models.CharField(
-        verbose_name=_("Sub-Category"),
+    domain = models.CharField(
+        verbose_name=_("Domain"),
         max_length=250, blank=True, null=True)
 
-    category = models.ForeignKey(
-        Category, null=True, blank=True,
-        verbose_name=_("Category"))
-
-    class Meta:
-        verbose_name = _("Sub-Category")
-        verbose_name_plural = _("Sub-Categories")
-
     def __str__(self):
-        return self.sub_category + " (" + self.category.category + ")"
+        return self.domain
 
 
 @python_2_unicode_compatible
@@ -534,8 +530,8 @@ class Question(models.Model):
                                  blank=True,
                                  null=True)
 
-    sub_category = models.ForeignKey(SubCategory,
-                                     verbose_name=_("Sub-Category"),
+    domain = models.ForeignKey(Domain,
+                                     verbose_name=_("Domain"),
                                      blank=True,
                                      null=True)
 
