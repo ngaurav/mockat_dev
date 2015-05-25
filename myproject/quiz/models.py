@@ -12,6 +12,7 @@ from django.conf import settings
 
 from model_utils.managers import InheritanceManager
 
+from django.utils.text import slugify
 
 @python_2_unicode_compatible
 class Domain(models.Model):

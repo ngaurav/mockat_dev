@@ -31,7 +31,7 @@ class Entry(TimeStampedModel):
     rank = models.PositiveSmallIntegerField(
         blank=False, null=False,
         unique=False, default=1,
-        verbose_name=_("Page Rank"))
+        verbose_name=("Page Rank"))
 
     def __str__(self):
         return self.title
