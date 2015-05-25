@@ -15,7 +15,7 @@ urlpatterns = patterns('',
                            view=CategoriesListView.as_view(),
                            name='quiz_category_list_all'),
 
-                       url(regex=r'^category/(?P<category_slug>[\w.-]+)/$',
+                       url(regex=r'^category/(?P<category_name>[A-Za-z0-9-_]+)/$',
                            view=ViewQuizListByCategory.as_view(),
                            name='quiz_category_list_matching'),
 

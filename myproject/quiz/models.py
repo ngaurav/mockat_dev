@@ -28,7 +28,7 @@ class Domain(models.Model):
 @python_2_unicode_compatible
 class Category(models.Model):
 
-    category = models.CharField(
+    category_display_name = models.CharField(
         verbose_name=_("Category"),
         max_length=250, blank=True,
         unique=True, null=True)
@@ -42,14 +42,14 @@ class Category(models.Model):
         unique=False, default=1,
         verbose_name=_("Rank"))
 
-    slug = models.SlugField(unique=True, editable=False)
+    category = models.SlugField(unique=True, editable=False)
 
     class Meta:
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.category)
+        self.category = slugify(self.category_display_name)
 
         super(Category, self).save(*args, **kwargs)
 
