@@ -21,9 +21,16 @@ class Category(models.Model):
         max_length=250, blank=True,
         unique=True, null=True)
 
+    slug = models.SlugField(unique=True, editable=False)
+
     class Meta:
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.category)
+
+        super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.category

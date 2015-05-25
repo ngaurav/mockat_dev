@@ -61,7 +61,7 @@ class ViewQuizListByCategory(ListView):
     def dispatch(self, request, *args, **kwargs):
         self.category = get_object_or_404(
             Category,
-            category=self.kwargs['category_name']
+            slug=self.kwargs['category_slug']
         )
 
         return super(ViewQuizListByCategory, self).\
