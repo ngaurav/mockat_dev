@@ -21,6 +21,6 @@ urlpatterns = [
     url(r'^accounts/', include('allaccess.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^markitup/', include('markitup.urls')),
-    (r'^blog/', include('andablog.urls', namespace='andablog')),
+    url(r'^content/', include('andablog.urls', namespace='andablog')),
     url(r'^', include('spirit.urls')),
 ]
