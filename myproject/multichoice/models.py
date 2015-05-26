@@ -14,6 +14,14 @@ ANSWER_ORDER_OPTIONS = (
 
 class MCQuestion(Question):
 
+    split_view = models.BooleanField(default = False, blank=False,
+        help_text=_("Does this question need split window"),
+        verbose_name=_('Split window question'))
+
+    section_two = models.BooleanField(default = False, blank=False,
+        help_text=_("Verbal Ability Logical Reasoning section"),
+        verbose_name=_("Section II"))
+
     answer_order = models.CharField(
         max_length=30, null=True, blank=True,
         choices=ANSWER_ORDER_OPTIONS,

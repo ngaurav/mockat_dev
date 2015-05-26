@@ -39,4 +39,16 @@ urlpatterns = patterns('',
                        url(regex=r'^(?P<quiz_name>[\w-]+)/take/$',
                            view=QuizTake.as_view(),
                            name='quiz_question'),
+
+                       url(regex=r'^post/$',
+                           view=ResponseView,
+                           name='response_page'),
+
+                       url(regex=r'^(?P<slug>[\w-]+)/instructions.html$',
+                           view=QuizDetailView2,
+                           name='instructions_page'),
+
+                       url(regex=r'^(?P<slug>[\w-]+)/quiz.html$',
+                           view=QuizDetailView3,
+                           name='test_start_page'),
 )

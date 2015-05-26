@@ -67,7 +67,8 @@ class MCQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
     list_filter = ('category',)
     fields = ('content', 'category', 'domain',
-              'figure', 'quiz', 'explanation', 'answer_order')
+              'figure', 'quiz', 'explanation', 'answer_order',
+              'split_view', 'section_two')
 
     search_fields = ('content', 'explanation')
     filter_horizontal = ('quiz',)

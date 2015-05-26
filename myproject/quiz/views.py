@@ -10,6 +10,8 @@ from .forms import QuestionForm, EssayForm
 from .models import Quiz, Category, Progress, Sitting, Question
 from essay.models import Essay_Question
 
+import os
+from django.template.loader import render_to_string
 
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
@@ -33,7 +35,7 @@ class QuizListView(ListView):
 
     def get_queryset(self):
         queryset = super(QuizListView, self).get_queryset()
-        return queryset.filter(draft=False)
+        return queryset.filter(draft=False).filter(is_exam=False)
 
 
 class QuizDetailView(DetailView):
@@ -48,6 +50,46 @@ class QuizDetailView(DetailView):
 
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
+
+def QuizDetailView2(request, slug):
+    if not os.path.isdir("/home/ubuntu/public_html/mockat.com/Myproject/media/"+ slug):
+        try:
+            q = Quiz.objects.get(url=slug)
+        except Quiz.DoesNotExist:
+            q = None
+        xml = render_to_string('xml_template.xml', {'time':q.time_limit,'mark':q.mark,'penalty':q.penalty,'query_set': q.get_questions()})
+        os.mkdir("/home/ubuntu/public_html/mockat.com/Myproject/media/"+ slug)
+        fo = open("/home/ubuntu/public_html/mockat.com/Myproject/media/" + slug +"/quiz.xml", "w")
+        fo.write( xml )
+        fo.close()
+	xml = render_to_string('custInstructions.xml', {})
+	fo.open("/home/ubuntu/public_html/mockat.com/Myproject/media/" + slug +"/custInstructions.xml","w")
+	fo.write( xml )
+        fo.close()
+	xml = render_to_string('confDetails.xml', {})
+        fo.open("/home/ubuntu/public_html/mockat.com/Myproject/media/" + slug +"/confDetails.xml","w")
+        fo.write( xml )
+        fo.close()
+    return render(request, 'instructions.html', {})
+
+def QuizDetailView3(request, slug):
+    if request.user.is_authenticated():
+        try:
+            q = Quiz.objects.get(url=slug)
+        except Quiz.DoesNotExist:
+            q = None
+        return render(request, 'quiz.html', {"slug": slug,"time": q.time_limit})
+    else:
+	return render(request, 'single_complete.html');
+
+def ResponseView(request):
+    print '!!!'
+    print request.POST
+    print '!!!'
+    print '---'
+    print request.POST.getlist('google_news_articles[]')
+    print '---'
+    return
 
 
 class CategoriesListView(ListView):

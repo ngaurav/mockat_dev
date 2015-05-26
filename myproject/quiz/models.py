@@ -129,6 +129,31 @@ class Quiz(models.Model):
                     " taken by users who can edit"
                     " quizzes."))
 
+    login_required = models.BooleanField(
+        blank=False, default=False,
+        help_text=_("Only logged in users can take the test."),
+        verbose_name=_("Login Required"))
+
+    is_exam = models.BooleanField(
+        blank=False, default=False,
+        help_text=_("Format will be like digialm.com"),
+        verbose_name=_("Is this a timed test"))
+
+    time_limit = models.IntegerField(
+        blank=False, default=180,
+        help_text=_("Time duration"),
+        verbose_name=_("Time duration"))
+
+    mark = models.IntegerField(
+        blank=False, default=4,
+        help_text=_("Marks awarded for correct answer"),
+        verbose_name=_("Marks"))
+
+    penalty = models.IntegerField(
+        blank=False, default=1,
+        help_text=_("Marks deducted for wrong answer. It's a positive value"),
+        verbose_name=_("Negative Marks"))
+
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
         self.url = re.sub('\s+', '-', self.url).lower()
 
@@ -546,7 +571,7 @@ class Question(models.Model):
                                null=True,
                                verbose_name=_("Figure"))
 
-    content = models.CharField(max_length=1000,
+    content = models.TextField(max_length=1000,
                                blank=False,
                                help_text=_("Enter the question text that "
                                            "you want displayed"),
