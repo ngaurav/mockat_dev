@@ -1,0 +1,186 @@
+{% load staticfiles %}
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Instructions - Assessment Examination Center</title>
+	<link rel="stylesheet" href="{% static 'quiz/css/mock_style.css'%}" />
+	<link rel="stylesheet" href="{% static 'quiz/css/keyboard.css'%}" />
+	<link rel="stylesheet" href="{% static 'quiz/css/number_style.css'%}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'quiz/css/aecInstructions.css'%}" />
+	<script type="text/javascript" src="{% static 'quiz/js/jquery.js'%}"></script>
+    <script src="{% static 'quiz/js/keyboard.js'%}" type="text/javascript"></script>
+	<script type="text/javascript" src="{% static 'quiz/js/jquery.actual.min.js'%}"></script>
+	<script type="text/javascript" src="{% static 'quiz/js/top.js'%}"></script>
+
+	<style>
+		#instPaginationa:hover{ text-decoration:underline; }
+		#readylink:hover { text-decoration:underline; }
+	</style>
+	<script>
+	$(document).ready(function(){
+		$('select').css('cursor','url("BLACK.cur")');
+	});
+		function createDefaultSubject(defLang){
+			var defaultLang = document.getElementById("defaultLanguage");
+			var date = new Date();
+			date.setTime(date.getTime()+(5*60*1000));
+			var expires = "; expires="+date.toGMTString();		
+			document.cookie = "defaultLang="+defLang+";viewLangName="+mockVar.langName+expires+"; path=/";
+		}
+
+		function showId() {
+			var url = document.URL;
+			var params = url.split("instructions.html?");
+			var orgId = $.trim(params[1]).split("@@")[0];
+			var mockId = $.trim(params[1]).split("@@")[1];
+			if(mockId.indexOf("#")>-1){
+				mockId = mockId.substring(0,mockId.indexOf("#"));
+			}
+			if(document.getElementById("defaultLanguage").options.length>2){
+				var lang = document.getElementById("defaultLanguage");
+				if(lang.value!='0'){
+					createDefaultSubject(lang.value);
+					window.location.href="quiz.html?"+orgId+"@@"+mockId;
+				}else {
+					alert("Please choose your default language.");
+				}
+			}else{
+				createDefaultSubject($('#defaultLang').val());
+				window.location.href="quiz.html?"+orgId+"@@"+mockId;
+			}
+		}
+
+		var page="next";
+		function showInstr(){
+			if(page=="next"){
+				$("#firstPage").hide();
+				$("#secondPagep1").show();
+				$("#secondPagep2").show();
+				page="previous";
+				$("#instPaginationa").text(mockLabels.previous);
+			}else if(page=="previous"){
+				$("#secondPagep1").hide();
+				$("#secondPagep2").hide();
+				$("#firstPage").show();
+				page="next";
+				$("#instPaginationa").text(mockLabels.next);
+			}
+		}
+
+		function linkdisp(){
+			if(document.getElementById("disclaimer").checked==true){
+				document.getElementById("readylink").removeAttribute("disabled",0);
+				$('#readylink').click(function(){showId()});
+			}else {
+				document.getElementById("readylink").disabled="disabled";
+				$('#readylink').unbind('click');
+			}
+		} 
+		
+		
+		function multiLangInstru(){
+						
+			$("#basInst option[value='instEnglish']").attr("selected", "selected");
+			if(document.getElementById("multiLangDD")!=null){
+			$("#multiLangDD option").each(function(){
+				if($(this).text().toUpperCase() == 'HINDI'){
+					$('#basInst').parent().show();
+				}
+			});
+			$("#multiLangDD").change(function (){ 
+				var select = this.value;
+				$("#multiLangDD option").each(function(){
+					if(select == this.value){
+						$("#instLang" + select).show();
+					}else{
+						$("#instLang" + this.value).hide();
+					}
+				});
+			});
+			}
+		}
+
+		function basInst(param){
+			if(param=='instEnglish'){
+				$('#instEnglish').show();
+				$('#instHindi').hide();
+			}else{
+				$('#instEnglish').hide();
+				$('#instHindi').show();
+			}
+		}
+		checkVersion();
+		$(window).load(function(){ setInstruHeights();});
+
+		window.onresize = function(event) {
+			setInstruHeights();
+		}
+	</script>
+</head>
+
+<body onload="validateInstPageUrl();setInstruHeights();" onselectstart="return false;" ondragstart="return false;">
+	<div id="container">
+		<div id="pWait" style="background:grey;height:100%;width:100%;z-index:1999;position:absolute;opacity:0.4;filter:alpha(opacity=40);">
+			<div style="top:45%;position:relative;color:white">
+			<center><img src="{% static 'quiz/images/loading.gif'%}" style="height:50px;width:50px;display:block;"/><br/><h2>Please wait</h2></center>
+			</div>
+		</div>
+
+		<div id="header">
+			 <table width="100%" cellspacing="0" cellpadding="0" border="0">
+				<tbody>
+				  <tr>
+					<td align="left" id="bannerImage"></td>
+				  </tr>
+				</tbody>
+			  </table>
+		</div>
+		<div id="mainleft" style="margin-left:3px;width:79%;">
+				<div id="firstPage" style="overflow:auto;border:1px #CCC solid;padding:2px">
+					<span style="float:right;display:none;"><span class="viewIn">View In : </span><select id="basInst" onchange="changeSysInst(this.value,'sysInstText')"></select></span>
+					<br/><br/>
+				</div>
+				<div id="secondPagep1" style="overflow:auto;display:none;border:1px #CCC solid;padding:2px">
+					<span style="float:right;display:none;"><span class="viewIn">View In : </span><select id="cusInst" onchange="changeSysInst(this.value,'cusInstText')"></select></span>
+					<br/><br/>
+				</div>
+				<div id="instPagination"><center><a id="instPaginationa" onclick="showInstr()" href="#" alt="">Next >></a></center></div>
+				<div id="secondPagep2" style="display:none">
+					<div id="defaultLangOptions"  style="display:none">
+						<span id="defLang">Choose your default language</span>
+						<select id="defaultLanguage"></select>
+						<br/><span class='highlightText' id="multiLangInstru">Please note all questions will appear in your default language. This language can be changed for a particular question later on.</span><br/>
+					</div>
+					
+					<br/>
+					<span class="highlightText">
+						<table><tr><td style="vertical-align:top"><input type="checkbox" id="disclaimer" onclick="linkdisp();"> </input></td>
+						<td><span style="width:90%:float:left" id="agreementMsg">The computer provided to me is in proper working condition. I have read and understood the instructions given above.</span></td></tr></table>
+					</span>
+					<br/>
+					<center><span><a href="#" id="readylink" alt="" disabled="disabled"><font size="5">I am ready to begin</font></a></span></center>
+				</div>
+
+		</div>
+		<div id="mainright" style="border-left:1px #000 solid;width:20%;">
+			<div style="top:25%;position:relative">
+				<center><img id="candidateImg" width="60%" /> </center>
+			</div>
+		</div>
+	</div>
+	<script>
+	if($.browser.msie && $.browser.version <7){
+		alert("Please use IE 7.0 or above");
+		$(".highlightText").prepend("<h2>Please use IE 7.0 or above</h2>");
+		$("#disclaimer").attr("disabled","disabled");
+		$("#readylink").attr("disabled","disabled");
+		$("#readylink").attr("onclick","").unbind("click");
+	}
+	$('a').mousedown(function(event){
+		avoidKeyPressing(event);
+	});
+</script>
+<div id="footer"></div>
+<input type="hidden" id="defaultLang" value=""/>
+</body>
+</html>

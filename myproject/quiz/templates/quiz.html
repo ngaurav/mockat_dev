@@ -1,0 +1,255 @@
+﻿{% load staticfiles %}
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="{% static 'quiz/css/mock_style.css'%}" />
+    <link rel="stylesheet" href="{% static 'quiz/css/number_style.css'%}" />
+    <link rel="stylesheet" href="{% static 'quiz/css/keyboard_style.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/css/jquery.alerts.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/css/aecInstructions.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/css/codemirror.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/css/calc.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/css/calc.min.css'%}" />
+    <script type="text/javascript" src="{% static 'quiz/js/jquery.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/json2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/top.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/oscZeno.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/oscZeno.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/jquery.corner.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/jquery.caret.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/virtual_keyboard.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/jquery.actual.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/typing.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/restrictedTyping.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/codemirror.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/javascript.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/active-line.js'%}"></script>
+    <script type="text/javascript" src="{% static 'quiz/js/matchbrackets.js'%}"></script>
+	<title>Assessment Exam Center</title>
+	<style>
+		#usefulData:hover{ text-decoration:underline; }
+		#restrictedInstr td, #unrestrictedInstr td{vertical-align:top}
+	</style>
+	<script>
+		$(document).ready(function(){
+		});
+		window.onresize = function(event) {
+			quizPageHeight();
+		}
+		checkVersion();
+		$('a').mousedown(function(event){
+			avoidKeyPressing(event);
+		});
+		var editor;
+	</script>
+</head>
+<body onload="validateQuizPageUrl();quizPageHeight();timer();getCandIdFromCookie();loadLabel();" onselectstart="return false;" ondragstart="return false;">
+	<div id="container">
+	<div id="pWait" style="background:grey;height:100%;width:100%;z-index:1999;position:absolute;opacity:0.4;filter:alpha(opacity=40);">
+		<div style="top:45%;position:relative;color:white">
+			<center><img src="{% static 'quiz/images/loading.gif'%}" style="height:50px;width:50px;display:block;" /><br/><h2>Please wait</h2></center>
+		</div>
+	</div>
+	<div id="header">
+		  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tbody>
+			  <tr>
+				<td align="left" id="bannerImage"></td>
+			  </tr>
+			</tbody>
+		  </table>
+	</div>
+	<div id="questionContent">
+		<div id="mainleft">
+		<div id="groups" style="width:99%;float:left;">
+		</div>
+		<div id="sectionsField">
+		<fieldset><legend><span class="sect"><b>Sections</b> </span><span id="showOptionalSecSummary" style="display:none"> [Attempt any <span id="maxOptSec"></span>&nbsp;of the <span id="noOptSec"></span>&nbsp;optional sections] </span> </legend>
+		<div id="sections"></div>
+		</fieldset>
+		</div>
+		<div id="instructionsDiv">
+			<div style="height:90%;overflow:auto;border: 2px #ccc solid">
+				<center><span><b><font size="4em" color="#2F72B7" id="sysInstruLabel">System Instructions</font></b></span></center>
+				<div id="firstPage" style="padding:2px">
+					<span style="float:right;display:none;"><span class="viewIn">View In : </span><select id="basInst" onchange="changeSysInst(this.value,'sysInstText')"></select></span>
+					<br/>
+					<br/>
+				</div>
+				<br/>
+				<br/>
+				<center><span><b><font size="4em" color="#2F72B7" id="otherInstruLabel">Other Important Instructions</font></b></span></center>
+				<div id="secondPagep1" style="padding:2px">
+					<span style="float:right;display:none;"><span class="viewIn">View In : </span><select id="cusInst" onchange="changeSysInst(this.value,'cusInstText')"></select></span>
+					<br/>
+					<br/>
+				</div>
+			</div>
+			<div style="width:100%">
+				<center><input type="button" class="button back" value="Back" onclick="changeQues(iOAP.curQues);removeActiveLinks()"></center>
+			</div>
+		</div>
+			<div id="profileDiv">
+				<center>
+					<font size="4em"><b id="profileDetails">Profile Details</b></font>
+					<br/>
+					<table style="border-bottom: #000 1px solid; border-left: #000 1px solid; font-size: 14px; border-top: #000 1px solid; border-right: #000 1px solid;">
+						<tr><td><b><span id="loginName"></span></b></td><td><b> : </b>11111</td></tr>
+						<tr><td><b id="candName">Name</b></td><td><b> : </b><span class="candOriginalName">John Smith</td></tr>
+						<tr><td><b id="candDateOfBirth">Date of Birth (DD-MM-YYYY)</b></td><td><b> : </b>22-05-1988 </td></tr>
+						<tr><td id="emailIdText"></td><td id="emailId"></td></tr>
+						<tr><td id="contactNoText"></td><td id="contactNo"></td></tr>
+					</table>
+					<br/>
+					<div id="multilingualDropdown" style="display:none">
+						<span class="cngLang">Change Language : </span>
+						<span>
+							<select id="languageSelect" onchange="selLang(this.value);"></select>
+						</span>
+					</div>
+					<br/>
+				</center>
+				<div style="width:100%">
+					<center><input type="button" class="button back" value="Back" onclick="changeQues(iOAP.curQues);removeActiveLinks()"></center>
+				</div>
+			</div>
+			<div id="QPDiv">
+				<div id="viewQPDiv" style="height:90%;overflow:auto">
+				</div>
+				<div style="width:100%">
+					<center><input type="button" class="button back" value="Back" onclick="changeQues(iOAP.curQues);removeActiveLinks()"></center>
+				</div>
+			</div>
+			
+			<div id="questionCont">
+				<div id="currentQues"></div>
+				
+				<div id="actionButton" style="width:99%;margin-left:1%;margin:5px;">
+					<div style="float:left"><input type="button" onclick="compileCode();" id="compileCodeBtn" class="progrmngBtn button actionBn" value="Compile" style="display:none"/></div>
+					<div style="float:left"><input type="button" onclick="executeCode();" id="submitCodeBtn" class="progrmngBtn button btnEnabled" value="Submit" style="display:none"/></div>
+					<div style="float:right"><input type="button" id="saveProgram" onclick = "fnSubmit('NEXT')" class="progrmngBtn button actionBn" value="Save & Next"/></div>
+					<div style="float:left"><input type="button" onclick="fnSubmit('MARK')" id="underreview" class="normalBtn button actionBn" value="Mark for Review & Next"/></div>
+					<!--<span style="float:left"><input type="button" onclick = "fnSubmit('SKIP')" class="button actionBn" value="Skip"/></span>-->
+					<div style="float:left"><input type="button" id="clearResponse" onclick = "resetOption()" class="normalBtn button actionBn" value="Clear Response"/></div>
+					<div style="float:right"><input type="button" id="savenext" onclick = "fnSubmit('NEXT')" class="normalBtn button btnEnabled" value="Save & Next"/></div>
+					<div class="clear"></div>
+				</div> 
+			</div>
+			<div id="sectionSummaryDiv">
+			</div>
+		</div>
+		<div id="mainright">
+			<div id="timer" style="height:90px">
+				<div id="timerLeftSideDiv" style="width:50%;float:left;padding-top:7px;padding-bottom:7px;">
+					<div id="candImg" style="height:50px;"><center><img id="candidateImg" height="50px" width="70px"/></center></div>
+					<div id="usefulDataDivLeft" style="display:none;height:25px;float:right;position:relative;"><a class="blueBtn" href="#" onclick="showHelpContent(event);"><span>Useful Data</span></a></div>
+				</div>
+				<div id="timerRightSideDiv" style="width:50%;float:left;;padding-top:7px;padding-bottom:7px;">
+					<div style="height:50px;">
+						<div style="padding-top:8px;width:100%;" id="showTime"> &nbsp;</div>
+						<div style="width:100%"><i id="candidateName" class="candOriginalName">John Smith</i></div>
+					</div>
+					<div id="usefulDataDivRight" style="display:none;"><a class="blueBtn" href="#" onclick="showHelpContent(event);"><span>Useful Data</span></a></div>
+					<div id="showCalc" style="display:none;height:25px;padding-left:5px;float:left;position:relative;"><a class="blueBtn" href="#" onclick="loadCalculator()"><span>Calculator</span></a></div>
+				</div>
+				<!--<div style="width:auto">
+					<a id="usefulDataLink" style="display:none;" class="blueBtn" href="#" onclick="showHelpContent(event);"><span>Useful Data</span></a>
+					<a id="showCalc" style="display:none;" class="blueBtn" href="#" onclick="loadCalculator()"><span>Calculator</span></a>
+					<div class="clear"></div>
+				</div>-->
+			</div>
+			<div id="loadCalc" style="display:none;position:fixed;z-index:999;float:left;padding-top:1%;right:20px;top:120px;"></div>
+			<div class="numberpanel" style="">
+				<div id="viewSection"> <span id="viewingSect"></span>&nbsp;<b></b>&nbsp;<span class="sect"></span>
+				</div>
+				<div id="quesPallet" style="height:5%;margin-left:5px">Question Palette :</div>
+				<div id="numberpanelQues">
+				</div>
+				
+				<div id="typingInstDiv" style="display:none;padding:5px">
+					<div id="dataDisplayDiv" style="display:none"></div>
+					<div class="question_area1" >
+						
+					<!--	Correct Word Count : <span id="correctWordCount"></span>
+						<br/>
+						Wrong Word Count : <span id="wrongWordCount"></span>
+						<br/>-->
+						<table style="width:100%">
+							<tr><td id="keyStrokesCountTd">Keystrokes Count</td><td>:</td><td id="totalKeyStrokesCount"></td></tr>
+							<tr><td id="backspaceCountTd">Backspace Count</td><td>:</td><td id="backSpaceCount"></td></tr>
+							<tr id="errorCount" style="display:none"><td id="errorCountTd"> Error Count</td><td>:</td><td id="errorCountValue"></td></tr>
+							<tr><td id="totalWordCount"> Total Word Count</td><td>:</td><td id="totalWordCountVal"></td></tr>
+							<tr><td id="typedWordCount"> Typed Word Count</td><td>:</td><td id="typedWordCountVal"></td></tr>
+							<tr><td id="remainingWordCount"> Pending Word Count</td><td>:</td><td id="remainingWordCountVal"></td></tr>
+						</table><br/>
+						<span id="typingInstruSpan"><b>Instruction:</b></span>
+						<table id="restrictedInstr" style="display:none;margin-top:10px">
+							<tr><td><b>1.</b></td><td>&nbsp;</td><td id="resInstru1"></td></tr>
+							<tr><td><b>2.</b></td><td>&nbsp;</td><td id="resInstru2"></td></tr>
+							<tr><td><b>3.</b></td><td>&nbsp;</td><td id="resInstru3"></td></tr>
+							<tr><td><b>4.</b></td><td>&nbsp;</td><td id="resInstru4"></td></tr>
+						</table>
+						<table id="unrestrictedInstr" style="display:none;margin-top:10px">
+							<tr><td><b>1.</b></td><td>&nbsp;</td><td id="unresInstru1"></td></tr>
+							<tr><td><b>2.</b></td><td>&nbsp;</td><td id="unresInstru2"></td></tr>
+							<tr><td><b>3.</b></td><td>&nbsp;</td><td id="unresInstru3"></td></tr>
+							<tr><td><b>4.</b></td><td>&nbsp;</td><td id="unresInstru4"></td></tr>
+							<tr><td><b>5.</b></td><td>&nbsp;</td><td id="unresInstru5"></td></tr>
+						</table>
+					</div>
+				</div>
+
+				<div id="legend" style="margin-left:3px;margin:5px">
+					<table width="100%" class="diff_type_notation_area_inner">
+						<tr>
+							<td colspan="4"><b><label id="legendLabel">Legend : </label></b></td>
+						</tr>
+						<tr>
+							<td><span class ="answered">&nbsp;</span></td> <td><label id="answeredLabel"> Answered</label></td>
+							<td><span class="not_answered" >&nbsp;</span></td> <td><label id="notAnsweredLabel">Not Answered</label></td>
+						</tr>
+						<tr>
+							<td><span class="review" >&nbsp;</span></td> <td><label id="markedLabel"> Marked</label></td>
+							<td><span class="not_visited" >&nbsp;</span></td> <td><label id="notVisitedLabel"> Not Visited</label></td>
+						</tr>
+					</table>
+					<table width="100%">
+						<tr>
+							<td width="50%"><center> <input type="button" id="viewProButton" class="button1" value="Profile" title="View Profile" onclick="showModule('profileDiv');activeLink(this.id)"/> </center></td>
+							<td width="50%"><center><input type="button" id="viewInstructionsButton" class="button1" value="Instructions" title="View Instructions" onclick="showModule('instructionsDiv');activeLink(this.id)"/> </center> </td>
+						</tr>
+						<tr>
+							<td id="viewQPTD"><center> <input id="viewQPButton" type="button" class="button1" value="Question Paper" title="View Entire Question Paper" onclick="showQP();activeLink(this.id)"/> </center></td>
+							<!--<td><center> <input type="button" class="button" style="width:110px" id="finalSub" onclick="submitConfirmation('submit')" value="Submit" title="Submit Exam" disabled/></center></td>-->
+							<td id="submitTD" ><center><input type="button" class="button1" id="finalSub" onclick="submitConfirmation('submit');activeLink(this.id)" value="Submit" title="Submit Group" disabled/></center></td>
+						</tr>
+					</table>
+				</div>
+				<div id="typingSubmit" style="display:none">
+					<table width="100%">
+						<tr><td id="submitTD" width="50%"><center><input type="button" class="typingTestButtonDisabled" id="finalTypingSub" onclick="fnSubmit('NEXT');calculateEllapsedTime();submitConfirmation('submit');activeLink(this.id);" value="Submit" title="Submit Group" disabled/></center></td></tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div id="breakTimeDiv" style="display : none" align="center">
+			<div id="breakContentDiv">
+				<div style="width:100%;padding:10px 0px" id="breakTimeCountDiv">
+					<div style="width:100%;" id="breakTimeCounter"> &nbsp;</div>
+				</div>
+				<div id="breakSummaryDiv" style="height:90%"></div>
+			</div>
+			<div id="brkPrcdBtnDiv" class='buttonDiv'><input id="proceedToNextGrp" onclick='submitGroup()' type='button' class='button' value='Proceed to Next Group'/></div>
+			<div class="clear"></div>
+		</div>
+		<div id="scoreCardDiv" style="display : none" align="center">
+			<div id="scoreSummaryDiv"></div>
+			<div class='buttonDiv' id="scoreCardBtnDiv"><input onclick='moveToFeedback();' id="scoreCardPrcdBtn" type='button' class='button' value='Proceed'/></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	
+	<div id="footer"></div>
+</body>
+</html>

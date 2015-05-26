@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DETAILS>
+<TestExpire3><![CDATA[Login]]></TestExpire3>
+<GuestMode2><![CDATA[Password :]]></GuestMode2>
+<LoginPage4><![CDATA[Sign In]]></LoginPage4>
+<Next><![CDATA[Next]]></Next>
+<Previous><![CDATA[Previous]]></Previous>
+<AgreementMessage><![CDATA[I have read and understood the instructions. All Computer Hardwares allotted to me are in proper working condition. I agree that I am not carrying any prohibited gadget like mobile phone etc. / any prohibited material with me into the exam hall.  I agree that in case of not adhering to the instructions, I will be disqualified from taking the exam.]]></AgreementMessage>
+<ChooseYourDefaultLanguage><![CDATA[Choose your default language :]]></ChooseYourDefaultLanguage>
+<DefaultLanguageMessage><![CDATA[Please note all questions will appear in your default language. This language can be changed for a particular question later on]]></DefaultLanguageMessage>
+<ReadyToBegin><![CDATA[I am ready to begin]]></ReadyToBegin>
+<OtherImportantInstructions><![CDATA[Other Important Instructions]]></OtherImportantInstructions>
+<CandidateDetails><![CDATA[Candidate Details]]></CandidateDetails>
+<CandidateName><![CDATA[Name]]></CandidateName>
+<CandDateOfBirth><![CDATA[Date of Birth (DD-MM-YYYY)]]></CandDateOfBirth>
+<CandidateEmailId><![CDATA[Email ID]]></CandidateEmailId>
+<CandidateMobileNo><![CDATA[Contact No]]></CandidateMobileNo>
+<ChangeLanguage><![CDATA[Change Language :]]></ChangeLanguage>
+<UsefulData><![CDATA[Useful Data]]></UsefulData>
+<TimeLeft><![CDATA[Time Left :]]></TimeLeft>
+<Candidate><![CDATA[Candidate]]></Candidate>
+<Section><![CDATA[Section]]></Section>
+<OptionSectionInfo><![CDATA[[Attempt any <span id="maxOptSec"></span>&nbsp;of the <span id="noOptSec"></span>&nbsp;optional sections]]]></OptionSectionInfo>
+<MarksForCorrectAnswer><![CDATA[Marks for correct answer]]></MarksForCorrectAnswer>
+<NegativeMarks><![CDATA[Negative Marks]]></NegativeMarks>
+<QuestionType><![CDATA[Question Type :]]></QuestionType>
+<QuestionNum><![CDATA[Question No]]></QuestionNum>
+<ViewIn><![CDATA[View in :]]></ViewIn>
+<Calculator><![CDATA[Calculator]]></Calculator>
+<Compile><![CDATA[Compile]]></Compile>
+<SubmitCode><![CDATA[Submit Code]]></SubmitCode>
+<MarkForReview><![CDATA[Mark for Review]]></MarkForReview>
+<MarkForReviewNext><![CDATA[Mark for Review & Next]]></MarkForReviewNext>
+<ClearResponse><![CDATA[Clear Response]]></ClearResponse>
+<SaveAndNext><![CDATA[Save & Next]]></SaveAndNext>
+<Save><![CDATA[Save]]></Save>
+<MarkAsAnswered><![CDATA[Mark as Answered]]></MarkAsAnswered>
+<YouAreViewing><![CDATA[You are viewing]]></YouAreViewing>
+<QuestionPalette><![CDATA[Question Palette]]></QuestionPalette>
+<Legend><![CDATA[Legend]]></Legend>
+<Answered><![CDATA[Answered]]></Answered>
+<NotAnswered><![CDATA[Not Answered]]></NotAnswered>
+<Marked><![CDATA[Marked]]></Marked>
+<NotVisited><![CDATA[Not Visited]]></NotVisited>
+<Profile><![CDATA[Profile]]></Profile>
+<Instructions><![CDATA[Instructions]]></Instructions>
+<QuestionPaper><![CDATA[Question Paper]]></QuestionPaper>
+<Submit><![CDATA[Submit]]></Submit>
+<Yes><![CDATA[Yes]]></Yes>
+<No><![CDATA[No]]></No>
+<Back><![CDATA[Back]]></Back>
+<Reset><![CDATA[Reset]]></Reset>
+<KeyStrokesCount><![CDATA[Keystrokes Count]]></KeyStrokesCount>
+<BackSpaceCount><![CDATA[Backspace Count]]></BackSpaceCount>
+<ErrorCount><![CDATA[Error Count]]></ErrorCount>
+<TotalWordCount><![CDATA[Total Word Count]]></TotalWordCount>
+<TypedWordCount><![CDATA[Typed Word Count]]></TypedWordCount>
+<PendingWordCount><![CDATA[Pending Word Count]]></PendingWordCount>
+<TypingInstructionRestricted1><![CDATA[Type the highlighted character to proceed further.]]></TypingInstructionRestricted1>
+<TypingInstructionRestricted2><![CDATA[You cannot edit the typed text.]]></TypingInstructionRestricted2>
+<TypingInstructionCommon1><![CDATA[You are not allowed to submit before typing the entire text.]]></TypingInstructionCommon1>
+<TypingInstructionCommon2><![CDATA[On timeout, your answer will be saved automatically.]]></TypingInstructionCommon2>
+<TypingInstructionUnrestricted1><![CDATA[Type the highlighted word.]]></TypingInstructionUnrestricted1>
+<TypingInstructionUnrestricted2><![CDATA[You can edit the typed text.]]></TypingInstructionUnrestricted2>
+<TypingInstructionUnrestricted3><![CDATA[Correct/Wrong words turn Green/Red respectively.]]></TypingInstructionUnrestricted3>
+<ResettingMessage1><![CDATA[Resetting this section will DELETE your responses to all the questions in this section. Are you sure you want to reset <span id='resetSections'></span> section ?]]></ResettingMessage1>
+<SubmitGroup><![CDATA[Are you sure you want to submit <span id='curGrpName'></span> group]]></SubmitGroup>
+<SubmitExam><![CDATA[Are you sure you want to submit the Exam]]></SubmitExam>
+<OptionalSectionWarningMessage><![CDATA[WARNING!<br/>You have chosen to change the optional section. You are required to reset the previously chosen optional sections by clicking on the corresponding checkbox in the table given below and then clicking on the RESET button. Please be aware that by resetting one of the previously chosen optional Sections, all the answers you have provided for questions in that Section will be DELETED. (If you choose to come back to this section later, you will have to start answering this Section afresh. Hence if you think you will need to come back to this Section later, then you need to note down your answers on the Scribble Pad provided.). Are you sure that you want to reset an optional section now?<br><br>If YES, check the checkbox next to section you wish to reset and click on <b>Reset</b> button to reset that section.]]></OptionalSectionWarningMessage>
+<SectionSelectionToReset><![CDATA[Please select the section(s) to reset]]></SectionSelectionToReset>
+<OptionalSectionSummary Answered="Answered" MarkForReview="Marked for Review" NoOfQuestions="No. of Questions" NotAnswered="Not Answered" NotVisited="Not Visited" OptionalSectionName="Optional Section Name" SectionName="Section Name"><![CDATA[Summary of Optional Section(s) :]]></OptionalSectionSummary>
+<ExamSummary AttemptedGroup="Attempted Group " BackSpaceCount="Backspace Count" CurrentGroup=" : ( Current Group )" EditAllowed="; Edit allowed" EditNotAllowed="; Edit not allowed" ElapsedTime="Elapsed Time (In Mins)" GrossKeyStrokesCount="Gross KeyStrokes Count" ViewAllowed="; View allowed" ViewNotAllowed="; View not allowed" YetToAttempt=" : ( Yet to attempt )"><![CDATA[Exam Summary]]></ExamSummary>
+<DeselectingMessage><![CDATA[Deselecting the checkbox will DELETE all the options marked in this section. Do you want to continue?]]></DeselectingMessage>
+<BreakTimeLeft><![CDATA[Break Time Left :]]></BreakTimeLeft>
+<ProceedToNextGroup><![CDATA[Proceed to Next Group]]></ProceedToNextGroup>
+<MarkedAndAnswered><![CDATA[Marked & Answered]]></MarkedAndAnswered>
+<MarkedAndNotAnswered><![CDATA[Marked & Not Answered]]></MarkedAndNotAnswered>
+<ActionButtonHoverMessage2><![CDATA[Select the section to answer this question]]></ActionButtonHoverMessage2>
+<ActionButtonHoverMessage1><![CDATA[Editing this group is not allowed anymore]]></ActionButtonHoverMessage1>
+<ProfileHover><![CDATA[View Profile]]></ProfileHover>
+<InstructionsHover><![CDATA[View Instructions]]></InstructionsHover>
+<QuestionPaperHover><![CDATA[View Entire Question Paper]]></QuestionPaperHover>
+<GroupSubmitTitle1><![CDATA[Submit Group]]></GroupSubmitTitle1>
+<QuestionLimitMessageOnlyAnswered><![CDATA[You have attempted @@quesToBeConsidered@@ out of @@totalQuestions@@ question, which is the maximum limit of this section.  If you wish to answer this question you need to reset the questions which are already answered]]></QuestionLimitMessageOnlyAnswered>
+<QuestionLimitMessageWithMarkedForReview><![CDATA[You have attempted @@quesToBeConsidered@@ out of @@totalQuestions@@ question, which is the maximum limit of this section.  If you wish to answer this question you need to reset the questions which are already answered or marked for review and answered]]></QuestionLimitMessageWithMarkedForReview>
+<ScoreCard Accuracy="Accuracy" Attempted="Attempted" CandidateName="Candidate Name : " Correct="Correct" GrossWPM="Gross WPM" Incorrect="Incorrect" NetWPM="Net WPM" NotEvaluated="Not Evaluated" Proceed="Proceed" SectionPercentage="Section Percentage" SectionScore="Section Score"/>
+<CandidateFeedbackForm Header="Candidate Feedback Form" TableHeader1="S.No" TableHeader2="Questions" TableHeader3="Response"><![CDATA[Dear Candidate,<br/>We solicit your valuable feedback to understand your views and your experience on the digital examination.<br/>Your feedback will enable us to improve the overall candidate experience.]]></CandidateFeedbackForm>
+<CandidateFeedbackQuestion1><![CDATA[How was your experience with the exam support provided including usefulness of the mock test, access to exam related information, helpline support, etc?]]></CandidateFeedbackQuestion1>
+<CandidateFeedbackQuestion2><![CDATA[How was your experience in giving a digital exam on aspects such as navigating on the candidate console, ease of using the candidate console, etc?]]></CandidateFeedbackQuestion2>
+<CandidateFeedbackQuestion3><![CDATA[How was your experience as to the following aspects of the test-center:]]></CandidateFeedbackQuestion3>
+<CandidateFeedbackQuestion3a><![CDATA[Ease of Locating the Test Center.]]></CandidateFeedbackQuestion3a>
+<CandidateFeedbackQuestion3b><![CDATA[Ease of finding your designated exam seat through clear notice board instructions, directional arrows, staff guidance, etc.]]></CandidateFeedbackQuestion3b>
+<CandidateFeedbackQuestion3c><![CDATA[Seating arrangement]]></CandidateFeedbackQuestion3c>
+<CandidateFeedbackQuestion3d><![CDATA[Availability of basic facilities like water dispenser, rest rooms, etc.]]></CandidateFeedbackQuestion3d>
+<CandidateFeedbackQuestion3e><![CDATA[Exam node/ desktop quality]]></CandidateFeedbackQuestion3e>
+<CandidateFeedbackQuestion3f><![CDATA[Behavior of staff, their knowledge and competency of conducting the exam.]]></CandidateFeedbackQuestion3f>
+<CandidateFeedbackQuestion4><![CDATA[How was your overall experience of taking up a digital exam?]]></CandidateFeedbackQuestion4>
+<CandidateFeedBackOptions CandidateFeedBackOption1="Exceeded expectations" CandidateFeedBackOption2="Met expectations" CandidateFeedBackOption3="Improvement needed" CandidateFeedBackOption4="Failed to meet expectations"/>
+<ClosePageMessage CloseBtnText="Close"><![CDATA[You have successfully completed the exam<br/><br/>Please click on the below button to exit.]]></ClosePageMessage>
+<AnswerSubmissionRequest6><![CDATA[This question is not available in @@langName@@]]></AnswerSubmissionRequest6>
+<SummaryAlert1><![CDATA[Time out !!! Your answers have been saved successfully]]></SummaryAlert1>
+<CodeTypeMsg><![CDATA[Type your code here]]></CodeTypeMsg>
+<CompileAlertMsg><![CDATA[In the actual exam your code will get compiled on click of this button.]]></CompileAlertMsg>
+<ExecutionAlertMsg><![CDATA[In the actual exam your code will get executed on click of this button.]]></ExecutionAlertMsg>
+<CompileSuccessStatus><![CDATA[Compiled Successfully]]></CompileSuccessStatus>
+<ExecutionSuccessStatus><![CDATA[Executed Successfully]]></ExecutionSuccessStatus>
+<NameNotYours><![CDATA[Click here if the Name and Photograph<br/>shown on the screen is not yours]]></NameNotYours>
+<SystemName><![CDATA[System Name :]]></SystemName>
+<CandName><![CDATA[Candidate Name :]]></CandName>
+<Subject><![CDATA[Subject :]]></Subject>
+<NotMySystem><![CDATA[Clicking this will close the login window to enable your login with a different system name]]></NotMySystem>
+</DETAILS>
