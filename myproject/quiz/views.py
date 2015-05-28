@@ -12,6 +12,8 @@ from essay.models import Essay_Question
 
 import os
 from django.template.loader import render_to_string
+import logging
+logger = logging.getLogger(__name__)
 
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
@@ -53,7 +55,9 @@ class QuizDetailView(DetailView):
 
 def QuizDetailView2(request, slug):
     if not os.path.isfile("/home/ubuntu/public_html/mockat.com/Myproject/media/"+ slug +"/quiz.xml"):
+        logger.debug("just after if")
         os.mkdir("/home/ubuntu/public_html/mockat.com/myproject/media/"+ slug)
+        logger.debug("before try")
         try:
             q = Quiz.objects.get(url=slug)
         except Quiz.DoesNotExist:
@@ -83,12 +87,8 @@ def QuizDetailView3(request, slug):
 	return render(request, 'single_complete.html');
 
 def ResponseView(request):
-    print '!!!'
-    print request.POST
-    print '!!!'
-    print '---'
-    print request.POST.getlist('google_news_articles[]')
-    print '---'
+    logger.debug("request.POST")
+    logger.debug(request.POST.getlist('google_news_articles[]'))
     return
 
 
