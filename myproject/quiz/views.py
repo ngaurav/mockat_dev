@@ -52,13 +52,13 @@ class QuizDetailView(DetailView):
         return self.render_to_response(context)
 
 def QuizDetailView2(request, slug):
-    if not os.path.isdir("/home/ubuntu/public_html/mockat.com/Myproject/media/"+ slug):
+    if not os.path.isdir("/home/ubuntu/public_html/mockat.com/Myproject/media/"+ slug +"/quiz.xml"):
+        os.mkdir("/home/ubuntu/public_html/mockat.com/myproject/media/"+ slug)
         try:
             q = Quiz.objects.get(url=slug)
         except Quiz.DoesNotExist:
             q = None
         xml = render_to_string('xml_template.xml', {'time':q.time_limit,'mark':q.mark,'penalty':q.penalty,'query_set': q.get_questions()})
-        os.mkdir("/home/ubuntu/public_html/mockat.com/myproject/media/"+ slug)
         fo = open("/home/ubuntu/public_html/mockat.com/myproject/media/" + slug +"/quiz.xml", "w")
         fo.write( xml )
         fo.close()
