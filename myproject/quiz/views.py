@@ -52,7 +52,7 @@ class QuizDetailView(DetailView):
         return self.render_to_response(context)
 
 def QuizDetailView2(request, slug):
-    if not os.path.isdir("/home/ubuntu/public_html/mockat.com/Myproject/media/"+ slug +"/quiz.xml"):
+    if not os.path.exists("/home/ubuntu/public_html/mockat.com/Myproject/media/"+ slug +"/quiz.xml"):
         os.mkdir("/home/ubuntu/public_html/mockat.com/myproject/media/"+ slug)
         try:
             q = Quiz.objects.get(url=slug)
