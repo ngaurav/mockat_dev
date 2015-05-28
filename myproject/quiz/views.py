@@ -54,14 +54,19 @@ class QuizDetailView(DetailView):
         return self.render_to_response(context)
 
 def QuizDetailView2(request, slug):
-    if not os.path.isfile("/home/ubuntu/public_html/mockat.com/Myproject/media/"+ slug +"/quiz.xml"):
-        logger.debug("just after if")
+    logger.debug("entering +++++++++++++++++++++++++++++++++++=====================++++++++++=")
+    if not os.path.isfile("/home/ubuntu/public_html/mockat.com/myproject/media/"+ slug +"/quiz.xml"):
+#        logger.debug("just after if")
         os.mkdir("/home/ubuntu/public_html/mockat.com/myproject/media/"+ slug)
-        logger.debug("before try")
+#        logger.debug("before try")
         try:
+#            logger.debug("inside try")
             q = Quiz.objects.get(url=slug)
+#            logger.debug(" try executed ------------------------------------------------------")
         except Quiz.DoesNotExist:
+            logger.debug("inside except ------------------------------------------------------")
             q = None
+#        logger.debug("after try-except")
         xml = render_to_string('xml_template.xml', {'time':q.time_limit,'mark':q.mark,'penalty':q.penalty,'query_set': q.get_questions()})
         fo = open("/home/ubuntu/public_html/mockat.com/myproject/media/" + slug +"/quiz.xml", "w")
         fo.write( xml )
@@ -74,6 +79,8 @@ def QuizDetailView2(request, slug):
         fo = open("/home/ubuntu/public_html/mockat.com/myproject/media/" + slug +"/confDetails.xml","w")
         fo.write( xml )
         fo.close()
+        logger.debug("end of if")
+    logger.debug("returning -----------------------------------------------------------------------")
     return render(request, 'instructions.html', {})
 
 def QuizDetailView3(request, slug):
