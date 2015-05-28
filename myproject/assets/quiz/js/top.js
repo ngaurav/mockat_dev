@@ -79,7 +79,7 @@ function readXML(filePath, func) {
     var xml;
     $.ajax({
         type: "POST",
-        url: "http://mockat.com/" + filePath,
+        url: "/" + filePath,
         async: false,
         dataType: ($.browser.msie) ? "text" : "xml",
         success: function(data) {
@@ -125,7 +125,7 @@ function readAndReturnXML(filePath) {
     //window.location.href = "error20.html?E404" + filePath;
     $.ajax({
         type: "POST",
-        url: "http://mockat.com/" + filePath,
+        url: "/" + filePath,
         async : false,
         dataType: ($.browser.msie) ? "text" : "xml",
         success: function(data) {
