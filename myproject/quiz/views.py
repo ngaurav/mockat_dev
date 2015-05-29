@@ -96,7 +96,7 @@ def QuizDetailView3(request, slug):
 def ResponseView(request):
     if request.is_ajax():
         logger.debug(request.POST)
-        logger.debug("returning !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$
+        logger.debug("returning !!!!!!!!!!!-----------!!!!!!!!!!!!!!")
         return HttpResponse("Your response was successfully saved!")
     else:
         return HttpResponse("Response submission failed")
