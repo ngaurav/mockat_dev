@@ -3682,20 +3682,26 @@ function sendResponseToServlet() {
     google_news_articles = [];
     google_news_articles.push(jsonString);
     $('#pWait').show();
-    $.post(
-    mockVar.candResponseUrl,
-    {
-        'csrfmiddlewaretoken' : cookieValue,
-        'google_news_articles[]' : google_news_articles
-    },
-    function(data) {
-        if(result.result=='ok'){
+    $.ajax({
+        type: "POST",
+        url: mockVar.candResponseUrl,
+        async: false,
+        data: {
+            'csrfmiddlewaretoken': cookieValue,
+            'google_news_articles[]': google_news_articles
+        },
+        dataType: "text",
+        success: function (data) {
+
+            alert("done"+data);
             $('#pWait').hide();
             moveToScoreCardDisplay();
-        }else{
-            alert(data.ERROR);
+        },
+        error: function () {
+            //alert(filePath)
+            window.location.href = "errorquizpost.html?E404";
         }
-    }, "json");
+    });
 }
 
 function compileCode() {

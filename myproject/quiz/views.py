@@ -94,9 +94,12 @@ def QuizDetailView3(request, slug):
 	return render(request, 'single_complete.html');
 
 def ResponseView(request):
-    logger.debug("request.POST")
-    logger.debug(request.POST.getlist('google_news_articles[]'))
-    return
+    if request.is_ajax():
+        logger.debug(request.POST)
+        logger.debug("returning !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!$
+        return HttpResponse("Your response was successfully saved!")
+    else:
+        return HttpResponse("Response submission failed")
 
 
 class CategoriesListView(ListView):

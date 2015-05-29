@@ -32,7 +32,12 @@ urlpatterns = patterns('',
                            view=QuizMarkingDetail.as_view(),
                            name='quiz_marking_detail'),
 
+                       url(regex=r'^post/$',
+                           view=ResponseView,
+                           name='response_page'),
+
                        #  passes variable 'quiz_name' to quiz_take view
+
                        url(regex=r'^(?P<slug>[\w-]+)/$',
                            view=QuizDetailView.as_view(),
                            name='quiz_start_page'),
@@ -40,10 +45,6 @@ urlpatterns = patterns('',
                        url(regex=r'^(?P<quiz_name>[\w-]+)/take/$',
                            view=QuizTake.as_view(),
                            name='quiz_question'),
-
-                       url(regex=r'^post/$',
-                           view=ResponseView,
-                           name='response_page'),
 
                        url(regex=r'^(?P<slug>[\w-]+)/instructions.html$',
                            view=QuizDetailView2,

@@ -136,21 +136,27 @@ LOGGING = {
         },
     },
     'handlers': {
-        'file': {
+        'file1': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': '/home/ubuntu/public_html/logs/django.log',
             'formatter': 'verbose'
         },
+        'file2': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/home/ubuntu/public_html/logs/quiz.log',
+            'formatter': 'verbose'
+        },
     },
     'loggers': {
         'django': {
-            'handlers':['file'],
+            'handlers':['file1'],
             'propagate': True,
             'level':'DEBUG',
         },
         'quiz': {
-            'handlers': ['file'],
+            'handlers': ['file2'],
             'level': 'DEBUG',
         },
     }
