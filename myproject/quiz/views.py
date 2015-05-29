@@ -14,6 +14,7 @@ import os
 from django.template.loader import render_to_string
 import logging
 logger = logging.getLogger(__name__)
+from django.http import HttpResponse
 
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
