@@ -155,7 +155,7 @@ class Quiz(models.Model):
         help_text=_("Marks deducted for wrong answer. It's a positive value"),
         verbose_name=_("Negative Marks"))
 
-    score_stats = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=401,blank=True,null=True)
+    score_stats = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=401,default= [0]*401)
 
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
         self.url = re.sub('\s+', '-', self.url).lower()
