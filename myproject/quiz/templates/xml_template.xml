@@ -14,7 +14,7 @@
 <MAXNOOPTSEC><![CDATA[0]]></MAXNOOPTSEC>
 <SECTIONDETAILS>
 
-{% with section2_present=False %}
+
 <SECTION ISOPTIONAL="N" MAXQUESTOANS="30" TYPE="ONLINE">
 <secName><![CDATA[Quantitative Ability & Data Interpretation]]></secName>
 <LANGID><![CDATA[1]]></LANGID>
@@ -38,14 +38,13 @@
                 </QUESTION>
         {% endif %}
         {% if forloop.last %}
+            </SECTION>
             {% if query_set.count > forloop.counter %}
-                {% section2_present=True %}
-            {% endif %}
-        {% endif %}
-    {% endfor %}
-</SECTION>
+                
 
-{% if section2_present %}
+
+
+
 <SECTION ISOPTIONAL="N" MAXQUESTOANS="30" TYPE="ONLINE">
 <secName><![CDATA[Verbal Ability and Logical Reasoning]]></secName>
 <LANGID><![CDATA[1]]></LANGID>
@@ -70,9 +69,11 @@
         {% endif %}
     {% endfor %}
 </SECTION>
-{% endif %}
-{% endwith %}
 
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    
 </SECTIONDETAILS>
 </GROUP>
 </QUIZ>
