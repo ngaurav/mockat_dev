@@ -460,7 +460,7 @@ class Sitting(models.Model):
         return [int(n) for n in self.question_order.split(',') if n]
 
     @property
-    def get_percentile(self):
+    def get_percent_correct(self):
         dividend = float(self.current_score)
         divisor = len(self._question_ids())
         if divisor < 1:
@@ -477,7 +477,7 @@ class Sitting(models.Model):
             return 0
 
     @property
-    def get_percent_correct(self):
+    def get_percentile(self):
         dividend = float(sum(self.quiz.score_stats[0:self.current_score+100]))
         divisor = float(sum(self.quiz.score_stats))
         if divisor < 1:

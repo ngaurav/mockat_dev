@@ -59,7 +59,7 @@
 		<th>{% trans "Quiz Title" %}</th>
 		<th>{% trans "Score" %}</th>
 		<th>{% trans "Possible Score" %}</th>
-		<th>%</th>
+		<th>Percentile</th>
 	  </tr>
 	</thead>
 
@@ -71,7 +71,7 @@
 		<td>{{ exam.quiz.title }}</td>
 		<td>{{ exam.current_score }}</td>
 		<td>{{ exam.get_max_score }}</td>
-		<td>{{ exam.get_percent_correct }}</td>
+		<td>{{ exam.get_percentile }}</td>
 	  </tr>
 
 	  {% endfor %}

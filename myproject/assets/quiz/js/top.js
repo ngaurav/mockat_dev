@@ -3678,7 +3678,6 @@ function sendResponseToServlet() {
         }
     }
     var jsonString = JSON.stringify(result);
-    alert(jsonString);
     google_news_articles = [];
     google_news_articles.push(jsonString);
     $('#pWait').show();
