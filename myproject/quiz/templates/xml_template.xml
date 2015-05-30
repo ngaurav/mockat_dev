@@ -1,83 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QUIZ>
-    <mcQName><![CDATA[Multiple Choice Question]]></mcQName>
-    <msQName><![CDATA[ ]]></msQName>
-    <compQName><![CDATA[Comprehension Question]]></compQName>
-    <saQName><![CDATA[ ]]></saQName>
-    <laQName><![CDATA[ ]]></laQName>
-    <subjQName><![CDATA[ ]]></subjQName>
-    <typingQName><![CDATA[ ]]></typingQName>
-    <programingQName><![CDATA[ ]]></programingQName>
-    <SHOWMARKS><![CDATA[NO]]></SHOWMARKS>
-    <GROUP BREAKTIME="0" GROUPID="1" ISEDITABLE="N" ISVIEWABLE="Y" MAXTIME="0" MINTIME="0">
-        <GROUPNAME><![CDATA[Group 1]]></GROUPNAME>
-        <MAXNOOPTSEC><![CDATA[0]]></MAXNOOPTSEC>
-        <TOTALTIME><![CDATA[{{time}}]]></TOTALTIME>
-        <SECTIONDETAILS>
-            <SECTION ISOPTIONAL="N" MAXQUESTOANS="50" TYPE="ONLINE">
-                <secName><![CDATA[Quantitative Ability & Data Interpretation]]></secName>
-                <LANGID><![CDATA[1]]></LANGID>
-                <LANGNAME><![CDATA[English]]></LANGNAME>
-                <secID><![CDATA[1]]></secID>
-                {% for question in query_set %}{% if not question.section_two %}
-                {% if question.split_view %}
-                    <QUESTION ISPARENT="Y" TYPE="COMPREHENSION@@MCQ">
-                    <KEYS/>
-                    <NAME><![CDATA[{% autoescape off %}{{ question.content }}{% endautoescape %}]]></NAME>
-                    <ID><![CDATA[{{ forloop.counter }}]]></ID>
-                    <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
-                    <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
-                    {% for choice in question.get_answers %}
-                    <ANSWER {% if choice.correct %} CORRECT="TRUE" {% else %} CORRECT="FALSE" {% endif %} VALUE="{{forloop.counter}}"><![CDATA[{{choice.content}}]]></ANSWER>
-                    {% endfor %}
-                </QUESTION>
-                {% else %}
-                <QUESTION TYPE="MCQ">
-                    <KEYS/>
-                    <NAME><![CDATA[{% autoescape off %}{{ question.content }}{% endautoescape %}]]></NAME>
-                    <ID><![CDATA[{{ forloop.counter }}]]></ID>
-                    <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
-                    <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
-                    {% for choice in question.get_answers %}
-                    <ANSWER {% if choice.correct %} CORRECT="TRUE" {% else %} CORRECT="FALSE" {% endif %} VALUE="{{forloop.counter}}"><![CDATA[{{choice.content}}]]></ANSWER>
-                    {% endfor %}
-                </QUESTION>
-                {% endif %}
-                {% endif %}{% endfor %}
-            </SECTION>
-            
-            <SECTION ISOPTIONAL="N" MAXQUESTOANS="50" TYPE="ONLINE">
-                <secName><![CDATA[Verbal Ability and Logical Reasoning]]></secName>
-                <LANGID><![CDATA[1]]></LANGID>
-                <LANGNAME><![CDATA[English]]></LANGNAME>
-                <secID><![CDATA[2]]></secID>
-                {% for question in query_set %}{% if question.section_two %}
-                {% if question.split_view %}
-                <QUESTION ISPARENT="Y" TYPE="COMPREHENSION@@MCQ">
-                    <KEYS/>
-                    <NAME><![CDATA[{% autoescape off %}{{ question.content }}{% endautoescape %}]]></NAME>
-                    <ID><![CDATA[{{ forloop.counter }}]]></ID>
-                    <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
-                    <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
-                    {% for choice in question.get_answers %}
-                    <ANSWER {% if choice.correct %} CORRECT="TRUE" {% else %} CORRECT="FALSE" {% endif %} VALUE="{{forloop.counter}}"><![CDATA[{{choice.content}}]]></ANSWER>
-                    {% endfor %}
-                </QUESTION>
-                {% else %}
-                <QUESTION TYPE="MCQ">
-                    <KEYS/>
-                    <NAME><![CDATA[{% autoescape off %}{{ question.content }}{% endautoescape %}]]></NAME>
-                    <ID><![CDATA[{{ forloop.counter }}]]></ID>
-                    <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
-                    <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
-                    {% for choice in question.get_answers %}
-                    <ANSWER {% if choice.correct %} CORRECT="TRUE" {% else %} CORRECT="FALSE" {% endif %} VALUE="{{forloop.counter}}"><![CDATA[{{choice.content}}]]></ANSWER>
-                    {% endfor %}
-                </QUESTION>
-                {% endif %}
-                {% endif %}{% endfor %}
-            </SECTION>
-        </SECTIONDETAILS>
-    </GROUP>
-</QUIZ>
+<mcQName><![CDATA[Multiple Choice Question]]></mcQName>
+<msQName><![CDATA[ ]]></msQName>
+<compQName><![CDATA[Comprehension Question]]></compQName>
+<saQName><![CDATA[ ]]></saQName>
+<laQName><![CDATA[ ]]></laQName>
+<subjQName><![CDATA[ ]]></subjQName>
+<typingQName><![CDATA[ ]]></typingQName>
+<programingQName><![CDATA[ ]]></programingQName>
+<SHOWMARKS><![CDATA[YES]]></SHOWMARKS>
+<GROUP BREAKTIME="0" GROUPID="1" ISEDITABLE="N" ISVIEWABLE="Y" MAXTIME="0" MINTIME="0">
+<GROUPNAME><![CDATA[Group 1]]></GROUPNAME>
+<MAXNOOPTSEC><![CDATA[0]]></MAXNOOPTSEC>
+<SECTIONDETAILS>
 
+{% with section2_present=False %}
+<SECTION ISOPTIONAL="N" MAXQUESTOANS="30" TYPE="ONLINE">
+<secName><![CDATA[Quantitative Ability & Data Interpretation]]></secName>
+<LANGID><![CDATA[1]]></LANGID>
+<LANGNAME><![CDATA[English]]></LANGNAME>
+<secID><![CDATA[1]]></secID>
+    {% for question in query_set %}
+        {% if not question.section_two %}
+            {% if question.split_view %}
+                <QUESTION ISPARENT="Y" TYPE="COMPREHENSION@@MCQ">
+            {% else %}
+                <QUESTION TYPE="MCQ">
+            {% endif %}
+                    <KEYS/>
+                    <NAME><![CDATA[{% autoescape off %}{{ question.content }}{% endautoescape %}]]></NAME>
+                    <ID><![CDATA[{{ forloop.counter }}]]></ID>
+                    <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
+                    <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
+                    {% for choice in question.get_answers %}
+                    <ANSWER {% if choice.correct %} CORRECT="TRUE" {% else %} CORRECT="FALSE" {% endif %} VALUE="{{forloop.counter}}"><![CDATA[{{choice.content}}]]></ANSWER>
+                    {% endfor %}
+                </QUESTION>
+        {% endif %}
+        {% if forloop.last %}
+            {% if len(query_set) > forloop.counter %}
+                {% section2_present=True %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</SECTION>
+
+{% if section2_present %}
+<SECTION ISOPTIONAL="N" MAXQUESTOANS="30" TYPE="ONLINE">
+<secName><![CDATA[Verbal Ability and Logical Reasoning]]></secName>
+<LANGID><![CDATA[1]]></LANGID>
+<LANGNAME><![CDATA[English]]></LANGNAME>
+<secID><![CDATA[2]]></secID>
+    {% for question in query_set %}
+        {% if not question.section_two %}
+            {% if question.split_view %}
+                <QUESTION ISPARENT="Y" TYPE="COMPREHENSION@@MCQ">
+            {% else %}
+                <QUESTION TYPE="MCQ">
+            {% endif %}
+                    <KEYS/>
+                    <NAME><![CDATA[{% autoescape off %}{{ question.content }}{% endautoescape %}]]></NAME>
+                    <ID><![CDATA[{{ forloop.counter }}]]></ID>
+                    <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
+                    <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
+                    {% for choice in question.get_answers %}
+                    <ANSWER {% if choice.correct %} CORRECT="TRUE" {% else %} CORRECT="FALSE" {% endif %} VALUE="{{forloop.counter}}"><![CDATA[{{choice.content}}]]></ANSWER>
+                    {% endfor %}
+                </QUESTION>
+        {% endif %}
+    {% endfor %}
+</SECTION>
+{% endif %}
+{% endwith %}
+
+</SECTIONDETAILS>
+</GROUP>
+</QUIZ>
+     
