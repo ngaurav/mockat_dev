@@ -478,7 +478,7 @@ class Sitting(models.Model):
 
     @property
     def get_percent_correct(self):
-        dividend = float(sum(self.quiz.score_stats[0,self.current_score+100]))
+        dividend = float(sum(self.quiz.score_stats[0:self.current_score+100]))
         divisor = float(sum(self.quiz.score_stats))
         if divisor < 1:
             return 0            # prevent divide by zero error
