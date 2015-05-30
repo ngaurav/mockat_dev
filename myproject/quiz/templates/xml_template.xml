@@ -38,7 +38,7 @@
                 </QUESTION>
         {% endif %}
         {% if forloop.last %}
-            {% if {{ query_set|length }} > forloop.counter %}
+            {% if query_set.count > forloop.counter %}
                 {% section2_present=True %}
             {% endif %}
         {% endif %}
