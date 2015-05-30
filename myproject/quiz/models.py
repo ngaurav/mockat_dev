@@ -146,7 +146,7 @@ class Quiz(models.Model):
         verbose_name=_("Time duration"))
 
     mark = models.IntegerField(
-        blank=False, default=4,
+        blank=False, default=3,
         help_text=_("Marks awarded for correct answer"),
         verbose_name=_("Marks"))
 
@@ -165,6 +165,10 @@ class Quiz(models.Model):
 
         if self.single_attempt is True:
             self.exam_paper = True
+            self.login_required = True
+
+        if self.is_exam is True:
+            self.login_required = True
 
         if self.pass_mark > 100:
             raise ValidationError('%s is above 100' % self.pass_mark)
