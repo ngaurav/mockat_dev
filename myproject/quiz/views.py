@@ -284,6 +284,8 @@ class QuizTake(FormView):
             'previous': self.previous,
         }
 
+        self.quiz.score_stats[self.sitting.get_current_score+100] += 1
+        self.quiz.save()
         self.sitting.mark_quiz_complete()
 
         if self.quiz.answers_at_end:

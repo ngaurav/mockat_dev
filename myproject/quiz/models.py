@@ -13,6 +13,7 @@ from django.conf import settings
 from model_utils.managers import InheritanceManager
 
 from django.utils.text import slugify
+from django.contrib.postgres.fields import ArrayField
 
 @python_2_unicode_compatible
 class Domain(models.Model):
@@ -153,6 +154,8 @@ class Quiz(models.Model):
         blank=False, default=1,
         help_text=_("Marks deducted for wrong answer. It's a positive value"),
         verbose_name=_("Negative Marks"))
+
+    score_stats = models.ArrayField(models.IntegerField(blank=False,null=False,default=0),size=401,)
 
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
         self.url = re.sub('\s+', '-', self.url).lower()
@@ -363,6 +366,17 @@ class SittingManager(models.Manager):
         return sitting
 
 
+class UserTrackrecord(models.Model):
+    """
+    Used to store the marks obtained by every user in each timed test
+    taken by him/her.
+
+    Has thre columns User, Quiz, Score
+    """
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"))
+    quiz = models.ForeignKey(Quiz, verbose_name=_("Quiz"))
+    score = models.IntegerField(verbose_name=_("Marks Obtained"))
+
 class Sitting(models.Model):
     """
     Used to store the progress of logged in users sitting a quiz.
@@ -446,7 +460,7 @@ class Sitting(models.Model):
         return [int(n) for n in self.question_order.split(',') if n]
 
     @property
-    def get_percent_correct(self):
+    def get_percentile(self):
         dividend = float(self.current_score)
         divisor = len(self._question_ids())
         if divisor < 1:
@@ -458,6 +472,23 @@ class Sitting(models.Model):
         correct = int(round((dividend / divisor) * 100))
 
         if correct >= 1:
+            return correct
+        else:
+            return 0
+
+    @property
+    def get_percent_correct(self):
+        dividend = float(sum(self.quiz.score_stats[0,self.current_score+100]))
+        divisor = float(sum(self.quiz.score_stats))
+        if divisor < 1:
+            return 0            # prevent divide by zero error
+
+        if dividend > divisor:
+            return 100
+
+        correct = ((dividend / divisor) * 100)
+
+        if correct >= 0:
             return correct
         else:
             return 0
