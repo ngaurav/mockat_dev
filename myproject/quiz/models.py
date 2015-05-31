@@ -22,6 +22,11 @@ class Domain(models.Model):
         verbose_name=_("Domain"),
         max_length=250, blank=True, null=True)
 
+    rank = models.PositiveSmallIntegerField(
+        blank=False, null=False,
+        unique=False, default=1,
+        verbose_name=_("Rank"))
+
     def __str__(self):
         return self.domain
 
@@ -342,7 +347,8 @@ class SittingManager(models.Manager):
                                             .order_by('?')
         else:
             question_set = quiz.question_set.all() \
-                                            .select_subclasses()
+                                            .select_subclasses() \
+                                            .order_by('rank')
 
         question_set = question_set.values_list('id', flat=True)
         if quiz.max_questions and quiz.max_questions < len(question_set):
@@ -592,6 +598,11 @@ class Question(models.Model):
     Base class for all question types.
     Shared properties placed here.
     """
+
+    rank = models.PositiveSmallIntegerField(
+        blank=False, null=False,
+        unique=False, default=1,
+        verbose_name=_("Rank"))
 
     quiz = models.ManyToManyField(Quiz,
                                   verbose_name=_("Quiz"),

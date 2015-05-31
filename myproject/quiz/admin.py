@@ -64,13 +64,12 @@ class DomainAdmin(admin.ModelAdmin):
 
 class ParagraphAdmin(admin.ModelAdmin):
     list_display = ('title', 'content',)
-    fields = ('title', 'content',)
     search_fields = ('content',)
 
 class MCQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
     list_filter = ('category','para',)
-    fields = ('content', 'category', 'domain',
+    fields = ('content', 'category', 'domain', 'rank',
               'figure', 'quiz', 'explanation', 'answer_order',
               'split_view', 'para',  'section_two')
 
@@ -91,7 +90,7 @@ class ProgressAdmin(admin.ModelAdmin):
 class TFQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
     list_filter = ('category',)
-    fields = ('content', 'category', 'domain',
+    fields = ('content', 'category', 'domain', 'rank',
               'figure', 'quiz', 'explanation', 'correct',)
 
     search_fields = ('content', 'explanation')
@@ -101,7 +100,7 @@ class TFQuestionAdmin(admin.ModelAdmin):
 class EssayQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
     list_filter = ('category',)
-    fields = ('content', 'category', 'domain', 'quiz', 'explanation', )
+    fields = ('content', 'category', 'domain', 'rank', 'quiz', 'explanation', )
     search_fields = ('content', 'explanation')
     filter_horizontal = ('quiz',)
 
