@@ -97,9 +97,9 @@ class Quiz(models.Model):
 
     exam_paper = models.BooleanField(
         blank=False, default=False,
-        help_text=_("If yes, the result of each"
-                    " attempt by a user will be"
-                    " stored. Necessary for marking."),
+        help_text=_("If yes, the result of each attempt by a user will be"
+                    " stored, which is used for marking. This is related to"
+                    " only non timed test."),
         verbose_name=_("Exam Paper"))
 
     single_attempt = models.BooleanField(
@@ -138,7 +138,13 @@ class Quiz(models.Model):
     is_exam = models.BooleanField(
         blank=False, default=False,
         help_text=_("Format will be like digialm.com"),
-        verbose_name=_("Is this a timed test"))
+        verbose_name=_("Timed test"))
+
+    has_section2 = models.BooleanField(
+        blank=False, default=False,
+        help_text=_("Will this quiz have section 2. If unchecked all questions"
+                    " which are marked as section 2 will not appear."),
+        verbose_name=_("Section 2"))
 
     time_limit = models.IntegerField(
         blank=False, default=180,
