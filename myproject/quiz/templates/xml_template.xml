@@ -48,7 +48,7 @@
 <LANGNAME><![CDATA[English]]></LANGNAME>
 <secID><![CDATA[2]]></secID>
     {% for question in query_set %}
-        {% if not question.section_two %}
+        {% if question.section_two %}
             {% if question.split_view %}
                 <QUESTION ISPARENT="Y" TYPE="COMPREHENSION@@MCQ">
             {% else %}
