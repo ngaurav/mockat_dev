@@ -37,14 +37,11 @@
                     {% endfor %}
                 </QUESTION>
         {% endif %}
-        {% if forloop.last %}
-            </SECTION>
-            {% if section2_present %}
-                
+    {% endfor %}                
+</SECTION>
 
 
-
-
+{% if section2_present %}
 <SECTION ISOPTIONAL="N" MAXQUESTOANS="30" TYPE="ONLINE">
 <secName><![CDATA[Verbal Ability and Logical Reasoning]]></secName>
 <LANGID><![CDATA[1]]></LANGID>
@@ -69,10 +66,7 @@
         {% endif %}
     {% endfor %}
 </SECTION>
-
-            {% endif %}
-        {% endif %}
-    {% endfor %}
+{% endif %}
     
 </SECTIONDETAILS>
 </GROUP>
