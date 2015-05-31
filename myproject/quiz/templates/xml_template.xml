@@ -56,7 +56,7 @@
             {% endif %}
                     <KEYS/>
                     <NAME><![CDATA[{% autoescape off %}{% if question.split_view %}{{ question.para }} @@&& {% endif %} {{ question.content }} {% endautoescape %}]]></NAME>
-                    <ID><![CDATA[{{ forloop.parentloop.counter + forloop.counter }}]]></ID>
+                    <ID><![CDATA[{{ forloop.counter }}]]></ID>
                     <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
                     <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
                     {% for choice in question.get_answers %}
