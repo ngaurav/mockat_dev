@@ -18,6 +18,8 @@ class MCQuestion(Question):
         help_text=_("Does this question need split window"),
         verbose_name=_('Split window question'))
 
+    para = models.ForeignKey(Paragraph, default = False, null = True, blank = True, verbose_name=_("Paragraph"))
+
     section_two = models.BooleanField(default = False, blank=False,
         help_text=_("Verbal Ability Logical Reasoning section"),
         verbose_name=_("Section II"))
@@ -83,3 +85,25 @@ class Answer(models.Model):
     class Meta:
         verbose_name = _("Answer")
         verbose_name_plural = _("Answers")
+
+
+@python_2_unicode_compatible
+class Paragraph(models.Model):
+
+    content = models.TextField(max_length=2500,
+                               blank=False,
+                               help_text=_("Enter the comprehension that "
+                                           "you want displayed"),
+                               verbose_name=_("Content"))
+
+    title = models.CharField(max_length=1000,
+                               blank=False,
+                               help_text=_("Give a title to your paragraph"),
+                               verbose_name=_("Title"))
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _("Paragraph")
+        verbose_name_plural = _("Paragraphs")
