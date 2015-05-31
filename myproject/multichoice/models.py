@@ -20,7 +20,7 @@ class Paragraph(models.Model):
                                            "you want displayed"),
                                verbose_name=_("Content"))
 
-    title = models.CharField(max_length=1000,
+    title = models.CharField(max_length=100,
                                blank=False,
                                help_text=_("Give a title to your paragraph"),
                                verbose_name=_("Title"))
