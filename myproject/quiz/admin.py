@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.admin.widgets import FilteredSelectMultiple
 
 from .models import Quiz, Category, Domain, Progress, Question
-from multichoice.models import MCQuestion, Answer
+from multichoice.models import MCQuestion, Answer, Paragraph
 from true_false.models import TF_Question
 from essay.models import Essay_Question
 
@@ -62,13 +62,17 @@ class CategoryAdmin(admin.ModelAdmin):
 class DomainAdmin(admin.ModelAdmin):
     search_fields = ('domain', )
 
+class ParagraphAdmin(admin.ModelAdmin):
+    list_display = ('title', 'content',)
+    fields = ('title', 'content',)
+    search_fields = ('content',)
 
 class MCQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
-    list_filter = ('category',)
+    list_filter = ('category','para',)
     fields = ('content', 'category', 'domain',
               'figure', 'quiz', 'explanation', 'answer_order',
-              'split_view', 'section_two')
+              'split_view', 'para',  'section_two')
 
     search_fields = ('content', 'explanation')
     filter_horizontal = ('quiz',)
@@ -105,6 +109,7 @@ admin.site.register(Quiz, QuizAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Domain, DomainAdmin)
 admin.site.register(MCQuestion, MCQuestionAdmin)
+admin.site.register(Paragraph, ParagraphAdmin)
 admin.site.register(Progress, ProgressAdmin)
 admin.site.register(TF_Question, TFQuestionAdmin)
 admin.site.register(Essay_Question, EssayQuestionAdmin)

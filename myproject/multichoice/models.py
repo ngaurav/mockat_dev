@@ -21,6 +21,7 @@ class Paragraph(models.Model):
                                verbose_name=_("Content"))
 
     title = models.CharField(max_length=100,
+                               unique=True,
                                blank=False,
                                help_text=_("Give a title to your paragraph"),
                                verbose_name=_("Title"))
@@ -39,7 +40,7 @@ class MCQuestion(Question):
         help_text=_("Does this question need split window"),
         verbose_name=_('Split window question'))
 
-    para = models.ForeignKey(Paragraph, default = False, null = True, blank = True, verbose_name=_("Paragraph"))
+#    para = models.ForeignKey(Paragraph, default = False, null = True, blank = True, verbose_name=_("Paragraph"))
 
     section_two = models.BooleanField(default = False, blank=False,
         help_text=_("Verbal Ability Logical Reasoning section"),
