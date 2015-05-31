@@ -29,7 +29,7 @@
             {% endif %}
                     <KEYS/>
                     <NAME><![CDATA[{% autoescape off %}{% if question.split_view %}{{ question.para.content }} @@&& {% endif %} {{ question.content }} {% endautoescape %}]]></NAME>
-                    <ID><![CDATA[{{ forloop.counter }}]]></ID>
+                    <ID><![CDATA[{{ question.pk }}]]></ID>
                     <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
                     <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
                     {% for choice in question.get_answers %}
@@ -56,7 +56,7 @@
             {% endif %}
                     <KEYS/>
                     <NAME><![CDATA[{% autoescape off %}{% if question.split_view %}{{ question.para.content }} @@&& {% endif %} {{ question.content }} {% endautoescape %}]]></NAME>
-                    <ID><![CDATA[{{ forloop.counter }}]]></ID>
+                    <ID><![CDATA[{{ question.pk }}]]></ID>
                     <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
                     <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
                     {% for choice in question.get_answers %}
