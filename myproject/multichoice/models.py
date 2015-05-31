@@ -11,6 +11,27 @@ ANSWER_ORDER_OPTIONS = (
     ('none', _('None'))
 )
 
+@python_2_unicode_compatible
+class Paragraph(models.Model):
+
+    content = models.TextField(max_length=2500,
+                               blank=False,
+                               help_text=_("Enter the comprehension that "
+                                           "you want displayed"),
+                               verbose_name=_("Content"))
+
+    title = models.CharField(max_length=1000,
+                               blank=False,
+                               help_text=_("Give a title to your paragraph"),
+                               verbose_name=_("Title"))
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _("Paragraph")
+        verbose_name_plural = _("Paragraphs")
+
 
 class MCQuestion(Question):
 
@@ -85,25 +106,3 @@ class Answer(models.Model):
     class Meta:
         verbose_name = _("Answer")
         verbose_name_plural = _("Answers")
-
-
-@python_2_unicode_compatible
-class Paragraph(models.Model):
-
-    content = models.TextField(max_length=2500,
-                               blank=False,
-                               help_text=_("Enter the comprehension that "
-                                           "you want displayed"),
-                               verbose_name=_("Content"))
-
-    title = models.CharField(max_length=1000,
-                               blank=False,
-                               help_text=_("Give a title to your paragraph"),
-                               verbose_name=_("Title"))
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = _("Paragraph")
-        verbose_name_plural = _("Paragraphs")
