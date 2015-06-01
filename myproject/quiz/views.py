@@ -96,8 +96,19 @@ def QuizDetailView3(request, slug):
 
 def ResponseView(request):
     if request.is_ajax():
-        logger.debug(request.POST)
+        objs = lambda:None
+        objs.__dict__ = json.loads(request.POST.getlist('google_news_articles[]')[0])
+        question_pks = []
+        marks_obtained = []
+        given_ans = []
+        for question in objs.questions:
+            question_pks.append(int(question["quesId"]))
+            marks_obtained.append(int(question["marksObtained"]))
+            given_ans.append(int(question["givenAns"]))
+        logger.debug(question_pks)
+        logger.debug(given_ans)
         logger.debug("returning !!!!!!!!!!!-----------!!!!!!!!!!!!!!")
+        logger.debug(marks_obtained)
         return HttpResponse("Your response was successfully saved!")
     else:
         return HttpResponse("Response submission failed")
