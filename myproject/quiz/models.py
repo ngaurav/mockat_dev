@@ -393,8 +393,8 @@ class UserTrackrecord(models.Model):
     quiz = models.ForeignKey(Quiz, verbose_name=_("Quiz"))
     question_pks = ArrayField(models.IntegerField(blank=False,null=False,default=0),null=True,blank=True)
     given_ans = ArrayField(models.IntegerField(blank=False,null=False,default=0),null=True,blank=True)
-    marks_obatained = ArrayField(models.IntegerField(blank=False,null=False,default=0),null=True,blank=True)
-
+    marks_obtained = ArrayField(models.IntegerField(blank=False,null=False,default=0),null=True,blank=True)
+    start = models.DateTimeField(auto_now_add=True,verbose_name=_("Date"))
     @property
     def get_score_percentile(self):
         current_score = sum(self.marks_obtained)

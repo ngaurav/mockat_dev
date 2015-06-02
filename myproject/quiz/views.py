@@ -102,19 +102,15 @@ def ResponseView(request):
     if request.is_ajax():
         objs = lambda:None
         objs.__dict__ = json.loads(request.POST.getlist('google_news_articles[]')[0])
-        question_pks = []
-        given_ans = []
-        marks_obtained = []
+        question_list = []
+        given_ans_list = []
+        marks_list = []
         for question in objs.questions:
-            question_pks.append(int(question["quesId"]))
-            given_ans.append(int(question["givenAns"]))
-            marks_obtained.append(int(question["marksObtained"]))
-        u = UserTrackrecord(request.user.id,Quiz.objects.get(url=objs.mockId),question_pks,given_ans,marks_obtained)
-        u.save()
-        logger.debug(question_pks)
-        logger.debug(given_ans)
-        logger.debug("returning !!!!!!!!!!!-----------!!!!!!!!!!!!!!")
-        logger.debug(marks_obtained)
+            question_list.append(int(question["quesId"]))
+            given_ans_list.append(int(question["givenAns"]))
+            marks_list.append(int(question["marksObtained"]))
+        logger.debug(marks_list)
+        UserTrackrecord.objects.create(user=request.user,quiz=Quiz.objects.get(url=objs.mockId),question_pks=question_list,given_ans=given_ans_list,marks_obtained=marks_list)
         return HttpResponse("Your response was successfully saved!")
     else:
         return HttpResponse("Response submission failed")
