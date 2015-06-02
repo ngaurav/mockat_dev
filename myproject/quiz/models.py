@@ -391,7 +391,27 @@ class UserTrackrecord(models.Model):
     """
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"))
     quiz = models.ForeignKey(Quiz, verbose_name=_("Quiz"))
-    score = models.IntegerField(verbose_name=_("Marks Obtained"))
+    question_pks = ArrayField(models.IntegerField(blank=False,null=False,default=0),null=True,blank=True)
+    given_ans = ArrayField(models.IntegerField(blank=False,null=False,default=0),null=True,blank=True)
+    marks_obatained = ArrayField(models.IntegerField(blank=False,null=False,default=0),null=True,blank=True)
+
+    @property
+    def get_score_percentile(self):
+        current_score = sum(self.marks_obtained)
+        dividend = float(sum(self.quiz.score_stats[0:current_score+100]))
+        divisor = float(sum(self.quiz.score_stats))
+        if divisor < 1:
+            return current_score,0            # prevent divide by zero error
+
+        if dividend > divisor:
+            return current_score,100
+
+        correct = ((dividend / divisor) * 100)
+
+        if correct >= 0:
+            return current_score,correct
+        else:
+            return current_score,0
 
 class Sitting(models.Model):
     """
