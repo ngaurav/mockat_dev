@@ -7,7 +7,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, ListView, TemplateView, FormView
 
 from .forms import QuestionForm, EssayForm
-from .models import Quiz, Category, Progress, Sitting, Question
+from .models import Quiz, Category, Progress, Sitting, Question, UserTrackrecord
 from essay.models import Essay_Question
 
 import os
@@ -15,6 +15,7 @@ from django.template.loader import render_to_string
 import logging
 logger = logging.getLogger(__name__)
 from django.http import HttpResponse
+import json
 
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
@@ -90,7 +91,10 @@ def QuizDetailView3(request, slug):
             q = Quiz.objects.get(url=slug)
         except Quiz.DoesNotExist:
             q = None
-        return render(request, 'quiz.html', {"slug": slug,"time": q.time_limit})
+        if q.single_attempt is True and UserTrackrecord.objects.filter(user=user,quiz=q).exists():
+            return render(request, 'single_complete.html');
+        else:
+            return render(request, 'quiz.html', {"slug": slug,"time": q.time_limit})
     else:
 	return render(request, 'single_complete.html');
 
