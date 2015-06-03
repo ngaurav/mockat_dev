@@ -94,7 +94,7 @@ def QuizDetailView3(request, slug):
         if q.single_attempt is True and UserTrackrecord.objects.filter(user_id=request.user.pk,quiz_id=q.pk).exists():
             return render(request, 'single_complete.html');
         else:
-            return render(request, 'quiz.html', {"slug": slug,"time": q.time_limit})
+            return render(request, 'quiz.html', {"slug": slug,"time": q.time_limit, "username":request.user.username, "fullname":request.user.get_full_name()})
     else:
 	return render(request, 'single_complete.html');
 

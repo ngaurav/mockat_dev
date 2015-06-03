@@ -652,7 +652,7 @@ function quesParams(langID, status) {
 }
 
 
-function validateQuizPageUrl() {
+function validateQuizPageUrl(user_name, full_name) {
     var url = document.URL;
     var params = url.split("quiz.html?");
     var orgId = $.trim(params[1]).split("@@")[0];
@@ -700,6 +700,8 @@ function validateQuizPageUrl() {
             }
             mockVar.orgId = orgId;
             mockVar.mockId = mockId;
+            mockVar.my_username = user_name;
+            mockVar.my_fullname = full_name;
             restoreMockOnRefresh();
             loadLabel();
             readSysInstructionsXMLQuizPage(xml, orgId, mockId);
@@ -2427,6 +2429,7 @@ function moveToScoreCardDisplay() {
 
 function moveToFeedback() {
     setCookie(mockVar.langName);
+    document.cookie = "sessionid = 'abcd'; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/" 
     if (mockVar.isFeedBackRequired == "NO") {
         window.location.href = "close.html?" + mockVar.orgId + "@@" + mockVar.mockId + "#";
     } else {
@@ -3130,7 +3133,7 @@ function showScoreCard() {
         }
     }
     var str = "<div class='examSummaryHeader' id='scoreCardHeader'><span class='header'>" + mockVar.mockName + "</span>", typingStr = '';
-    str += "<table width='80%' align='center'><tr><td style='text-align:left'><b>" + mockLabels.candName + "</b>&nbsp;" + mockLabels.candidate + "</td><td style='text-align:right'><b>" + mockVar.loginLabel + " : </b>11111</td></tr></table></div>";
+    str += "<table width='80%' align='center'><tr><td style='text-align:left'><b>" + mockLabels.candName + "</b>&nbsp;" + mockVar.my_fullname + "</td><td style='text-align:right'><b>" + mockVar.loginLabel + " : </b>"+mockVar.my_username+"</td></tr></table></div>";
     str += "<div id='sc_group_summary' style='width:100%;overflow:auto;text-align:left'>";
     for (var groupNo = 0; groupNo < mockVar.groups.length; groupNo++) {
         var totalGrpQues = 0, totalGrpAttempted = 0, totalGrpCorrect = 0, totalGrpIncorrect = 0, totalGrpScore = 0, totalGrpNotEvaluated = 0, totalGrpMarks = 0, grpSectCounter = 0;
@@ -3695,7 +3698,7 @@ function sendResponseToServlet() {
         dataType: "text",
         success: function (data) {
 
-            alert("done"+data);
+            alert("data);
             $('#pWait').hide();
             moveToScoreCardDisplay();
         },
