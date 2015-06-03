@@ -574,6 +574,9 @@ function QuestionResultBean(quesId, quesType, langId, givenAns, marksObtained, q
     this.quesType = quesType;
     this.langId = langId;
     this.givenAns = givenAns;
+    if ((this.givenAns==null)||(this.givenAns=='')) {
+        this.givenAns = '0';
+    }
     this.marksObtained = marksObtained;
     this.quesStatus = quesStatus;
     this.GWPM = GWPM;

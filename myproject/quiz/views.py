@@ -91,7 +91,7 @@ def QuizDetailView3(request, slug):
             q = Quiz.objects.get(url=slug)
         except Quiz.DoesNotExist:
             q = None
-        if q.single_attempt is True and UserTrackrecord.objects.filter(user=user,quiz=q).exists():
+        if q.single_attempt is True and UserTrackrecord.objects.filter(user_id=request.user.pk,quiz_id=q.pk).exists():
             return render(request, 'single_complete.html');
         else:
             return render(request, 'quiz.html', {"slug": slug,"time": q.time_limit})
