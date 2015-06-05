@@ -690,7 +690,7 @@ input[type="submit"].button,
   color: #ffffff; }
 
 .header-link {
-  color: #ffffff;
+  color: #fefefe;
   float: right;
   line-height: 48px; }
 
@@ -701,7 +701,7 @@ input[type="submit"].button,
     margin-left: 24px; }
 
 .header-tab-link {
-  color: #f5f5f5; }
+  color: #fefefe; }
 .header-tab-link.is-selected {
   color: #1c1c1c; }
 .header-tab-link.is-highlighted {
