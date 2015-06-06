@@ -1,4 +1,4 @@
-from quiz.models import Category, SubCategory
+from quiz.models import Category, Domain
 
 def category_list(request):
 	return {'category_list' : Category.objects.all().order_by('rank')}

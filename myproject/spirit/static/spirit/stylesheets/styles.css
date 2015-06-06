@@ -440,7 +440,7 @@ float: right;
 .header-button {
   float: left;
   font-size: 24px;
-  margin-right: 360px;
+  margin-right: 180px;
   line-height: 48px; }
 
 html {
@@ -818,9 +818,7 @@ input[type="submit"].button,
         margin-right: 0; } }
 
 .row-link {
-  color: #23527C; }
-  .row-link:visited {
-    color: #337AB7; }
+  color: #337AB7; }
 
 .row-info {
   float: left;

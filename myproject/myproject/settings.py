@@ -75,6 +75,8 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 'djconfig.context_processors.config',
+                'quiz.category_context_processor.category_list',
+                'quiz.category_context_processor.subcategory_list',
             ],
         },
     },
