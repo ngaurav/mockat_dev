@@ -4,9 +4,9 @@
 
 {% block title %}{% trans "User list" %}{% endblock %}
 
-{% block content %}
+{% block sidebar %}{% include "spirit/admin/_side_menu.html" %}{% endblock %}
 
-    {% include "spirit/admin/_side_menu.html" with active="users" %}
+{% block content %}
 
     <h1 class="headline">{% trans "User list" %}</h1>
 

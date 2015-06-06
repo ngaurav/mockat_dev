@@ -4,9 +4,9 @@
 
 {% block title %}{% trans "Open flags" %}{% endblock %}
 
-{% block content %}
+{% block sidebar %}{% include "spirit/admin/_side_menu.html" %}{% endblock %}
 
-    {% include "spirit/admin/_side_menu.html" with active="flags" %}
+{% block content %}
 
     <h1 class="headline">{% trans "Open flags" %}</h1>
 

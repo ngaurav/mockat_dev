@@ -1,4 +1,4 @@
-{% load spirit_tags i18n %}
+﻿{% load spirit_tags i18n %}
 {% load static from staticfiles %}
 <!doctype html>
 <html>
@@ -76,12 +76,15 @@
   </head>
 
   <body>
-
     {% include 'spirit/_header.html' %}
     {% render_messages messages %}
+    {% block sidebar %}{% include "_side_menu.html" %}{% endblock %}
+  <div id="maincolumn">
     {% block content %}{% endblock %}
+  </div>
+  <div id="adcolumn">
     {% include 'spirit/_footer.html' %}
-
+  </div>
   </body>
 
 </html>

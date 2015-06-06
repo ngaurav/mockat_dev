@@ -4,9 +4,9 @@
 
 {% block title %}{% trans "Closed topics" %}{% endblock %}
 
-{% block content %}
+{% block sidebar %}{% include "spirit/admin/_side_menu.html" %}{% endblock %}
 
-    {% include "spirit/admin/_side_menu.html" with active="topics" %}
+{% block content %}
 
     <h1 class="headline">{% trans "Closed topics" %}</h1>
     
