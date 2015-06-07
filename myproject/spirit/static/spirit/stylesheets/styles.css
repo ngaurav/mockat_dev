@@ -743,8 +743,14 @@ input[type="submit"].button,
   width: 100%;
   max-width: 68em;
   position: absolute;
+  margin-top: 6px;
   padding-bottom: 12px;
-  border-bottom: #c0c0c0 1px solid; }
+  border-bottom: #c0c0c0 1px solid;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in; }
 
 @media screen and (min-width: 768px) {
   .header-nav {
