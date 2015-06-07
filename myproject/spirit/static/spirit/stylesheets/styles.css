@@ -428,6 +428,7 @@ textarea {
   background: #fff; }
 
 #maincolumn {
+margin-left: 2px;
 min-width: 720px;
 float: left;
 }
@@ -459,7 +460,7 @@ body {
   max-width: 68em;
   min-width: 64em;
   margin-left: 16%;
-  margin-right: 5%; }
+  margin-right: 4%; }
   body:before, body:after {
     content: " ";
     display: table; }
@@ -491,11 +492,15 @@ textarea {
 input[type="text"],
 input[type="password"],
 input[type="email"],
-input[type="search"],
 input[type="number"],
 select,
 textarea {
   width: 100%;
+  padding: 6px 12px;
+  border: 1px solid #cecece; }
+
+input[type="search"] {
+  width: 710px;
   padding: 6px 12px;
   border: 1px solid #cecece; }
 
