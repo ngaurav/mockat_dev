@@ -1,7 +1,7 @@
 {% load spirit_tags i18n %}
 
     <header class="header js-tabs-container">
-        <a class="header-button button" href="#side-menu"><i class="fa fa-bars"></i></a>
+        <a id="header-button" class="button" href="#side-menu"><i class="fa fa-bars"></i></a>
 		<a class="header-logo" href="{% url "spirit:index" %}">{{ config.site_name }}</a>
 
         {% if user.is_authenticated %}

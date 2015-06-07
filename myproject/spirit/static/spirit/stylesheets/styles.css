@@ -428,7 +428,7 @@ textarea {
   background: #fff; }
 
 #maincolumn {
-width: 800px;
+width: 720px;
 float: left;
 }
 
@@ -437,10 +437,11 @@ width: 370px;
 float: right;
 }
 
-.header-button {
+#header-button {
   float: left;
+  background-color: #ffffff;
   font-size: 24px;
-  margin-right: 180px;
+  margin-right: 100px;
   line-height: 48px; }
 
 html {
@@ -602,14 +603,14 @@ input[type="submit"].button,
 .button, .dropdown-button {
   line-height: 2;
   height: 2em;
-  color: #337AB7; }
+  color: #ffffff; }
 
 input[type="submit"].button,
 .button {
   display: block;
   width: 100%;
   text-align: center;
-  background-color: #cecece; }
+  background-color: #428bca; }
   input[type="submit"].button.is-undo,
   .button.is-undo {
     background-color: #c65555; }
