@@ -458,8 +458,8 @@ body {
   *zoom: 1;
   max-width: 68em;
   min-width: 64em;
-  margin-left: 17%;
-  margin-right: 4%; }
+  margin-left: 16%;
+  margin-right: 5%; }
   body:before, body:after {
     content: " ";
     display: table; }
@@ -604,10 +604,13 @@ h2 {
     margin-left: 0; }
 
 input[type="submit"].button,
-.button, .dropdown-button {
+.button {
   line-height: 2;
   height: 2em;
   color: #ffffff; }
+
+.dropdown-button {
+  color: #337ab7; }
 
 input[type="submit"].button,
 .button {
