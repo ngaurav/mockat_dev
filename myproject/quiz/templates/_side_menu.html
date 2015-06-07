@@ -145,12 +145,18 @@
 {% for dom in domain_list %}
    <li class='has-sub'><a href='#'><span>{{ dom.domain }}</span></a>
       <ul>
-	{% for cat in category_list %}
-	{% if cat.domain.domain = dom.domain %}
+        {% for cat in category_list %}
+        {% if cat.domain.domain = dom.domain %}
           <li class='has-sub'><a href="http://mockat.com/content/{{cat.entry_set.first.slug}}"><span>{{cat.category_display_name}}</span></a></li>
-          
-	{% endif %}
-	{% endfor %}
+          <ul>
+            {% for entry in entry_list %}
+            {% if entry.category.category = cat.category %}
+              <li><a href='/content/{{ entry.slug }}/'><span>{{ entry.title }}</span></a></li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% endfor %}
       </ul>
    </li>
 {% endfor %}
