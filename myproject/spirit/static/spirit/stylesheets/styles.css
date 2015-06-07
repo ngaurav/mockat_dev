@@ -428,17 +428,18 @@ textarea {
   background: #fff; }
 
 #maincolumn {
-width: 720px;
+min-width: 720px;
 float: left;
 }
 
 #adcolumn {
-width: 370px;
+max-width: 366px;
 float: right;
 }
 
 #header-button {
   float: left;
+  color: #337AB7;
   background-color: #ffffff;
   font-size: 24px;
   margin-right: 100px;
@@ -455,8 +456,9 @@ html {
 body {
   *zoom: 1;
   max-width: 68em;
-  margin-left: auto;
-  margin-right: auto; }
+  min-width: 64em;
+  margin-left: 17%;
+  margin-right: 4%; }
   body:before, body:after {
     content: " ";
     display: table; }
@@ -647,7 +649,7 @@ input[type="submit"].button,
   left: 0;
   width: 0;
   /* hidden (for animation) */
-  max-width: 320px;
+  width: 220px;
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
