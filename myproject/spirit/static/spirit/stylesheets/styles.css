@@ -429,13 +429,12 @@ textarea {
 
 #maincolumn {
 margin-left: 2px;
-width: auto;
+width: 720px;
 float: left;
 }
 
 #adcolumn {
-min-width: 360px;
-max-width: 366px;
+max-width: 364px;
 float: right;
 }
 
