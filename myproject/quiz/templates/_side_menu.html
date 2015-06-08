@@ -147,14 +147,14 @@
       <ul>
         {% for cat in category_list %}
         {% if cat.domain.domain = dom.domain %}
-          <li class='has-sub'><a href="http://mockat.com/content/{{cat.entry_set.first.slug}}"><span>{{cat.category_display_name}}</span></a></li>
-          <ul>
-            {% for entry in entry_list %}
-            {% if entry.category.category = cat.category %}
-              <li><a href='/content/{{ entry.slug }}/'><span>{{ entry.title }}</span></a></li>
-            {% endif %}
-            {% endfor %}
-          </ul>
+          <li class='has-sub'>
+              <a href='#'><span>{{cat.category_display_name}}</span></a>
+              <ul>
+                  {% for entry in cat.entry_set.all %}
+                  <li><a href="http://mockat.com/content/{{ entry.slug }}"><span>{{ entry.title }}</span></a></li>
+                  {% endfor %}
+              </ul>
+          </li>
         {% endif %}
         {% endfor %}
       </ul>
