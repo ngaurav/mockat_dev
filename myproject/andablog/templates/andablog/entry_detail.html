@@ -11,6 +11,8 @@
 {% endblock %}
 
 {% block andablog_content %}
+    <a class="button" href="{{ entry.get_previous_by_rank.get_absolute_url }}">Create Topic</a>
+    <a class="button" style="float:right" href="{{ entry.get_next_by_rank.get_absolute_url }}">Create Topic</a>
     <div class="blog-post">
         <h2 class="blog-post-title">{{ entry.title }}{% if not entry.is_published %} <span class="label label-default">Draft</span>{% endif %}</h2>
         <p class="blog-post-meta">{{ entry.published_timestamp|date:"DATE_FORMAT" }}{% if entry.author %} by {{ entry.author|authordisplay }}{% endif %}</p>
