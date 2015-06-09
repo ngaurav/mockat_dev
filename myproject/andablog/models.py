@@ -28,9 +28,7 @@ class Entry(TimeStampedModel):
     tags = TaggableManager(blank=True)
 
     category = models.ForeignKey(Category, null=True, editable=True)
-    rank = models.PositiveSmallIntegerField(
-        blank=False, null=False,
-        unique=False, default=1,
+    rank = models.DateField(
         verbose_name=("Page Rank"))
 
     def __str__(self):
