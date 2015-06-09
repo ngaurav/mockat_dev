@@ -11,11 +11,11 @@
 {% endblock %}
 
 {% block andablog_content %}
-    {% with ent1 as entry.get_previous_by_rank(category_id=entry.category_id) %}
-    <a class="button" href="{{ ent1.get_absolute_url }}">{{ ent1.title }}</a>
+    {% with entry.get_previous_by_rank as ent1 %}
+    <a class="button" href="{{ ent1.get_absolute_url }}">Previous</a>
     {% endwith %}
-    {% with ent1 as entry.get_next_by_rank(category_id=entry.category_id) %}
-    <a class="button" style="float:right" href="{{ ent1.get_absolute_url }}">{{ ent1.title }}</a>
+    {% with entry.get_next_by_rank as ent1 %}
+    <a class="button" style="float:right" href="{{ ent1.get_absolute_url }}">Next</a>
     {% endwith %}
     <div class="blog-post">
         <h2 class="blog-post-title">{{ entry.title }}{% if not entry.is_published %} <span class="label label-default">Draft</span>{% endif %}</h2>
