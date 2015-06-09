@@ -77,7 +77,6 @@ TEMPLATES = [
                 'djconfig.context_processors.config',
                 'quiz.category_context_processor.category_list',
                 'quiz.category_context_processor.domain_list',
-                'quiz.category_context_processor.entry_class',
             ],
         },
     },

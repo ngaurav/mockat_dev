@@ -12,10 +12,10 @@
 
 {% block andablog_content %}
     {% with ent1 as entry_class.get_previous_by_rank(entry,category_id=entry.category_id) %}
-    <a class="button" href="{{ ent1.get_absolute_url }}">Create Topic</a>
+    <a class="button" href="{{ ent1.get_absolute_url }}">{{ ent1.title }}</a>
     {% endwith %}
     {% with ent1 as entry_class.get_next_by_rank(entry,category_id=entry.category_id) %}
-    <a class="button" style="float:right" href="{{ ent1.get_absolute_url }}">Create Topic</a>
+    <a class="button" style="float:right" href="{{ ent1.get_absolute_url }}">{{ ent1.title }}</a>
     {% endwith %}
     <div class="blog-post">
         <h2 class="blog-post-title">{{ entry.title }}{% if not entry.is_published %} <span class="label label-default">Draft</span>{% endif %}</h2>
