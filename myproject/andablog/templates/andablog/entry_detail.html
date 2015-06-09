@@ -11,10 +11,10 @@
 {% endblock %}
 
 {% block andablog_content %}
-    {% with ent1 as entry_class.get_previous_by_rank(entry,category_id=entry.category_id) %}
+    {% with ent1 as entry.get_previous_by_rank(category_id=entry.category_id) %}
     <a class="button" href="{{ ent1.get_absolute_url }}">{{ ent1.title }}</a>
     {% endwith %}
-    {% with ent1 as entry_class.get_next_by_rank(entry,category_id=entry.category_id) %}
+    {% with ent1 as entry.get_next_by_rank(category_id=entry.category_id) %}
     <a class="button" style="float:right" href="{{ ent1.get_absolute_url }}">{{ ent1.title }}</a>
     {% endwith %}
     <div class="blog-post">
