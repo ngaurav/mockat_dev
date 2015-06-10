@@ -3,10 +3,9 @@
 
 {% load quiz_tags %}
 
-{% block title %} {{ quiz.title }} {% endblock %}
-{% block description %} {{ quiz.title }} - {{ quiz.description }} {% endblock %}
+{% block quiztitle %} {{ quiz.title }} {% endblock %}
 
-{% block content %}
+{% block quizcontent %}
 
 {% if previous.answers %}
 

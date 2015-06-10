@@ -3,10 +3,9 @@
 
 {% load quiz_tags %}
 
-{% block title %} {{ quiz.title}} {% endblock %}
-{% block description %} {% trans "Exam Results for" %} {{ quiz.title }} {% endblock %}
+{% block quiztitle %} {{ quiz.title}} {% endblock %}
 
-{% block content %}
+{% block quizcontent %}
 
   {% if previous.answers %}
 
