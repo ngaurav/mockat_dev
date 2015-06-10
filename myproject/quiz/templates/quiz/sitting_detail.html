@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'spirit/_base.html' %}
 {% load i18n %}
 {% load quiz_tags %}
-{% block title %}
+{% block subtitle %}
 {% trans "Result of" %} {{ sitting.quiz.title }} {% trans "for" %} {{ sitting.user }}
 {% endblock %}
 

@@ -1,11 +1,11 @@
-{% extends "base.html" %}
+{% extends "spirit/_base.html" %}
 {% load i18n %}
 
 {% load quiz_tags %}
 
-{% block quiztitle %} {% trans "Progress Page" %} {% endblock %}
+{% block subtitle %} {% trans "Progress Page" %} {% endblock %}
 
-{% block quizcontent %}
+{% block content %}
 
   {% if cat_scores %}
 

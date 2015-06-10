@@ -1,11 +1,11 @@
-{% extends "base.html" %}
+{% extends "spirit/_base.html" %}
 {% load i18n %}
 
 {% load quiz_tags %}
 
-{% block quiztitle %} {{ quiz.title}} {% endblock %}
+{% block subtitle %} {{ quiz.title}} {% endblock %}
 
-{% block quizcontent %}
+{% block content %}
 
   {% if previous.answers %}
 

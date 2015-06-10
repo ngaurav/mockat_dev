@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'spirit/_base.html' %}
 {% load i18n %}
-{% block quiztitle %}{% trans "Quizzes related to" %} {{ category.category_display_name }}{% endblock %}
+{% block subtitle %}{% trans "Quizzes related to" %} {{ category.category_display_name }}{% endblock %}
 
 {% block quizcontent %}
 <h1>{% trans "Quizzes in the" %} <strong>{{ category.category_display_name }} </strong>{% trans "category" %}</h1>
