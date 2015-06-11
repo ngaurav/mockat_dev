@@ -150,7 +150,13 @@ LOGGING = {
             'filename': '/home/ubuntu/public_html/logs/quiz.log',
             'formatter': 'verbose'
         },
-    },
+        'file3': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/home/ubuntu/public_html/logs/allaccess.log',
+            'formatter': 'verbose'
+        },
+   },
     'loggers': {
         'django': {
             'handlers':['file1'],
@@ -159,6 +165,10 @@ LOGGING = {
         },
         'quiz': {
             'handlers': ['file2'],
+            'level': 'DEBUG',
+        },
+        'allaccess': {
+            'handlers': ['file3'],
             'level': 'DEBUG',
         },
     }

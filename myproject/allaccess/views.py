@@ -18,8 +18,7 @@ from .compat import get_user_model
 from .models import Provider, AccountAccess
 
 
-logger = logging.getLogger('allaccess.views')
-
+logger = logging.getLogger(__name__)
 
 class OAuthClientMixin(object):
     "Mixin for getting OAuth client for a provider."
@@ -106,6 +105,7 @@ class OAuthCallback(OAuthClientMixin, View):
                 access.access_token = raw_token
                 AccountAccess.objects.filter(pk=access.pk).update(**defaults)
             user = authenticate(provider=provider, identifier=identifier)
+            logger.debug(info)
             if user is None:
                 return self.handle_new_user(provider, access, info)
             else:
