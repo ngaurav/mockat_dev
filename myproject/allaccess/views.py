@@ -132,7 +132,9 @@ class OAuthCallback(OAuthClientMixin, View):
         User = get_user_model()
         kwargs = {
             User.USERNAME_FIELD: username,
-            'email': '',
+            'email': info['email'],
+            'first_name': info['first_name'],
+            'last_name': info['last_name'],
             'password': None
         }
         return User.objects.create_user(**kwargs)
