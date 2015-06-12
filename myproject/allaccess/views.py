@@ -17,7 +17,8 @@ from .compat import smart_bytes, force_text
 from .compat import get_user_model
 from .models import Provider, AccountAccess
 
-
+import random
+from django.core.mail import send_mail
 logger = logging.getLogger(__name__)
 
 class OAuthClientMixin(object):
@@ -128,15 +129,26 @@ class OAuthCallback(OAuthClientMixin, View):
         digest = hashlib.sha1(smart_bytes(access)).digest()
         # Base 64 encode to get below 30 characters
         # Removed padding characters
-        username = force_text(base64.urlsafe_b64encode(digest)).replace('=', '')
         User = get_user_model()
+        if provider.name == 'google':
+            fn = info['given_name']
+            ln = info['family_name']
+        else :
+            fn = info['first_name']
+            ln = info['last_name']
+        while True:
+            un = fn+`random.randint(100,999)`
+            if not User.objects.filter(User.USERNAME_FIELD=un).exists():
+                break
+        pwd = User.objects.make_random_password()
         kwargs = {
-            User.USERNAME_FIELD: username,
+            User.USERNAME_FIELD: un,
             'email': info['email'],
-            'first_name': info['first_name'],
-            'last_name': info['last_name'],
-            'password': None
+            'first_name': fn,
+            'last_name': ln,
+            'password': pwd
         }
+        send_mail("welcome to mockat.com", "username:"+un+"   Password:"+pwd, "noreply@mockat.com", [info['email'], ])
         return User.objects.create_user(**kwargs)
 
     def get_user_id(self, provider, info):
