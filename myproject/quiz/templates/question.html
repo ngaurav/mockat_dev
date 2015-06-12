@@ -52,14 +52,6 @@
   padding-left: 0;
   margin-bottom: 20px;
 }
-.list-group-item {
-  position: relative;
-  display: block;
-  padding: 10px 15px;
-  margin-bottom: -1px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
 </style>
 <div>
 {% if previous.answers %}
@@ -119,7 +111,7 @@
   <ul class="list-group">
 
 	{% for answer in form.answers %}
-	  <li class="list-group-item">
+	  <li>
 	    {{ answer }}
 	  </li>
 	{% endfor %}
