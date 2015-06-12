@@ -14,7 +14,7 @@ ANSWER_ORDER_OPTIONS = (
 @python_2_unicode_compatible
 class Paragraph(models.Model):
 
-    content = models.TextField(max_length=2500,
+    content = models.TextField(max_length=3500,
                                blank=False,
                                help_text=_("Enter the comprehension that "
                                            "you want displayed"),

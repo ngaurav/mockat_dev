@@ -50,6 +50,7 @@
 }
 .list-group {
   padding-left: 0;
+  margin-right: 0.5em;
   margin-bottom: 20px;
 }
 </style>
@@ -96,7 +97,7 @@
 
 <p>
   <small class="muted">{% trans "Question category" %}:</small>
-  <strong>{{ question.category_display_name }}</strong>
+  <strong>{{ question.category.category_display_name }}</strong>
 </p>
 
 <p class="lead">{{ question.content|safe }}</p>
