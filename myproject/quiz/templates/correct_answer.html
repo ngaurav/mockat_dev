@@ -13,7 +13,7 @@
         {% if answer.correct %}
   	    <tr class="success">
   		  <td>{{ answer.content|safe }}</td>
-  		  <td><strong>{% trans "This is the correct answer" %}</strong></td>
+  		  <td>{% trans "This is the correct answer" %}</td>
         {% else %}
   		<tr>
       	  <td>{{ answer.content|safe }}</td>
