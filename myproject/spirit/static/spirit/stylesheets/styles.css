@@ -451,7 +451,7 @@ float: right;
   color: #1c1c1c; }
 
 html {
-  font-family: "sanfranciscotext-regular";
+  font-family: "sanfranciscodisplay-regular";
   font-size: 16px;
   line-height: 24px;
   color: #445566;
@@ -531,11 +531,11 @@ label {
     margin-bottom: 0; }
 
 @font-face {
-  font-family: sanfranciscotext-regular;
+  font-family: sanfranciscodisplay-regular;
   font-weight: normal;
   font-style: normal;
-  src: url("vendors/fonts/sanfranciscotext-regular.eot");
-  src: url("vendors/fonts/sanfranciscotext-regular.eot?#iefix") format("embedded-opentype"),url("vendors/fonts/sanfranciscotext-regular.woff2") format("woff2"), url("vendors/fonts/sanfranciscotext-regular.woff") format("woff"), url("vendors/fonts/sanfranciscotext-regular.ttf") format("truetype"), url("vendors/fonts/sanfranciscotext-regular.svg#sanfranciscotext-regular") format("svg"); }
+  src: url("vendors/fonts/sanfranciscodisplay-regular.eot");
+  src: url("vendors/fonts/sanfranciscodisplay-regular.eot?#iefix") format("embedded-opentype"),url("vendors/fonts/sanfranciscodisplay-regular.woff2") format("woff2"), url("vendors/fonts/sanfranciscodisplay-regular.woff") format("woff"), url("vendors/fonts/sanfranciscodisplay-regular.ttf") format("truetype"), url("vendors/fonts/sanfranciscodisplay-regular.svg#sanfranciscodisplay-regular") format("svg"); }
 a {
   color: #337AB7;
   text-decoration: none;

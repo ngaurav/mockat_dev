@@ -136,19 +136,13 @@ class OAuthCallback(OAuthClientMixin, View):
         else :
             fn = info['first_name']
             ln = info['last_name']
-        while True:
-            un = fn+`random.randint(100,999)`
-            if not User.objects.filter(User.USERNAME_FIELD=un).exists():
-                break
-        pwd = User.objects.make_random_password()
         kwargs = {
             User.USERNAME_FIELD: un,
             'email': info['email'],
             'first_name': fn,
             'last_name': ln,
-            'password': pwd
+            'password': None
         }
-        send_mail("welcome to mockat.com", "username:"+un+"   Password:"+pwd, "noreply@mockat.com", [info['email'], ])
         return User.objects.create_user(**kwargs)
 
     def get_user_id(self, provider, info):
