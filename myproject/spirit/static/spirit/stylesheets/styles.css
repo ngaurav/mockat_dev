@@ -429,12 +429,13 @@ textarea {
 
 #maincolumn {
 margin-left: 2px;
-width: 723px;
+width: 720px;
 float: left;
 }
 
 #adcolumn {
-width: 301px;
+margin-left: 1px;
+width: 300px;
 float: right;
 }
 
@@ -743,7 +744,7 @@ input[type="submit"].button,
   display: none;
   z-index: 600;
   width: 100%;
-  max-width: 68em;
+  max-width: 64em;
   position: absolute;
   margin-top: 6px;
   padding-bottom: 12px;
@@ -757,7 +758,7 @@ input[type="submit"].button,
 
 .footer-container {
   *zoom: 1;
-  max-width: 68em;
+  max-width: 64em;
   margin-left: auto;
   margin-right: auto; }
   .footer-container:before, .footer-container:after {
@@ -926,7 +927,7 @@ input[type="submit"].button,
 
 .move-container {
   *zoom: 1;
-  max-width: 68em;
+  max-width: 64em;
   margin-left: auto;
   margin-right: auto; }
   .move-container:before, .move-container:after {
