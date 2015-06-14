@@ -81,12 +81,14 @@
     {% include 'spirit/_header.html' %}
     {% render_messages messages %}
     {% block sidebar %}{% include "_side_menu.html" %}{% endblock %}
+  <div id="container">
   <div id="maincolumn">
     {% block content %}{% endblock %}
   </div>
   <div id="adcolumn">
-    {% include 'spirit/_footer.html' %}
   </div>
+  </div>
+  {% include 'spirit/_footer.html' %}
   </body>
 
 </html>
