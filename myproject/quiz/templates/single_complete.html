@@ -4,8 +4,10 @@
 {% load quiz_tags %}
 
 {% block title %} {{ quiz.title }} {% endblock %}
-
-{% block quizcontent %}
+{% block head-extra %}
+<link rel="stylesheet" href="/static/quiz/css/quiz.css">
+{% endblock %}
+{% block content %}
 
 
 {% if user.is_authenticated %}

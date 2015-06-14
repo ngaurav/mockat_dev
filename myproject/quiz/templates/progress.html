@@ -4,7 +4,9 @@
 {% load quiz_tags %}
 
 {% block title %} {% trans "Progress Page" %} {% endblock %}
-
+{% block head-extra %}
+<link rel="stylesheet" href="/static/quiz/css/quiz.css">
+{% endblock %}
 {% block content %}
 
   {% if cat_scores %}
