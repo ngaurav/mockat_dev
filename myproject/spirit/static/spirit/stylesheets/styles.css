@@ -429,12 +429,13 @@ textarea {
 
 #maincolumn {
 margin-left: 4px;
-width: 720px;
+min-width: 710px;
 float: left;
 }
 
 #adcolumn {
-width: 300px;
+margin-left: 4px;
+min-width: 300px;
 float: right;
 }
 
@@ -460,8 +461,8 @@ html {
 
 body {
   *zoom: 1;
-  width: 90%;
-  padding-left: 13%;
+  width: 92%;
+  padding-left: 12%;
   margin-left: auto;
   margin-right: auto; }
   body:before, body:after {
