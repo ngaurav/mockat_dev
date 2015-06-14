@@ -428,7 +428,7 @@ textarea {
   background: #fff; }
 
 #maincolumn {
-margin-left: 2px;
+margin-left: 3px;
 width: 720px;
 float: left;
 }
@@ -461,7 +461,8 @@ html {
 
 body {
   *zoom: 1;
-  width: 64em;
+  width: 76em;
+  padding-left: 12em;
   margin-left: auto;
   margin-right: auto; }
   body:before, body:after {
