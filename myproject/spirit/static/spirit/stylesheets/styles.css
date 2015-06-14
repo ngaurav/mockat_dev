@@ -738,13 +738,14 @@ input[type="submit"].button,
   color: #c65555; }
 
 .header-tabs-content {
+  padding-left: 15px;
   clear: both; }
 
 .header-tab-content {
   background-color: #ffffff;
   display: none;
   z-index: 600;
-  width: 80%;
+  width: 79%;
   position: absolute;
   margin-top: 6px;
   padding-bottom: 12px;
