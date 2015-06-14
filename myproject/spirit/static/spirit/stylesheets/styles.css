@@ -429,12 +429,12 @@ textarea {
 
 #maincolumn {
 margin-left: 2px;
-width: 720px;
+width: 723px;
 float: left;
 }
 
 #adcolumn {
-max-width: 364px;
+width: 301px;
 float: right;
 }
 
@@ -460,10 +460,9 @@ html {
 
 body {
   *zoom: 1;
-  max-width: 68em;
-  min-width: 64em;
-  margin-left: 16%;
-  margin-right: 4%; }
+  width: 64em;
+  margin-left: auto;
+  margin-right: auto; }
   body:before, body:after {
     content: " ";
     display: table; }
