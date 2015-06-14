@@ -461,6 +461,7 @@ html {
 body {
   *zoom: 1;
   width: 90%;
+  min-width: 76em;
   padding-left: 15%;
   margin-left: auto;
   margin-right: auto; }
@@ -662,7 +663,7 @@ input[type="submit"].button,
   left: 0;
   width: 0;
   /* hidden (for animation) */
-  max-width: 220px;
+  max-width: 215px;
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
