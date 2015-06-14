@@ -428,13 +428,12 @@ textarea {
   background: #fff; }
 
 #maincolumn {
-margin-left: 3px;
+margin-left: 4px;
 width: 720px;
 float: left;
 }
 
 #adcolumn {
-margin-left: 1px;
 width: 300px;
 float: right;
 }
