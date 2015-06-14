@@ -460,8 +460,8 @@ html {
 
 body {
   *zoom: 1;
-  width: 76em;
-  padding-left: 12em;
+  width: 90%;
+  padding-left: 15%;
   margin-left: auto;
   margin-right: auto; }
   body:before, body:after {
@@ -743,8 +743,7 @@ input[type="submit"].button,
   background-color: #ffffff;
   display: none;
   z-index: 600;
-  width: 100%;
-  max-width: 64em;
+  width: 75%;
   position: absolute;
   margin-top: 6px;
   padding-bottom: 12px;
@@ -758,7 +757,7 @@ input[type="submit"].button,
 
 .footer-container {
   *zoom: 1;
-  max-width: 64em;
+  max-width: 75%;
   margin-left: auto;
   margin-right: auto; }
   .footer-container:before, .footer-container:after {
@@ -927,7 +926,7 @@ input[type="submit"].button,
 
 .move-container {
   *zoom: 1;
-  max-width: 64em;
+  max-width: 75%;
   margin-left: auto;
   margin-right: auto; }
   .move-container:before, .move-container:after {
