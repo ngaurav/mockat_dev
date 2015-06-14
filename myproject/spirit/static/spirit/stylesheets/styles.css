@@ -429,7 +429,7 @@ textarea {
 
 #maincolumn {
 margin-left: 4px;
-min-width: 710px;
+margin-right: auto;
 float: left;
 }
 
@@ -663,7 +663,7 @@ input[type="submit"].button,
   left: 0;
   width: 0;
   /* hidden (for animation) */
-  max-width: 17%;
+  max-width: 16%;
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
@@ -744,8 +744,7 @@ input[type="submit"].button,
   background-color: #ffffff;
   display: none;
   z-index: 600;
-  width: 75%;
-  min-width: 76em;
+  width: 80%;
   position: absolute;
   margin-top: 6px;
   padding-bottom: 12px;
@@ -759,8 +758,7 @@ input[type="submit"].button,
 
 .footer-container {
   *zoom: 1;
-  max-width: 75%;
-  min-width: 76em;
+  max-width: 80%;
   margin-left: auto;
   margin-right: auto; }
   .footer-container:before, .footer-container:after {
@@ -929,8 +927,7 @@ input[type="submit"].button,
 
 .move-container {
   *zoom: 1;
-  max-width: 75%;
-  min-width: 76em;
+  max-width: 80%;
   margin-left: auto;
   margin-right: auto; }
   .move-container:before, .move-container:after {
