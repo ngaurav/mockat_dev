@@ -709,7 +709,8 @@ input[type="submit"].button,
   margin-bottom: 24px; }
 
 .header {
-  padding-right: 14px;
+  padding-left: 16%;
+  padding-right: 4.5%;
   background-color: #428bca; }
 
 .header-logo {
