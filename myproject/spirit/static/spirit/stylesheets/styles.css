@@ -429,12 +429,14 @@ textarea {
 
 #maincolumn {
 margin-left: 4px;
-margin-right: auto;
+width: -webkit-fill-available;
+width: -moz-available;
+width: -ms-fill;
+max-width: 70%;
 float: left;
 }
 
 #adcolumn {
-margin-left: 4px;
 min-width: 300px;
 float: right;
 }
@@ -461,8 +463,8 @@ html {
 
 body {
   *zoom: 1;
-  width: 92%;
-  padding-left: 12%;
+  width: 94%;
+  padding-left: 14%;
   margin-left: auto;
   margin-right: auto; }
   body:before, body:after {
