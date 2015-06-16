@@ -2,7 +2,9 @@
 
     <header class="header js-tabs-container">
         <a id="header-button" class="button" href="#side-menu"><i class="fa fa-bars"></i></a>
-		<a class="header-logo" href="{% url "spirit:index" %}">{{ config.site_name }}</a>
+        <a class="header-logo" href="{% url "spirit:index" %}">Learn</a>
+        <a class="header-logo" href="{% url "spirit:index" %}">Discuss</a>
+        <a class="header-logo" href="{% url "spirit:index" %}">Compete</a>
 
         {% if user.is_authenticated %}
             {% has_topic_notifications user as has_notifications %}

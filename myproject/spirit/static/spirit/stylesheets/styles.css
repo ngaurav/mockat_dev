@@ -714,6 +714,7 @@ input[type="submit"].button,
   background-color: #428bca; }
 
 .header-logo {
+  margin-left: 20px;
   float: left;
   font-size: 28px;
   line-height: 48px;
