@@ -6,9 +6,6 @@
     <meta name="author" content="{{ entry.author.get_short_name }}">
 {% endblock %}
 
-{% block andablog_page_title %}
-    {{ entry.title }}
-{% endblock %}
 
 {% block andablog_content %}
     {% with entry.get_previous_by_rank as ent1 %}
@@ -19,7 +16,7 @@
     {% endwith %}
     <div class="blog-post">
         <h2 class="blog-post-title">{{ entry.title }}{% if not entry.is_published %} <span class="label label-default">Draft</span>{% endif %}</h2>
-        <p class="blog-post-meta">{{ entry.published_timestamp|date:"DATE_FORMAT" }}/>
+        <p class="blog-post-meta">{{ entry.published_timestamp|date:"DATE_FORMAT" }}</p>
         <p>
             {{ entry.content.raw|safe }}
         </p>
