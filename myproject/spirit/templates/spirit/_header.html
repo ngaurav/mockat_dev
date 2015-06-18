@@ -2,9 +2,14 @@
 
     <header class="header js-tabs-container">
 <a id="header-button" class="button" href="#side-menu"><i class="fa fa-bars"></i></a>
-<a class="header-logo" href="/content/">Learn</a>
-<a class="header-logo" href="/">Discuss</a>
-<a class="header-logo" href="/quiz/">Compete</a>
+
+<div id='navmenu'>
+<ul>
+<li><a href="/content/">Learn</a></li>
+<li><a href="/">Discuss</a></li>
+<li><a href="/quiz/">Compete</a></li>
+</ul>
+</div>
         {% if user.is_authenticated %}
             {% has_topic_notifications user as has_notifications %}
 
