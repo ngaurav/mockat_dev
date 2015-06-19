@@ -13,6 +13,7 @@ from model_utils.models import TimeStampedModel
 from taggit.managers import TaggableManager
 
 from quiz.models import Category
+from datetime import date
 
 class Entry(TimeStampedModel):
     """
@@ -29,6 +30,7 @@ class Entry(TimeStampedModel):
 
     category = models.ForeignKey(Category, null=True, editable=True)
     rank = models.DateField(
+        default=date.today,
         verbose_name=("Page Rank"))
 
     def __str__(self):
