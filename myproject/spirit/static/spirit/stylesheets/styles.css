@@ -784,12 +784,13 @@ input[type="submit"].button,
 .header-link {
   color: #fefefe;
   float: right;
-  line-height: 48px; }
+  margin-top: 5px;
+  line-height: 45px; }
 
 .header-tabs {
   float: right;
   margin-top: 5px;
-  line-height: 44px; }
+  line-height: 45px; }
   .header-tabs li {
     margin-left: 24px; }
 

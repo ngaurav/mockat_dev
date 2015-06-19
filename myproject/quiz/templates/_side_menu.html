@@ -121,9 +121,9 @@
           <li class='has-sub'>
               <a href='#'><span>{{cat.category_display_name}}</span></a>
               <ul>
-                  {% for entry in cat.entry_set.all %}
-                  <li><a href="http://mockat.com/content/{{ entry.slug }}"><span>{{ entry.title }}</span></a></li>
-                  {% endfor %}
+                  {% with cat.entry_set.first as entry %}
+                  <li><a href="http://mockat.com/content/{{ entry.slug }}"><span>Lesson</span></a></li>
+                  {% endwith %}
               </ul>
           </li>
         {% endif %}
