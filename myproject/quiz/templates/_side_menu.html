@@ -122,8 +122,11 @@
               <a href='#'><span>{{cat.category_display_name}}</span></a>
               <ul>
                   {% with cat.entry_set.first as entry %}
-                  <li><a href="http://mockat.com/content/{{ entry.slug }}"><span>Lesson</span></a></li>
+                  <li><a href="/content/{{ entry.slug }}"><span>Lessons</span></a></li>
                   {% endwith %}
+                  {% for q in cat.quiz_set.all %}
+                  <li><a href="/quiz/{{ q.url }}"><span>{{ q.title }}</span></a></li>
+                  {% endfor %}
               </ul>
           </li>
         {% endif %}

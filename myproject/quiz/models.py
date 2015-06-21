@@ -79,6 +79,10 @@ class Quiz(models.Model):
         help_text=_("a user friendly url"),
         verbose_name=_("user friendly url"))
 
+    domain = models.ForeignKey(
+        Domain, null=True, blank=True,
+        verbose_name=_("Domain"))
+
     category = models.ForeignKey(
         Category, null=True, blank=True,
         verbose_name=_("Category"))
