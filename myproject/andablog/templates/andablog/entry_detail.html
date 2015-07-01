@@ -8,12 +8,12 @@
 
 
 {% block andablog_content %}
-    {% with entry.get_previous_by_rank as ent1 %}
-    <a class="button" href="{{ ent1.get_absolute_url }}">Previous</a>
-    {% endwith %}
-    {% with entry.get_next_by_rank as ent1 %}
-    <a class="button" style="float:right" href="{{ ent1.get_absolute_url }}">Next</a>
-    {% endwith %}
+    {% if entry.get_previous_by_rank %}
+    <a class="button" href="{{ entry.get_previous_by_rank.get_absolute_url }}">Previous</a>
+    {% endif %}
+    {% if entry.get_next_by_rank %}
+    <a class="button" style="float:right" href="{{ entry.get_next_by_rank.get_absolute_url }}">Next</a>
+    {% endif %}
     <div class="blog-post">
         <h2 class="blog-post-title">{{ entry.title }}{% if not entry.is_published %} <span class="label label-default">Draft</span>{% endif %}</h2>
         <p class="blog-post-meta">{{ entry.published_timestamp|date:"DATE_FORMAT" }}</p>
