@@ -44,6 +44,9 @@
 
 	$( document ).ready(function() {
 
+    $(document).on("contextmenu",function(e){
+        e.preventDefault();
+    });
     $(document).keydown(function(event) { 
         var pressedKey = String.fromCharCode(event.keyCode).toLowerCase();
         
