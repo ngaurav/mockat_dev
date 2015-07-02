@@ -9,37 +9,6 @@
     <title>{% block title %}{% endblock %} - {{ config.site_name }}</title>
     <meta name="description" content="{{ config.site_description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type='text/javascript'>
-var isCtrl = false;
-document.onkeyup=function(e)
-{
-if(e.which == 17)
-isCtrl=false;
-}
-document.onkeydown=function(e)
-{
-if(e.which == 17)
-isCtrl=true;
-if((e.which == 85) || (e.which == 67) &amp;&amp; isCtrl == true)
-{
-// alert(&#8216;Keyboard shortcuts are cool!&#8217;);
-return false;
-}
-}
-var isNS = (navigator.appName == "Netscape") ? 1 : 0;
-if(navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
-function mischandler(){
-return false;
-}
-function mousehandler(e){
-var myevent = (isNS) ? e : event;
-var eventbutton = (isNS) ? myevent.which : myevent.button;
-if((eventbutton==2)||(eventbutton==3)) return false;
-}
-document.oncontextmenu = mischandler;
-document.onmousedown = mousehandler;
-document.onmouseup = mousehandler;
-</script>
 
 	<link rel="stylesheet" href="{% static "spirit/stylesheets/vendors/font-awesome.min.css" %}">
     <link rel="stylesheet" href="{% static "spirit/stylesheets/vendors/github.min.css" %}">
@@ -106,6 +75,20 @@ document.onmouseup = mousehandler;
     <script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
     <![endif]-->
+
+<script>
+jQuery(document).ready(function($){
+    $(document).keydown(function(event) { 
+        var pressedKey = String.fromCharCode(event.keyCode).toLowerCase();
+        
+        if (event.ctrlKey && (pressedKey == "c" || pressedKey == "u")) {
+            alert('Sorry, This Functionality Has Been Disabled!'); 
+            //disable key press porcessing
+            return false; 
+        }
+    });
+});
+</script>
   </head>
 
   <body>
