@@ -39,7 +39,7 @@ class QuizListView(ListView):
 
     def get_queryset(self):
         queryset = super(QuizListView, self).get_queryset()
-        return queryset.filter(draft=False).filter(is_exam=False)
+        return queryset.filter(draft=False).filter(is_exam=True)
 
 
 class QuizDetailView(DetailView):
