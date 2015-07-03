@@ -14,6 +14,10 @@
     {% if entry.get_next_by_rank %}
     <a class="button" style="float:right" href="{{ entry.get_next_by_rank.get_absolute_url }}">Next</a>
     {% endif %}
+<center><form action="website/index" method="get" style="display:inline-block; line-height: 2; height:2em;margin-right:20px;">
+<label style="display:inline-block">Go to<input type="number" name="page" min="1" max="21" value="2" style="width:90px;margin: 0 5px; padding:0  4px; height:1.5em; font-size:1em;" placeholder="Page no"></label>
+<button type="submit" style="font-size:1em; background:transparent;"><i class="fa fa-arrow-circle-right fa-lg"></i></button>
+</form></center>
     <div class="blog-post">
         <h2 class="blog-post-title">{{ entry.title }}{% if not entry.is_published %} <span class="label label-default">Draft</span>{% endif %}</h2>
         <p>
