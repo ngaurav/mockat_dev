@@ -125,7 +125,9 @@
                   <li><a href="/content/{{ entry.slug }}"><span>Lessons</span></a></li>
                   {% endwith %}
                   {% for q in cat.quiz_set.all %}
+                  {% if not q.draft %}
                   <li><a href="{% url 'quiz_question' quiz_name=q.url %}"><span>{{ q.title }}</span></a></li>
+                  {% endif %}
                   {% endfor %}
               </ul>
           </li>
