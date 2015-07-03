@@ -52,6 +52,9 @@ class QuizDetailView(DetailView):
         if self.object.draft and not request.user.has_perm('quiz.change_quiz'):
             raise PermissionDenied
 
+        if self.object.login_required and not request.user.is_authenticated():
+            return render(request, 'single_complete.html')
+
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
 
