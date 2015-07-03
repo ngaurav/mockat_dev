@@ -9,7 +9,7 @@
 
 {% block andablog_content %}
     {% if entry.get_previous_by_rank %}
-    <a class="button" href="{{ entry.get_previous_by_rank.get_absolute_url }}">Previous</a>
+    <a class="button" style="float:left" href="{{ entry.get_previous_by_rank.get_absolute_url }}">Previous</a>
     {% endif %}
     {% if entry.get_next_by_rank %}
     <a class="button" style="float:right" href="{{ entry.get_next_by_rank.get_absolute_url }}">Next</a>
