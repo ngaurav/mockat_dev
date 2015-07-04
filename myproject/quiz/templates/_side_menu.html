@@ -114,6 +114,7 @@
 <div id='cssmenu'>
 <ul>
 {% for dom in domain_list %}
+{% if not dom.invisible %}
    <li class='has-sub'><a href='#'><span>{{ dom.domain }}</span></a>
       <ul>
         {% for cat in category_list %}
@@ -137,6 +138,7 @@
         {% endfor %}
       </ul>
    </li>
+{% endif %}
 {% endfor %}
 </ul>
 </div>
