@@ -22,6 +22,8 @@ class Domain(models.Model):
         verbose_name=_("Domain"),
         max_length=250, blank=True, null=True)
 
+    invisible = models.BooleanField(default=False,blank=True)
+
     rank = models.PositiveSmallIntegerField(
         blank=False, null=False,
         unique=False, default=1,
