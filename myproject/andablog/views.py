@@ -35,6 +35,7 @@ def EntryRedirect(request):
     page_number=request.GET.get('page', 1)
     try:
         ent = Category.entry_set.all()[page_number]
-        return redirect(EntryDetail.as_view(), slug=ent.slug)
+        url = '//mockat.com/content'+ent.slug
+        return redirect(url)
     except:
         return None
