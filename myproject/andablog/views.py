@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView
 
 from . import models
 
+from quiz.models import Category
 
 class EntriesList(ListView):
 
@@ -28,3 +29,12 @@ class EntryDetail(DetailView):
     def get_queryset(self):
         return super(EntryDetail, self).get_queryset().filter(
             Q(is_published=True) | Q(author__isnull=False, author=self.request.user.id))
+
+def EntryRedirect(request):
+    category_id=request.GET.get('category', 1)
+    page_number=request.GET.get('page', 1)
+    try:
+        ent = Category.entry_set.all()[page_number]
+        return redirect(EntryDetail.as_view(), slug=ent.slug)
+    except:
+        return None
