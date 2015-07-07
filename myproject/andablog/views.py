@@ -5,6 +5,7 @@ from . import models
 
 from quiz.models import Category
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render_to_response
 
 class EntriesList(ListView):
 
