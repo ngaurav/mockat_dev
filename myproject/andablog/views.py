@@ -41,6 +41,6 @@ def CategoryEntryDetail(request,categ):
         logger.debug(page)
         logger.debug(entry)
         logger.debug("just at the end of if")
-        return render_to_response('andablog/entry_detail.html', {"entry": entry})
+        return render_to_response(request, 'andablog/entry_detail.html', {"entry": entry})
     else:
         return HttpResponse()
