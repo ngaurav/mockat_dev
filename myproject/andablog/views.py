@@ -32,8 +32,8 @@ class EntryDetail(DetailView):
         return super(EntryDetail, self).get_queryset().filter(
             Q(is_published=True) | Q(author__isnull=False, author=self.request.user.id))
 
-def CategoryEntryDetail(request):
-    category_name = request.GET.get('category')
+def CategoryEntryDetail(request,cat):
+    category_name = cat #request.GET.get('category')
     entry_list = Category.objects.get(category=category_name).entry_set.all()
     paginator = Paginator(entry_list, 1) # Show 1 entry per page
 
