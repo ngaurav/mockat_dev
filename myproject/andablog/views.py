@@ -5,6 +5,9 @@ from . import models
 
 from quiz.models import Category
 from django.shortcuts import render_to_response
+from django.http import HttpResponse
+import logging
+logger = logging.getLogger(__name__)
 
 class EntriesList(ListView):
 
@@ -32,5 +35,12 @@ class EntryDetail(DetailView):
             Q(is_published=True) | Q(author__isnull=False, author=self.request.user.id))
 
 def CategoryEntryDetail(request,categ):
-    page = request.GET.get('page')
-    return render_to_response('andablog/entry_detail.html', {"entry": "Test 2"})
+    if request.method=='POST':
+        page = int(request.POST['page'].strip())
+        entry = Category.objects.get(category=categ).entry_set.all()[page]
+        logger.debug(page)
+        logger.debug(entry)
+        logger.debug("just at the end of if")
+        return render_to_response('andablog/entry_detail.html', {"entry": entry})
+    else:
+        return HttpResponse()

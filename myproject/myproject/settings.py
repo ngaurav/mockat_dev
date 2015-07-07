@@ -156,6 +156,12 @@ LOGGING = {
             'filename': '/home/ubuntu/public_html/logs/allaccess.log',
             'formatter': 'verbose'
         },
+        'file4': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/home/ubuntu/public_html/logs/andablog.log',
+            'formatter': 'verbose'
+        },
    },
     'loggers': {
         'django': {
@@ -169,6 +175,10 @@ LOGGING = {
         },
         'allaccess': {
             'handlers': ['file3'],
+            'level': 'DEBUG',
+        },
+        'andablog': {
+            'handlers': ['file4'],
             'level': 'DEBUG',
         },
     }
