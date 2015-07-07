@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from . import models
 
 from quiz.models import Category
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.http import HttpResponse
 import logging
 logger = logging.getLogger(__name__)
@@ -41,6 +41,6 @@ def CategoryEntryDetail(request,categ):
         logger.debug(page)
         logger.debug(entry)
         logger.debug("just at the end of if")
-        return render_to_response(request, 'andablog/entry_detail.html', {"entry": entry})
+        return render(request, 'andablog/entry_detail.html', {"entry": entry})
     else:
         return HttpResponse()
