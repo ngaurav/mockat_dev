@@ -4,7 +4,6 @@ from django.views.generic import ListView, DetailView
 from . import models
 
 from quiz.models import Category
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render_to_response
 
 class EntriesList(ListView):
@@ -33,18 +32,5 @@ class EntryDetail(DetailView):
             Q(is_published=True) | Q(author__isnull=False, author=self.request.user.id))
 
 def CategoryEntryDetail(request,categ):
-    category_name = categ #request.GET.get('category')
-    entry_list = Category.objects.get(category=category_name).entry_set.all()
-    paginator = Paginator(entry_list, 1) # Show 1 entry per page
-
     page = request.GET.get('page')
-    try:
-        entry = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.    
-        entry = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        entry = paginator.page(paginator.num_pages)
-
-    return render_to_response('andablog/entry_detail.html', {"entry": entry})
+    return render_to_response('andablog/entry_detail.html', {"entry": "Test 2"})
