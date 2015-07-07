@@ -20,6 +20,7 @@
   <label style="display:inline-block">Go to
    <input type="number" name="page" min="1" max="21" value="2" style="width:90px;margin: 0 5px; padding:0  4px; height:1.5em; font-size:1em;" placeholder="Page no">
   </label>
+  {% csrf_token %}
   <button type="submit" style="font-size:1em; background:transparent;">
    <i class="fa fa-arrow-circle-right fa-lg"></i>
   </button>
