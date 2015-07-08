@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^markitup/', include('markitup.urls')),
     url(r'^content/', include('andablog.urls', namespace='andablog')),
-    url(r'^', include('spirit.urls')),
+    url(r'^forum/', include('spirit.urls')),
+    url(r'$', TemplateView.as_view(template_name='start_page.html'), name="home"),
 ]
