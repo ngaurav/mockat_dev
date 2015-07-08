@@ -37,7 +37,7 @@ class EntryDetail(DetailView):
 def CategoryEntryDetail(request,categ):
     if request.method=='POST':
         page = int(request.POST['page'].strip())
-        entry = Category.objects.get(category=categ).entry_set.all()[page]
+        entry = Category.objects.get(category=categ).entry_set.all()[page-1]
         logger.debug(page)
         logger.debug(entry)
         logger.debug("just at the end of if")

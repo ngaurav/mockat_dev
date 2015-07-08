@@ -39,6 +39,7 @@ class Entry(TimeStampedModel):
     class Meta:
         verbose_name_plural = "entries"
         get_latest_by = "rank"
+        ordering = ['rank']
 
     def get_absolute_url(self):
         return reverse('andablog:entrydetail', args=[self.slug])
