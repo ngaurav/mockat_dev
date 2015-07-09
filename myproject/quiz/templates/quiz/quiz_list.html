@@ -32,7 +32,7 @@
 			  <td>{{ quiz.exam_paper }}</td>
 			  <td>{{ quiz.single_attempt }}</td>
 			  <td>
-				<a href="{% url 'instructions_page' slug=quiz.url %}">
+				<a href="{% url 'instructions_page' slug=quiz.url %}?media@@{{ quiz.url }}">
 				  {% trans "View details" %}
 				</a>
 			</tr>
