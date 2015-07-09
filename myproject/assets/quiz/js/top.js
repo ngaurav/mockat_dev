@@ -3698,7 +3698,7 @@ function sendResponseToServlet() {
         dataType: "text",
         success: function (data) {
 
-            alert("data);
+            alert("data");
             $('#pWait').hide();
             moveToScoreCardDisplay();
         },
