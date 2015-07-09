@@ -46,11 +46,11 @@ urlpatterns = patterns('',
                            view=QuizTake.as_view(),
                            name='quiz_question'),
 
-                       url(regex=r'^(?P<slug>[\w-]+)/instructions.html$',
+                       url(regex=r'^(?P<slug>[\w-]+)/instructions.html?orgId=media@@mockId=(?P<quiz_name>[\w-]+)$',
                            view=QuizDetailView2,
                            name='instructions_page'),
 
-                       url(regex=r'^(?P<slug>[\w-]+)/quiz.html$',
+                       url(regex=r'^(?P<slug>[\w-]+)/quiz.html?orgId=media@@mockId=(?P<quiz_name>[\w-]+)$',
                            view=QuizDetailView3,
                            name='test_start_page'),
 )
