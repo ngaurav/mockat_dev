@@ -46,7 +46,7 @@ urlpatterns = patterns('',
                            view=QuizTake.as_view(),
                            name='quiz_question'),
 
-                       url(regex=r'^(?P<slug>[\w-]+)/instructions.html$',
+                       url(regex=r'^(?P<slug>[\w-]+)/instructions.html?media@@(?P<quiz_name>[\w-]+)$',
                            view=QuizDetailView2,
                            name='instructions_page'),
 
