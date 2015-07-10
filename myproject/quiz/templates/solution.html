@@ -14,7 +14,7 @@
 
   <table>
     <tbody>
-  	  {% for answer in question.get_answers() %}
+  	  {% for answer in question.get_answers %}
   	    <tr class="success">
   		  <td>{{ answer.content|safe }}</td>
   		  <td>{% trans "This is the correct answer" %}</td>
