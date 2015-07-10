@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.views.generic import TemplateView
+from quiz.views import startView, solView
 
 urlpatterns = [
     url(r'^quiz/', include('quiz.urls')),
@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^markitup/', include('markitup.urls')),
     url(r'^content/', include('andablog.urls', namespace='andablog')),
     url(r'^forum/', include('spirit.urls')),
-    url(r'^$', TemplateView.as_view(template_name='start_page.html'), name="home"),
+    url(r'^solution/(?P<slug>[A-Za-z0-9-_]+)', solView.as_view(), name="solution"),
+    url(r'^$', startView, name="home"),
 ]

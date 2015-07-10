@@ -9,6 +9,7 @@ from django.views.generic import DetailView, ListView, TemplateView, FormView
 from .forms import QuestionForm, EssayForm
 from .models import Quiz, Category, Progress, Sitting, Question, UserTrackrecord
 from essay.models import Essay_Question
+from multichoice.models import MCQuestion, Paragraph
 
 import os
 from django.template.loader import render_to_string
@@ -16,6 +17,25 @@ import logging
 logger = logging.getLogger(__name__)
 from django.http import HttpResponse
 import json
+
+class solView(DetailView):
+
+    model = MCQuestion
+    slug_field = 'id'
+    context_object_name = 'question'
+    template_name = 'solution.html'
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        if not request.user.is_authenticated():
+            raise PermissionDenied
+
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)
+
+def startView(request):
+    return render(request, 'start_page.html');
 
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
