@@ -1,7 +1,7 @@
 
 $(document).bind("contextmenu", function(e) {
-    preventDefault(e);
-});
+                 preventDefault(e);
+                 });
 function avoidKeyPressing(event) {
     if (event.ctrlKey) {
         alert('Open in new Tab is disabled.');
@@ -41,11 +41,11 @@ function disable_scroll() {
 }
 
 $(document).keydown(function(e) {
-    // var code = (e.keyCode ? e.keyCode : e.which);
-    // if(code == 8 || code == 116){
-    // return false;
-    // }
-});
+                    // var code = (e.keyCode ? e.keyCode : e.which);
+                    // if(code == 8 || code == 116){
+                    // return false;
+                    // }
+                    });
 
 /** *************Disable right click*********************** */
 function clickIE() {
@@ -78,45 +78,45 @@ if (document.layers) {
 function readXML(filePath, func) {
     var xml;
     $.ajax({
-        type: "POST",
-        url: "/" + filePath,
-        async: false,
-        dataType: ($.browser.msie) ? "text" : "xml",
-        success: function(data) {
+           type: "POST",
+           url: "/" + filePath,
+           async: false,
+           dataType: ($.browser.msie) ? "text" : "xml",
+           success: function(data) {
 
-            if (typeof data == "string") {
-                xml = new ActiveXObject("Microsoft.XMLDOM");
-                xml.async = false;
-                xml.loadXML(data);
-            } else {
-                xml = data;
-            }
-            eval(func);
-        },
-        error: function () {
-            //alert(filePath)
-            window.location.href = "error1.html?E404"+filepath;
-        }
-    });
+           if (typeof data == "string") {
+           xml = new ActiveXObject("Microsoft.XMLDOM");
+           xml.async = false;
+           xml.loadXML(data);
+           } else {
+           xml = data;
+           }
+           eval(func);
+           },
+           error: function () {
+           //alert(filePath)
+           window.location.href = "error1.html?E404"+filepath;
+           }
+           });
 }
 
 function checkVersion() {
     /*if($.browser.msie){
-    		if($.browser.version<7){
-    			window.location.href="error.html?E505";
-    		}
+     if($.browser.version<7){
+     window.location.href="error.html?E505";
+     }
     	}else if($.browser.mozilla){
-    		if($.browser.version<4){
-    			window.location.href="error.html?E505";
-    		}
+     if($.browser.version<4){
+     window.location.href="error.html?E505";
+     }
     	}else if($.browser.webkit) {
-    		if($.browser.version<15){
-    			window.location.href="error.html?E505";
-    		}
+     if($.browser.version<15){
+     window.location.href="error.html?E505";
+     }
     	}else if($.browser.safari) {
-    		if($.browser.version<5.1){
-    			window.location.href="error.html?E505";
-    		}
+     if($.browser.version<5.1){
+     window.location.href="error.html?E505";
+     }
     	}*/
 }
 
@@ -124,56 +124,56 @@ function readAndReturnXML(filePath) {
     var xml = "";
     //window.location.href = "error20.html?E404" + filePath;
     $.ajax({
-        type: "POST",
-        url: "/" + filePath,
-        async : false,
-        dataType: ($.browser.msie) ? "text" : "xml",
-        success: function(data) {
-            if (typeof data == "string") {
-                xml = new ActiveXObject("Microsoft.XMLDOM");
-                xml.async = false;
-                xml.loadXML(data);
-            } else {
-                xml = data;
-            }
+           type: "POST",
+           url: "/" + filePath,
+           async : false,
+           dataType: ($.browser.msie) ? "text" : "xml",
+           success: function(data) {
+           if (typeof data == "string") {
+           xml = new ActiveXObject("Microsoft.XMLDOM");
+           xml.async = false;
+           xml.loadXML(data);
+           } else {
+           xml = data;
+           }
 
-        },
-        error : function() {
-            //alert(filePath)
-            setTimeout(function(){window.location.href = "error21.html?E404"+filePath;}, 50)
-            //window.location.href="error.html?E404";
-        }
-    });
+           },
+           error : function() {
+           //alert(filePath)
+           setTimeout(function(){window.location.href = "error21.html?E404"+filePath;}, 50)
+           //window.location.href="error.html?E404";
+           }
+           });
     return xml;
 }
 
 function alignHeight() {
     var height = $(window).height() - ($("#header").height() + $("#footer").height());
     $('#mainleft').css({
-        "height": height
-    });
+                       "height": height
+                       });
     $('#mainright').css({
-        "height": height
-    });
+                        "height": height
+                        });
 }
 
 function quizPageHeight() {
     var height = $(window).height() - ($("#header").height() + $("#footer").height());
     $('#mainleft').css({
-        "height": height
-    });
+                       "height": height
+                       });
     $('#mainright').css({
-        "height": height
-    });
+                        "height": height
+                        });
     if (iOAP.sections[iOAP.curSection][iOAP.viewLang[iOAP.curSection][iOAP.curQues].langID][iOAP.curQues].quesType == "TYPING") {
         $('#questionCont').height($('#mainleft').height() - $('#groups').outerHeight(true) - 2);
         $('#currentQues').height($('#questionCont').height() - 2);
     } else {
         $('#questionCont').height($('#mainleft').height() - ($('#groups').outerHeight(true) + $('#sectionsField').outerHeight(true)) - 2);
         $('#currentQues').css({
-            height: $('#questionCont').height() - $('#actionButton').outerHeight(true) - 2,
-            overflow: 'auto'
-        });
+                              height: $('#questionCont').height() - $('#actionButton').outerHeight(true) - 2,
+                              overflow: 'auto'
+                              });
     }
     if ($('#groups').height() != 0) {
         $('#timer').height($('#groups').height() + $('#sectionsField').height());
@@ -188,13 +188,13 @@ function quizPageHeight() {
     $('#breakTimeDiv').height(height);
     $('#scoreCardDiv').height(height);
     $('#quesOuterDiv').css({
-        height: ($('#currentQues').height() - $('.questionTypeCont').outerHeight(true) - 2),
-        overflow: 'auto'
-    });
+                           height: ($('#currentQues').height() - $('.questionTypeCont').outerHeight(true) - 2),
+                           overflow: 'auto'
+                           });
     $('#quesAnsContent').css({
-        height: ($('#quesOuterDiv').height() - $('#quesNumberDiv').outerHeight(true) - $("#progStatusDisplay").outerHeight(true) - 2),
-        overflow: 'auto'
-    });
+                             height: ($('#quesOuterDiv').height() - $('#quesNumberDiv').outerHeight(true) - $("#progStatusDisplay").outerHeight(true) - 2),
+                             overflow: 'auto'
+                             });
     $('#progEditorDisplay').height($('#progRightPart').height() - $('#progDescriptionDiv').outerHeight(true) - 2);
 }
 
@@ -207,69 +207,69 @@ function parseSysInstructions(page, sysInstrXML, useSystemInstructions, orgId, m
     $("#defaultLanguage").append(o);
 
     $(xml).find("INSTRUCTION").each(function() {
-        var langName = $(this).find("LANGNAME").text();
-        var langId = $(this).find("LANGID").text();
-        o = new Option(langName, "cusInstText" + langId);
-        $(o).html(langName);
-        $("#cusInst").append(o);
+                                    var langName = $(this).find("LANGNAME").text();
+                                    var langId = $(this).find("LANGID").text();
+                                    o = new Option(langName, "cusInstText" + langId);
+                                    $(o).html(langName);
+                                    $("#cusInst").append(o);
 
-        o = new Option(langName, "sysInstText" + langId);
-        $(o).html(langName);
-        $("#basInst").append(o);
+                                    o = new Option(langName, "sysInstText" + langId);
+                                    $(o).html(langName);
+                                    $("#basInst").append(o);
 
-        o = new Option(langName, langId);
-        $(o).html(langName);
-        $("#defaultLanguage").append(o);
+                                    o = new Option(langName, langId);
+                                    $(o).html(langName);
+                                    $("#defaultLanguage").append(o);
 
 
-        if ($.trim($(this).find("INSTRUCTIONTEXT").text()) == "" || $.trim($(this).find("INSTRUCTIONTEXT").text()) == null || $.trim($(this).find("INSTRUCTIONTEXT").text()) == " ")
-            instructionContent = "The instructions are not available in the chosen language. ";
-        else {
-            instructionContent = $.trim($(this).find("INSTRUCTIONTEXT").text());
-        }
-        if (page == 'inst') {
-            $('#secondPagep1').append("<div id='cusInstText" + langId + "' style='display:none;height:91%;width:99.5%;overflow:auto'>" + instructionContent + "</div>");
-            $('#firstPage').append("<div id='sysInstText" + langId + "' style='display:none;height:93%;width:99.5%;overflow:auto'>The instructions are not available in the chosen language.</div>");
-        } else {
-            $('#secondPagep1').append("<div id='cusInstText" + langId + "' style='display:none;'>" + instructionContent + "</div>");
-            $('#firstPage').append("<div id='sysInstText" + langId + "' style='display:none;'>The instructions are not available in the chosen language.</div>");
-        }
+                                    if ($.trim($(this).find("INSTRUCTIONTEXT").text()) == "" || $.trim($(this).find("INSTRUCTIONTEXT").text()) == null || $.trim($(this).find("INSTRUCTIONTEXT").text()) == " ")
+                                    instructionContent = "The instructions are not available in the chosen language. ";
+                                    else {
+                                    instructionContent = $.trim($(this).find("INSTRUCTIONTEXT").text());
+                                    }
+                                    if (page == 'inst') {
+                                    $('#secondPagep1').append("<div id='cusInstText" + langId + "' style='display:none;height:91%;width:99.5%;overflow:auto'>" + instructionContent + "</div>");
+                                    $('#firstPage').append("<div id='sysInstText" + langId + "' style='display:none;height:93%;width:99.5%;overflow:auto'>The instructions are not available in the chosen language.</div>");
+                                    } else {
+                                    $('#secondPagep1').append("<div id='cusInstText" + langId + "' style='display:none;'>" + instructionContent + "</div>");
+                                    $('#firstPage').append("<div id='sysInstText" + langId + "' style='display:none;'>The instructions are not available in the chosen language.</div>");
+                                    }
 
-        $(sysInstrXML).find("INSTRUCTION").each(function() {
-            if (langName.toUpperCase() == $(this).find("LANGNAME").text().toUpperCase()) {
-                if ($.trim($(this).find("INSTRUCTIONTEXT").text()) == "" || $.trim($(this).find("INSTRUCTIONTEXT").text()) == null || 
-                $.trim($(this).find("INSTRUCTIONTEXT").text()) == " " || $.trim($(this).find("INSTRUCTIONTEXT").text()) == "<br>" || $.trim($(this).find("INSTRUCTIONTEXT").text()) == "<br/>") {
-                    instructionContent = "The instructions are not available in the chosen language. ";
-                } else {
-                    instructionContent = $.trim($(this).find("INSTRUCTIONTEXT").text());
-                }
-                $("#sysInstText" + langId).html(instructionContent);
-                if (useSystemInstructions == "YES") {
-                    if (langName.toUpperCase() == "ENGLISH") {
-                        if (isMarkedForReviewConsidered == "NO") {
-                            $(".considerMarkedReview").html("NOT");
-                        } else if (isMarkedForReviewConsidered == "YES") {
-                            $(".considerMarkedReview2").html("or marked for review");
-                        }
+                                    $(sysInstrXML).find("INSTRUCTION").each(function() {
+                                                                            if (langName.toUpperCase() == $(this).find("LANGNAME").text().toUpperCase()) {
+                                                                            if ($.trim($(this).find("INSTRUCTIONTEXT").text()) == "" || $.trim($(this).find("INSTRUCTIONTEXT").text()) == null ||
+                                                                                $.trim($(this).find("INSTRUCTIONTEXT").text()) == " " || $.trim($(this).find("INSTRUCTIONTEXT").text()) == "<br>" || $.trim($(this).find("INSTRUCTIONTEXT").text()) == "<br/>") {
+                                                                            instructionContent = "The instructions are not available in the chosen language. ";
+                                                                            } else {
+                                                                            instructionContent = $.trim($(this).find("INSTRUCTIONTEXT").text());
+                                                                            }
+                                                                            $("#sysInstText" + langId).html(instructionContent);
+                                                                            if (useSystemInstructions == "YES") {
+                                                                            if (langName.toUpperCase() == "ENGLISH") {
+                                                                            if (isMarkedForReviewConsidered == "NO") {
+                                                                            $(".considerMarkedReview").html("NOT");
+                                                                            } else if (isMarkedForReviewConsidered == "YES") {
+                                                                            $(".considerMarkedReview2").html("or marked for review");
+                                                                            }
 
-                        if (isOptionalSectionsAvailable == "YES") {
-                            $("#sysInstText" + langId).append($(sysInstrXML).find("OPTIONALTEXTENGLISH").text());
-                        }
-                    } else if (langName.toUpperCase() == "HINDI") {
-                        if (isMarkedForReviewConsidered == "NO") {
-                            $(".considerMarkedReviewHindi").html("&#2344;&#2361;&#2368;&#2306;");
-                        } else if (isMarkedForReviewConsidered == "YES") {
-                            $(".considerMarkedReviewHindi2").html("&#2351;&#2366; &#2346;&#2369;&#2344;&#2352;&#2381;&#2357;&#2367;&#2330;&#2366;&#2352; &#2325;&#2375; &#2354;&#2367;&#2319; &#2330;&#2367;&#2344;&#2381;&#2361;&#2367;&#2340; &#2361;&#2376;");
-                        }
+                                                                            if (isOptionalSectionsAvailable == "YES") {
+                                                                            $("#sysInstText" + langId).append($(sysInstrXML).find("OPTIONALTEXTENGLISH").text());
+                                                                            }
+                                                                            } else if (langName.toUpperCase() == "HINDI") {
+                                                                            if (isMarkedForReviewConsidered == "NO") {
+                                                                            $(".considerMarkedReviewHindi").html("&#2344;&#2361;&#2368;&#2306;");
+                                                                            } else if (isMarkedForReviewConsidered == "YES") {
+                                                                            $(".considerMarkedReviewHindi2").html("&#2351;&#2366; &#2346;&#2369;&#2344;&#2352;&#2381;&#2357;&#2367;&#2330;&#2366;&#2352; &#2325;&#2375; &#2354;&#2367;&#2319; &#2330;&#2367;&#2344;&#2381;&#2361;&#2367;&#2340; &#2361;&#2376;");
+                                                                            }
 
-                        if (isOptionalSectionsAvailable == "YES") {
-                            $("#sysInstText" + langId).append($(sysInstrXML).find("OPTIONALTEXTHINDI").text());
-                        }
-                    }
-                }
-            }
-        });
-    });
+                                                                            if (isOptionalSectionsAvailable == "YES") {
+                                                                            $("#sysInstText" + langId).append($(sysInstrXML).find("OPTIONALTEXTHINDI").text());
+                                                                            }
+                                                                            }
+                                                                            }
+                                                                            }
+                                                                            });
+                                    });
     $(".completeDuration").html(compMockDuration);
     calcTotalQues(orgId, mockId);
 }
@@ -382,12 +382,12 @@ function setInstruHeights() {
     alignHeight();
     var height = $('#mainleft').actual('height') - ($('#instPagination'). actual('height'));
     $('#firstPage').css({
-        "height": height - 10
-    });
+                        "height": height - 10
+                        });
     height = $('#mainleft').actual('height') - ($('#secondPagep2').actual('height') + $('#instPagination'). actual('height'));
     $('#secondPagep1').css({
-        "height": height - 10
-    });
+                           "height": height - 10
+                           });
 }
 
 function validateInstPageUrl() {
@@ -535,11 +535,11 @@ var mockVar = {
     // comp questions name
     laQName : '',
     // LA questions name
-    subjQName: '',
+subjQName: '',
     // subjective questions name
-    typingQName: '',
+typingQName: '',
     // typing question name
-    programingQName: '',
+programingQName: '',
     // typing question name
     modules : ["instructionsDiv", "profileDiv", "QPDiv", "questionCont", "sectionSummaryDiv"],
     // Modules are various div in the question area
@@ -547,9 +547,9 @@ var mockVar = {
     typingGroup : new Array(),
     currentGrp : 1,
     isMarkedForReviewConsidered : '',
-    time: 0 ,
+time: 0 ,
     timeLeft : 0,
-    isHelpContentAvailable: false,
+isHelpContentAvailable: false,
     helpContent : new Array(),
     minSubmitTime : 0,
     activeLinkList : ['viewQPButton', 'viewInstructionsButton', 'viewProButton', 'finalSub', 'finalTypingSub'],
@@ -677,24 +677,24 @@ function validateQuizPageUrl(user_name, full_name) {
             }
 
             /*
-            			 * //Check of backward compatibility. The GROUPDEPENDENTTIME tag is
-            			 * not present in the older versions (v10)
-            			 * if($(xml).find("GROUPDEPENDENTTIME").length>0){
-            			 * if($(xml).find("GROUPDEPENDENTTIME").text().toUppercase()="YES"){
-            			 * mockVar.isGroupDependentTime = true; }else{
-            			 * mockVar.isGroupDependentTime = false; }
-            			 * 
-            			 * if($(xml).find("SHOWATTEMPTEDGROUPS").text().toUppercase()="YES"){
-            			 * mockVar.showAttemptedGroups = true; }else{
-            			 * mockVar.showAttemptedGroups = false; }
-            			 * 
-            			 * if($(xml).find("EDITATTEMPTEDGROUPS").text().toUppercase()="YES"){
-            			 * mockVar.editAttemptedGroups = true; }else{
-            			 * mockVar.editAttemptedGroups = false; }
-            			 * 
-            			 * 
-            			 * }else{ mockVar.isGroupDependentTime = true; }
-            			 */
+             * //Check of backward compatibility. The GROUPDEPENDENTTIME tag is
+             * not present in the older versions (v10)
+             * if($(xml).find("GROUPDEPENDENTTIME").length>0){
+             * if($(xml).find("GROUPDEPENDENTTIME").text().toUppercase()="YES"){
+             * mockVar.isGroupDependentTime = true; }else{
+             * mockVar.isGroupDependentTime = false; }
+             *
+             * if($(xml).find("SHOWATTEMPTEDGROUPS").text().toUppercase()="YES"){
+             * mockVar.showAttemptedGroups = true; }else{
+             * mockVar.showAttemptedGroups = false; }
+             *
+             * if($(xml).find("EDITATTEMPTEDGROUPS").text().toUppercase()="YES"){
+             * mockVar.editAttemptedGroups = true; }else{
+             * mockVar.editAttemptedGroups = false; }
+             *
+             *
+             * }else{ mockVar.isGroupDependentTime = true; }
+             */
             if (iOAP.defaultLang == null || iOAP.defaultLang == "") {
                 getCookie();
             }
@@ -711,8 +711,8 @@ function validateQuizPageUrl(user_name, full_name) {
     }
 
     /*
-    		 * else{ window.location.href="error.html"; }
-    		 */
+     * else{ window.location.href="error.html"; }
+     */
 }
 
 function restoreMockOnRefresh() {
@@ -724,7 +724,7 @@ function restoreMockOnRefresh() {
             //	mockVar.time = mockVar.timeLeft;
         }
     } catch (exc) {
-}
+    }
 }
 
 function readSysInstructionsXMLQuizPage(xml, orgId, mockId) {
@@ -734,19 +734,19 @@ function readSysInstructionsXMLQuizPage(xml, orgId, mockId) {
     var counter = 1;
     var langId = 1;
     /*
-    	 * var tempcounter =0; while(counter!=tempcounter){ tempcounter = counter;
-    	 * $(xml).find("USEFULDATAFILE"+counter).each(function(){
-    	 * if($(this).text()!=null && $.trim($(this).text()) != ""){
-    	 * mockVar.helpContent[counter] = $(this).text();
-    	 * mockVar.isHelpContentAvailable = true; } counter++; }); }
-    	 */
+     * var tempcounter =0; while(counter!=tempcounter){ tempcounter = counter;
+     * $(xml).find("USEFULDATAFILE"+counter).each(function(){
+     * if($(this).text()!=null && $.trim($(this).text()) != ""){
+     * mockVar.helpContent[counter] = $(this).text();
+     * mockVar.isHelpContentAvailable = true; } counter++; }); }
+     */
     for (counter = 1; counter <= 15; counter++) {
         $(xml).find("USEFULDATAFILE" + counter).each(function() {
-            if ($(this).text() != null && $.trim($(this).text()) != "") {
-                mockVar.helpContent[counter] = $(this).text();
-                mockVar.isHelpContentAvailable = true;
-            }
-        });
+                                                     if ($(this).text() != null && $.trim($(this).text()) != "") {
+                                                     mockVar.helpContent[counter] = $(this).text();
+                                                     mockVar.isHelpContentAvailable = true;
+                                                     }
+                                                     });
     }
 
     mockVar.minSubmitTime = $(xml).find("COMPULSORYTIME").text();
@@ -784,105 +784,105 @@ function readSysInstructionsXMLQuizPage(xml, orgId, mockId) {
 
 function renderQuestions(xml, selectorElement) {
     $(xml).find(selectorElement).each(function() {
-        // iOAP = groupObj;
-        /*
-        		 * iOAP.secDetails = new Array(); iOAP.languages = new Array();
-        		 * iOAP.sections = new Array(); iOAP.viewLang = new Array();
-        		 */
-        iOAP = new createNewGroupObj();
-        typingGrpObj = new typingObject();
-        $(this).find("SECTION").each(function() {
-            secCounter = $(this).find("secID").text();
-            langCounter = $(this).find("LANGID").text();
-            quesCounter = 1;
+                                      // iOAP = groupObj;
+                                      /*
+                                       * iOAP.secDetails = new Array(); iOAP.languages = new Array();
+                                       * iOAP.sections = new Array(); iOAP.viewLang = new Array();
+                                       */
+                                      iOAP = new createNewGroupObj();
+                                      typingGrpObj = new typingObject();
+                                      $(this).find("SECTION").each(function() {
+                                                                   secCounter = $(this).find("secID").text();
+                                                                   langCounter = $(this).find("LANGID").text();
+                                                                   quesCounter = 1;
 
-            if (iOAP.secDetails[secCounter] == null) {
-                var secName = $(this).find("secName").text();
-                var answered = 0;
-                var notanswered = 0;
-                var marked = 0;
-                var isOptional = $(this).attr("ISOPTIONAL");
-                if (isOptional == 'Y') {
-                    iOAP.noOptSec++;
-                }
-                var secType = $(this).attr('TYPE') ? $(this).attr('TYPE'): "";
-                if (secType == "TYPING") {
-                    iOAP.isTypingGroup = true;
-                } else if (secType == "OFFLINE") {
-                    iOAP.hasOfflineSect = true;
-                }
-                iOAP.secDetails[secCounter] = new secBean(secName, answered, notanswered, marked, isOptional, secType);
-                if ($(this).attr("MAXQUESTOANS") != null || $(this).attr("MAXQUESTOANS") != "") {
-                    iOAP.secDetails[secCounter].maxOptQuesToAns = parseInt($(this).attr("MAXQUESTOANS"));
-                }
-            }
+                                                                   if (iOAP.secDetails[secCounter] == null) {
+                                                                   var secName = $(this).find("secName").text();
+                                                                   var answered = 0;
+                                                                   var notanswered = 0;
+                                                                   var marked = 0;
+                                                                   var isOptional = $(this).attr("ISOPTIONAL");
+                                                                   if (isOptional == 'Y') {
+                                                                   iOAP.noOptSec++;
+                                                                   }
+                                                                   var secType = $(this).attr('TYPE') ? $(this).attr('TYPE'): "";
+                                                                   if (secType == "TYPING") {
+                                                                   iOAP.isTypingGroup = true;
+                                                                   } else if (secType == "OFFLINE") {
+                                                                   iOAP.hasOfflineSect = true;
+                                                                   }
+                                                                   iOAP.secDetails[secCounter] = new secBean(secName, answered, notanswered, marked, isOptional, secType);
+                                                                   if ($(this).attr("MAXQUESTOANS") != null || $(this).attr("MAXQUESTOANS") != "") {
+                                                                   iOAP.secDetails[secCounter].maxOptQuesToAns = parseInt($(this).attr("MAXQUESTOANS"));
+                                                                   }
+                                                                   }
 
-            if (iOAP.languages[langCounter] == null) {
-                iOAP.languages[langCounter] = $(this).find("LANGNAME").text();
-            }
+                                                                   if (iOAP.languages[langCounter] == null) {
+                                                                   iOAP.languages[langCounter] = $(this).find("LANGNAME").text();
+                                                                   }
 
-            if (iOAP.sections[secCounter] == null) {
-                iOAP.sections[secCounter] = new Array();
-            }
+                                                                   if (iOAP.sections[secCounter] == null) {
+                                                                   iOAP.sections[secCounter] = new Array();
+                                                                   }
 
-            if (iOAP.sections[secCounter][langCounter] == null) {
-                iOAP.sections[secCounter][langCounter] = new Array();
-            }
-            if (iOAP.viewLang[secCounter] == null) {
-                iOAP.viewLang[secCounter] = new Array();
-            }
-            $(this).find("QUESTION").each(function() {
-                var quesText = $(this).find("NAME").text();
-                var quesType = $(this).attr("TYPE");
-                var options = new Array();
-                var correctAnswer = new Array(), correctAnswerCounter = 0;
-                if (quesType != "SA" || quesType != "SUBJECTIVE" || quesType != "COMPREHENSION@@SA") {
-                    var optCounter = 0;
-                    $(this).find("ANSWER").each(function() {
-                        options[optCounter] = $(this).text();
-                        optCounter++;
-                        if ($(this).attr('CORRECT') == 'TRUE') {
-                            correctAnswer[correctAnswerCounter] = $(this).attr('VALUE');
-                            correctAnswerCounter++;
-                        }
-                    });
-                }
-                if (iOAP.viewLang[secCounter][quesCounter] == null) {
-                    if (iOAP.defaultLang == null || iOAP.defaultLang == "") {
-                        getCookie();
-                    }
-                    iOAP.viewLang[secCounter][quesCounter] = new quesParams(iOAP.defaultLang, 'notAttempted');
-                }
-                var isParent = false;
-                var keyboardType = 0;
-                var answerType = '', isCaseSensitive = '';
-                var typingType = 0;
-                if (quesType.indexOf("LA")>-1 || quesType.indexOf("COMPREHENSION")>-1) {
-                    if ($(this).attr("ISPARENT") == "Y")
-                        isParent = true;
-                }
-                if (quesType.indexOf("SA")>-1) {
-                    keyboardType = $(this).find("KEYBOARDTYPE").text();
-                    $(this).find('ANSWER').each(function() {
-                        answerType = $(this).attr('TYPE');
-                        isCaseSensitive = $(this).attr('CASESENSITIVE');
-                        correctAnswer[correctAnswerCounter] = $(this).text();
-                    });
-                } else if (quesType.indexOf('TYPING')>-1) {
-                    typingType = $(this).find("TYPINGTYPE").text();
-                }
-                var quesID = $(this).find("ID").text();
-                var allottedMarks = $(this).find("ALLOTTEDMARKS").text();
-                var negMarks = $(this).find("NEGATIVEMARKS").text();
+                                                                   if (iOAP.sections[secCounter][langCounter] == null) {
+                                                                   iOAP.sections[secCounter][langCounter] = new Array();
+                                                                   }
+                                                                   if (iOAP.viewLang[secCounter] == null) {
+                                                                   iOAP.viewLang[secCounter] = new Array();
+                                                                   }
+                                                                   $(this).find("QUESTION").each(function() {
+                                                                                                 var quesText = $(this).find("NAME").text();
+                                                                                                 var quesType = $(this).attr("TYPE");
+                                                                                                 var options = new Array();
+                                                                                                 var correctAnswer = new Array(), correctAnswerCounter = 0;
+                                                                                                 if (quesType != "SA" || quesType != "SUBJECTIVE" || quesType != "COMPREHENSION@@SA") {
+                                                                                                 var optCounter = 0;
+                                                                                                 $(this).find("ANSWER").each(function() {
+                                                                                                                             options[optCounter] = $(this).text();
+                                                                                                                             optCounter++;
+                                                                                                                             if ($(this).attr('CORRECT') == 'TRUE') {
+                                                                                                                             correctAnswer[correctAnswerCounter] = $(this).attr('VALUE');
+                                                                                                                             correctAnswerCounter++;
+                                                                                                                             }
+                                                                                                                             });
+                                                                                                 }
+                                                                                                 if (iOAP.viewLang[secCounter][quesCounter] == null) {
+                                                                                                 if (iOAP.defaultLang == null || iOAP.defaultLang == "") {
+                                                                                                 getCookie();
+                                                                                                 }
+                                                                                                 iOAP.viewLang[secCounter][quesCounter] = new quesParams(iOAP.defaultLang, 'notAttempted');
+                                                                                                 }
+                                                                                                 var isParent = false;
+                                                                                                 var keyboardType = 0;
+                                                                                                 var answerType = '', isCaseSensitive = '';
+                                                                                                 var typingType = 0;
+                                                                                                 if (quesType.indexOf("LA")>-1 || quesType.indexOf("COMPREHENSION")>-1) {
+                                                                                                 if ($(this).attr("ISPARENT") == "Y")
+                                                                                                 isParent = true;
+                                                                                                 }
+                                                                                                 if (quesType.indexOf("SA")>-1) {
+                                                                                                 keyboardType = $(this).find("KEYBOARDTYPE").text();
+                                                                                                 $(this).find('ANSWER').each(function() {
+                                                                                                                             answerType = $(this).attr('TYPE');
+                                                                                                                             isCaseSensitive = $(this).attr('CASESENSITIVE');
+                                                                                                                             correctAnswer[correctAnswerCounter] = $(this).text();
+                                                                                                                             });
+                                                                                                 } else if (quesType.indexOf('TYPING')>-1) {
+                                                                                                 typingType = $(this).find("TYPINGTYPE").text();
+                                                                                                 }
+                                                                                                 var quesID = $(this).find("ID").text();
+                                                                                                 var allottedMarks = $(this).find("ALLOTTEDMARKS").text();
+                                                                                                 var negMarks = $(this).find("NEGATIVEMARKS").text();
 
-                var question = new questions(quesText, quesCounter, quesType, options, '', isParent, allottedMarks, negMarks, keyboardType, typingType, '', correctAnswer, answerType, isCaseSensitive, quesID);
-                iOAP.sections[secCounter][langCounter][quesCounter] = question;
-                quesCounter++;
-            });
-        });
-        mockVar.groups.push(iOAP);
-        mockVar.typingGroup.push(typingGrpObj);
-    });
+                                                                                                 var question = new questions(quesText, quesCounter, quesType, options, '', isParent, allottedMarks, negMarks, keyboardType, typingType, '', correctAnswer, answerType, isCaseSensitive, quesID);
+                                                                                                 iOAP.sections[secCounter][langCounter][quesCounter] = question;
+                                                                                                 quesCounter++;
+                                                                                                 });
+                                                                   });
+                                      mockVar.groups.push(iOAP);
+                                      mockVar.typingGroup.push(typingGrpObj);
+                                      });
 }
 
 function readXMLQuestionPaper(xml) {
@@ -915,21 +915,21 @@ function readXMLQuestionPaper(xml) {
         var totTimeBoundTime = 0;
         var firstNonTimeBoundGrp = true;
         $(xml).find("GROUP").each(function() {
-            mockVar.groups[counter].maxTime = parseInt($(this).attr("MAXTIME")) * 60;
-            if ($(this).attr("MAXTIME") > 0) {
-                totTimeBoundTime += parseInt($(this).attr("MAXTIME")) * 60;
-            } else if ( firstNonTimeBoundGrp && $(this).attr("MAXTIME") == 0) {
-                mockVar.groups[counter].firstNonTimeBoundGrp = true;
-                firstNonTimeBoundGrp = false;
-            }
-            mockVar.groups[counter].minTime = parseInt($(this).attr("MINTIME")) * 60;
-            mockVar.groups[counter].breakTime = parseInt($(this).attr("BREAKTIME")) * 60;
-            mockVar.groups[counter].isViewable = $(this).attr("ISVIEWABLE").toUpperCase();
-            mockVar.groups[counter].isEditable = $(this).attr("ISEDITABLE").toUpperCase();
-            mockVar.groups[counter].groupName = $(this).find("GROUPNAME").text();
-            mockVar.groups[counter].maxNoOptSec = $(this).find("MAXNOOPTSEC").text();
-            counter++;
-        });
+                                  mockVar.groups[counter].maxTime = parseInt($(this).attr("MAXTIME")) * 60;
+                                  if ($(this).attr("MAXTIME") > 0) {
+                                  totTimeBoundTime += parseInt($(this).attr("MAXTIME")) * 60;
+                                  } else if ( firstNonTimeBoundGrp && $(this).attr("MAXTIME") == 0) {
+                                  mockVar.groups[counter].firstNonTimeBoundGrp = true;
+                                  firstNonTimeBoundGrp = false;
+                                  }
+                                  mockVar.groups[counter].minTime = parseInt($(this).attr("MINTIME")) * 60;
+                                  mockVar.groups[counter].breakTime = parseInt($(this).attr("BREAKTIME")) * 60;
+                                  mockVar.groups[counter].isViewable = $(this).attr("ISVIEWABLE").toUpperCase();
+                                  mockVar.groups[counter].isEditable = $(this).attr("ISEDITABLE").toUpperCase();
+                                  mockVar.groups[counter].groupName = $(this).find("GROUPNAME").text();
+                                  mockVar.groups[counter].maxNoOptSec = $(this).find("MAXNOOPTSEC").text();
+                                  counter++;
+                                  });
         mockVar.nonTimeBoundTime = mockVar.completeTime - totTimeBoundTime;
     } else {
         renderQuestions(xml, "SECTIONDETAILS");
@@ -963,20 +963,20 @@ function readXMLQuestionPaper(xml) {
 
     if (iOAP.secDetails.length > 6 && !($.browser.msie) ) {
         $('#questionCont').css({
-            "height": "68%"
-        });
+                               "height": "68%"
+                               });
         $('#instructionsDiv').css({
-            "height": "68%"
-        });
+                                  "height": "68%"
+                                  });
         $('#profileDiv').css({
-            "height": "68%"
-        });
+                             "height": "68%"
+                             });
         $('#QPDiv').css({
-            "height": "68%"
-        });
+                        "height": "68%"
+                        });
         $('#sectionSummaryDiv').css({
-            "height": "68%"
-        });
+                                    "height": "68%"
+                                    });
     }
     $("#pWait").hide();
 
@@ -1062,16 +1062,16 @@ function getQuestion() {
         } else if (question.quesType == "PROGRAMING") {
             if (chkIfMaxQuesCrossed() || iOAP.secDetails[iOAP.curSection].isOptional == 'Y' && !iOAP.secDetails[iOAP.curSection].isSelected) {
                 editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-                    lineNumbers: true,
-                    matchBrackets: true,
-                    readOnly : 'nocursor'
-                });
+                                                 lineNumbers: true,
+                                                 matchBrackets: true,
+                                                 readOnly : 'nocursor'
+                                                 });
             } else {
                 editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-                    lineNumbers: true,
-                    styleActiveLine: true,
-                    matchBrackets: true
-                });
+                                                 lineNumbers: true,
+                                                 styleActiveLine: true,
+                                                 matchBrackets: true
+                                                 });
             }
             $('.progrmngBtn').show();
             $('.normalBtn').hide();
@@ -1104,9 +1104,9 @@ function getQuestion() {
         }
     }
     /*
-    	 * if(iOAP.curQues>19){ var el = document.getElementById(iOAP.curQues);
-    	 * el.scrollIntoView(true); }
-    	 */
+     * if(iOAP.curQues>19){ var el = document.getElementById(iOAP.curQues);
+     * el.scrollIntoView(true); }
+     */
     scrollIntoView(document.getElementById('qtd' + iOAP.curQues), document.getElementById('numberpanelQues'));
     enableOptButtons();
     chkIfMaxQuesCrossed();
@@ -1120,7 +1120,7 @@ function scrollIntoView(element, container) {
         var elemTop = element.offsetTop;
         $(container).scrollTop(elemTop - $(element).height());
     } catch (err) {
-}
+    }
 }
 
 function isScrolledIntoView(elem) {
@@ -1142,8 +1142,8 @@ function chkIfMaxQuesCrossed() {
             var counter = 0;
             for (i = 1; i < iOAP.viewLang[iOAP.curSection].length; i++) {
                 var quesStatus = iOAP.viewLang[iOAP.curSection][i].status ;
-                if (quesStatus == "marked" && !(iOAP.sections[iOAP.curSection][iOAP.viewLang[iOAP.curSection][i].langID][i].answer == null 
-                || iOAP.sections[iOAP.curSection][iOAP.viewLang[iOAP.curSection][i].langID][i].answer == '')) {
+                if (quesStatus == "marked" && !(iOAP.sections[iOAP.curSection][iOAP.viewLang[iOAP.curSection][i].langID][i].answer == null
+                                                || iOAP.sections[iOAP.curSection][iOAP.viewLang[iOAP.curSection][i].langID][i].answer == '')) {
                     counter++;
                 }
             }
@@ -1159,13 +1159,13 @@ function chkIfMaxQuesCrossed() {
 
 function bindCharCode() {
     $('input').bind('keydown', function(event) {
-        var code = (event.keyCode ? event.keyCode : event.which);
-        if (code == 8) {
-            $(this).val($(this).val().substring(0, $(this).val().length - 1));
-        } else if (!((code > 44 && code < 58) || (code > 64 && code < 91) || (code > 94 && code < 123) || code == 43 || code == 16 || code == 32)) {
-            return false;
-        }
-    });
+                    var code = (event.keyCode ? event.keyCode : event.which);
+                    if (code == 8) {
+                    $(this).val($(this).val().substring(0, $(this).val().length - 1));
+                    } else if (!((code > 44 && code < 58) || (code > 64 && code < 91) || (code > 94 && code < 123) || code == 43 || code == 16 || code == 32)) {
+                    return false;
+                    }
+                    });
 }
 
 function applyKeyboard() {
@@ -1704,15 +1704,15 @@ function fillGroups() {
         if ( mockVar.groups.length > 4 && ($.browser.msie) ) {
             for (var i = 4; i < iOAP.secDetails.length; i = i + 5) {
                 $('#g' + (i + 1) + " .tooltip").hover(
-                function() {
-                    $(this).find(".classic").css({
-                        "margin-left": "-60px"
-                    });
-                }, function() {
-                    $(this).find(".classic").css({
-                        "margin-left": "-999px"
-                    });
-                });
+                                                      function() {
+                                                      $(this).find(".classic").css({
+                                                                                   "margin-left": "-60px"
+                                                                                   });
+                                                      }, function() {
+                                                      $(this).find(".classic").css({
+                                                                                   "margin-left": "-999px"
+                                                                                   });
+                                                      });
             }
         }
 
@@ -1724,10 +1724,10 @@ function fillGroups() {
         }
 
         $("#groups .allSections").click(function (event) {
-            if (event.target.type != "checkbox") {
-                changeGroup(this.id.split("g")[1]);
-            }
-        });
+                                        if (event.target.type != "checkbox") {
+                                        changeGroup(this.id.split("g")[1]);
+                                        }
+                                        });
     }
 }
 
@@ -1780,8 +1780,8 @@ function submitGroup() {
     fillNumberPanel();
     clearTimeout(mockVar.timeCounter);
     mockVar.timeCounter = setTimeout(function() {
-        startCounter(mockVar.time - 1);
-    }, 1000);
+                                     startCounter(mockVar.time - 1);
+                                     }, 1000);
 
     /*
      * }else{ submitMock(); //submit exam }
@@ -1902,32 +1902,32 @@ function fillSections() {
     if ( iOAP.secDetails.length > 4 && ($.browser.msie) ) {
         for (var i = 4; i < iOAP.secDetails.length; i = i + 5) {
             $('#s' + (i + 1) + " .tooltip").hover(
-            function() {
-                $(this).find(".classic").css({
-                    "margin-left": "-60px"
-                });
-            }, function() {
-                $(this).find(".classic").css({
-                    "margin-left": "-999px"
-                });
-            });
+                                                  function() {
+                                                  $(this).find(".classic").css({
+                                                                               "margin-left": "-60px"
+                                                                               });
+                                                  }, function() {
+                                                  $(this).find(".classic").css({
+                                                                               "margin-left": "-999px"
+                                                                               });
+                                                  });
         }
     }
 
     $("#s" + iOAP.curSection).addClass("currentSectionSelected");
     $("#s" + iOAP.curSection + " a").addClass("tooltipSelected");
     $("#sections .allSections input").click(function(event) {
-        if (this.checked) {
-            optSecCheck(this.id.split("opt")[1], event);
-        } else {
-            optSecUncheck(this.id.split("opt")[1], event);
-        }
-    });
+                                            if (this.checked) {
+                                            optSecCheck(this.id.split("opt")[1], event);
+                                            } else {
+                                            optSecUncheck(this.id.split("opt")[1], event);
+                                            }
+                                            });
     $("#sections .allSections").click(function (event) {
-        if (event.target.type != "checkbox") {
-            changeSection(this.id.split("s")[1]);
-        }
-    });
+                                      if (event.target.type != "checkbox") {
+                                      changeSection(this.id.split("s")[1]);
+                                      }
+                                      });
 }
 
 function optSecCheck(secId, event) {
@@ -2374,8 +2374,8 @@ function submitConfirmation(param) {
             }
         }
         /*
-        		 * if(iOAP.secDetails.length>2){ str +="<tr><td><b>Total</b></td><td><b>"+totalQues+"</b></td><td><b>"+noOfAns+"</b></td><td><b>"+noOfNtAns+"</b></td><td><b>"+noOfReview+"</b></td><td><b>"+noOfNtAttemp+"</b></td></tr>"; }
-        		 */
+         * if(iOAP.secDetails.length>2){ str +="<tr><td><b>Total</b></td><td><b>"+totalQues+"</b></td><td><b>"+noOfAns+"</b></td><td><b>"+noOfNtAns+"</b></td><td><b>"+noOfReview+"</b></td><td><b>"+noOfNtAttemp+"</b></td></tr>"; }
+         */
         timeOutStr += typingStr;
         timeOutStr += "</div>";
         str += timeOutStr;
@@ -2429,7 +2429,7 @@ function moveToScoreCardDisplay() {
 
 function moveToFeedback() {
     setCookie(mockVar.langName);
-    document.cookie = "sessionid = 'abcd'; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/" 
+    document.cookie = "sessionid = 'abcd'; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"
     if (mockVar.isFeedBackRequired == "NO") {
         window.location.href = "close.html?" + mockVar.orgId + "@@" + mockVar.mockId + "#";
     } else {
@@ -2478,7 +2478,7 @@ function fnSubmit(action) {
             }
         } else if (ques.quesType != "SUBJECTIVE") {
             var answers = document.getElementsByName('answers');
-            for (var i = 0; i < answers.length; i++) 
+            for (var i = 0; i < answers.length; i++)
             {
                 if (answers[i].checked == true)
                 {
@@ -2494,8 +2494,8 @@ function fnSubmit(action) {
             var counter = 0;
             for (i = 1; i < iOAP.viewLang[iOAP.curSection].length; i++) {
                 var quesStatus = iOAP.viewLang[iOAP.curSection][i].status ;
-                if (quesStatus == "marked" && !(iOAP.sections[iOAP.curSection][iOAP.viewLang[iOAP.curSection][i].langID][i].answer == null 
-                || iOAP.sections[iOAP.curSection][iOAP.viewLang[iOAP.curSection][i].langID][i].answer == '')) {
+                if (quesStatus == "marked" && !(iOAP.sections[iOAP.curSection][iOAP.viewLang[iOAP.curSection][i].langID][i].answer == null
+                                                || iOAP.sections[iOAP.curSection][iOAP.viewLang[iOAP.curSection][i].langID][i].answer == '')) {
                     counter++;
                 }
             }
@@ -2503,8 +2503,8 @@ function fnSubmit(action) {
         }
         var curQuesStatus = iOAP.viewLang[iOAP.curSection][iOAP.curQues].status;
         if (!(action == "SKIP" || action == "RESET" || action == "SUBMIT") &&
-        !(curQuesStatus == "answered" || (curQuesStatus == "marked" && 
-        iOAP.sections[iOAP.curSection][iOAP.viewLang[iOAP.curSection][iOAP.curQues].langID][iOAP.curQues].answer != ""))) {
+            !(curQuesStatus == "answered" || (curQuesStatus == "marked" &&
+                                              iOAP.sections[iOAP.curSection][iOAP.viewLang[iOAP.curSection][iOAP.curQues].langID][iOAP.curQues].answer != ""))) {
             if (quesToBeConsidered == section.maxOptQuesToAns && selectedAnswer != "" ) {
                 proceed = false;
             }
@@ -2616,11 +2616,11 @@ function save(ansID, action, quesType) {
 
 function bConfirm() {
     $('#pWait').css({
-        "background": "none",
-        "opacity": "1",
-        "width": "99%",
-        "height": "98%"
-    });
+                    "background": "none",
+                    "opacity": "1",
+                    "width": "99%",
+                    "height": "98%"
+                    });
     var str = '<div style="top:40%;left:30%;width:400px;position:relative;background:white;border:2px solid #000"><h1 id="popup_title" class="confirm"></h1>';
     str += '<div id="popup_content" class="confirm">' +
     '<div id="popup_message">You have reached the last question of the exam.Do you want to go to the first question again?</div>' +
@@ -2676,8 +2676,8 @@ function startCounter(time) {
     }
     if (time > 0) {
         mockVar.timeCounter = setTimeout(function() {
-            startCounter(time - 1);
-        }, 1000);
+                                         startCounter(time - 1);
+                                         }, 1000);
         mockVar.timeLeft = mockVar.time - mockVar.timeCounter;
         window.name = JSON.stringify(mockVar);
     } else {
@@ -2699,8 +2699,8 @@ function breakTimeCounter(time) {
     $("#breakTimeCounter").html( "<b>" + mockLabels.breakTimeLeft + convertTime(time) + "</b>");
     if (time > 0) {
         mockVar.timeCounter = setTimeout(function() {
-            breakTimeCounter(time - 1);
-        }, 1000);
+                                         breakTimeCounter(time - 1);
+                                         }, 1000);
     } else {
         submitGroup();
     }
@@ -2722,10 +2722,10 @@ function timeOutSubmit() {
     $("#timer").hide();
     $('#mainleft').html(str);
     $('.numberpanel').css({
-        "background": "#fff",
-        "border-left": "1px #000 solid",
-        "height": "100%"
-    });
+                          "background": "#fff",
+                          "border-left": "1px #000 solid",
+                          "height": "100%"
+                          });
     $('#group_summary').height($('#mainleft').height() - $('#timeoutSummaryNextBtnDiv').outerHeight(true) - $('.examSummaryHeader').outerHeight(true));
     $('.numberpanel').html('<div style="top:25%;position:relative"><center><img src="/static/quiz/images/NewCandidateImage.jpg" width="50%" /> </center></div>');
     alert(mockLabels.timeOutSubmitMsg);
@@ -2756,12 +2756,12 @@ function showSec(time) {
 /*
  * Time in hours function convertTime(time){ return
  * showHr(time)+":"+showMin(time)+":"+showSec(time); }
- * 
+ *
  * function showHr(time){ return "0"+parseInt(time/3600); }
- * 
+ *
  * function showMin(time){ var min = ""; time = time%3600; if((time/60)>9) min =
  * parseInt(time/60); else min = "0"+parseInt(time/60); return min; }
- * 
+ *
  * function showSec(time){ var sec=""; if((time%60)>9) sec = time%60; else sec =
  * "0"+time%60; return sec; }
  */
@@ -2774,11 +2774,11 @@ function imgMagnifyInc( img, percentage) {
     if (percentage > 0)
         zindex = 999;
     $(img).css({
-        "height": height,
-        "width": width,
-        "z-index": zindex,
-        "position": "relative"
-    });
+               "height": height,
+               "width": width,
+               "z-index": zindex,
+               "position": "relative"
+               });
 }
 
 function showQP() {
@@ -2870,21 +2870,21 @@ function multiLangInstru() {
     $("#basInst option[value='instEnglish']").attr("selected", "selected");
     if (document.getElementById("multiLangDD") != null) {
         $("#multiLangDD option").each(function() {
-            if ($(this).text().toUpperCase() == 'HINDI') {
-                $('#basInst').parent().show();
-            }
-        });
+                                      if ($(this).text().toUpperCase() == 'HINDI') {
+                                      $('#basInst').parent().show();
+                                      }
+                                      });
         $("#multiLangDD").change(function () {
-            var select = this.value;
-            $("#multiLangDD option").each(function() {
+                                 var select = this.value;
+                                 $("#multiLangDD option").each(function() {
 
-                if (select == this.value) {
-                    $("#instLang" + select).show();
-                } else {
-                    $("#instLang" + this.value).hide();
-                }
-            });
-        });
+                                                               if (select == this.value) {
+                                                               $("#instLang" + select).show();
+                                                               } else {
+                                                               $("#instLang" + this.value).hide();
+                                                               }
+                                                               });
+                                 });
     }
 }
 
@@ -2957,32 +2957,32 @@ function calcTotalQues(orgId, mockId) {
     var langArr = new Array();
     var QPxml = readAndReturnXML(orgId + '/' + mockId + '/quiz.xml');
     $(QPxml).find('LANGID').each(function() {
-        if ($.inArray($(this).text(), langArr)==-1) {
-            langArr.push($(this).text());
-        }
-    })
+                                 if ($.inArray($(this).text(), langArr)==-1) {
+                                 langArr.push($(this).text());
+                                 }
+                                 })
     $(QPxml).find('QUESTION').each(function() {
-        quesCount++;
-    });
+                                   quesCount++;
+                                   });
     $(".totalNoOfQues").html(quesCount / langArr.length);
 }
 
 function loadCalculator() {
     $('#loadCalc').show();
     $('#loadCalc').load('Calculator.html', function() {
-        $('#closeButton').click(function() {
-            $('#loadCalc').hide();
-        });
-    });
+                        $('#closeButton').click(function() {
+                                                $('#loadCalc').hide();
+                                                });
+                        });
 }
 
 function disableTab(event) {
     $("textarea").keydown(function(e) {
-        var key_code = (window.event) ? event.keyCode : e.which;
-        if (key_code == 9) {
-            e.preventDefault();
-        }
-    });
+                          var key_code = (window.event) ? event.keyCode : e.which;
+                          if (key_code == 9) {
+                          e.preventDefault();
+                          }
+                          });
 }
 
 function allowSAInputsForMultiLang(event) {
@@ -2996,17 +2996,17 @@ function allowSAInputsForMultiLang(event) {
 
 function validateKeyBoardInputAlphaNumeric(evt, textAreaObj) {
     var charCode = (evt.which) ? evt.which : evt.keyCode;
-    if (!(evt.ctrlKey || evt.altKey) && ((charCode >= 97 && charCode <= 122) 
-    || (charCode >= 65 && charCode <= 90) || (charCode >= 48 && charCode <= 57) 
-    || (charCode == 43) || (charCode == 44) || (charCode == 45) || (charCode == 46) || (charCode == 32) 
-    || (charCode == 59) || (charCode == 42) || (charCode == 13) || (charCode == 33) || (charCode == 64)
-    || (charCode == 35) || (charCode == 36) || (charCode == 37) || (charCode == 94) || (charCode == 38) 
-    || (charCode == 42) || (charCode == 40) || (charCode == 41) || (charCode == 95) || (charCode == 61) 
-    || (charCode == 20) || (charCode == 123) || (charCode == 125) || (charCode == 91) || (charCode == 93) 
-    || (charCode == 124) || (charCode == 92) || (charCode == 126) || (charCode == 96)
-    || (charCode == 58) || (charCode == 34) || (charCode == 39) || (charCode == 60) || (charCode == 62) 
-    || (charCode == 63) || (charCode == 47) || (charCode == 106) || (charCode == 111) || (charCode == 12)
-    || (charCode == 8) || (charCode == 190) || (charCode == 191) || (charCode == 188) || (charCode == 222))) {
+    if (!(evt.ctrlKey || evt.altKey) && ((charCode >= 97 && charCode <= 122)
+                                         || (charCode >= 65 && charCode <= 90) || (charCode >= 48 && charCode <= 57)
+                                         || (charCode == 43) || (charCode == 44) || (charCode == 45) || (charCode == 46) || (charCode == 32)
+                                         || (charCode == 59) || (charCode == 42) || (charCode == 13) || (charCode == 33) || (charCode == 64)
+                                         || (charCode == 35) || (charCode == 36) || (charCode == 37) || (charCode == 94) || (charCode == 38)
+                                         || (charCode == 42) || (charCode == 40) || (charCode == 41) || (charCode == 95) || (charCode == 61)
+                                         || (charCode == 20) || (charCode == 123) || (charCode == 125) || (charCode == 91) || (charCode == 93)
+                                         || (charCode == 124) || (charCode == 92) || (charCode == 126) || (charCode == 96)
+                                         || (charCode == 58) || (charCode == 34) || (charCode == 39) || (charCode == 60) || (charCode == 62)
+                                         || (charCode == 63) || (charCode == 47) || (charCode == 106) || (charCode == 111) || (charCode == 12)
+                                         || (charCode == 8) || (charCode == 190) || (charCode == 191) || (charCode == 188) || (charCode == 222))) {
         return true;
     } else {
         return false;
@@ -3037,20 +3037,20 @@ function focusOnDiv1() {
     $('#' + divId).focus();
     /*}, 0);
     	$('#'+divId).bind("blur", function() {
-    		setTimeout(function() {
-    			$('#'+divId).focus();
-    		}, 0);
+     setTimeout(function() {
+     $('#'+divId).focus();
+     }, 0);
     	});*/
 }
 
 $(document).click(function(e) {
 
-    var target = $(e.target), article;
+                  var target = $(e.target), article;
 
-    if (!target.is('select')) {
-        focusOnDiv1();
-    }
-});
+                  if (!target.is('select')) {
+                  focusOnDiv1();
+                  }
+                  });
 
 function mockScoreCalc() {
     var langId = 0, totalQues = 0, ques = '', isParentLAQCorrect = false;
@@ -3248,11 +3248,11 @@ function evaluateSAQues(ques) {
                 if (proceed && ques.isCaseSensitive == "TRUE" && ques.answer == possibleAnswers[i]) {
                     ques.isCorrect = true;
                     break;
-                } else 
-                if (proceed && ques.isCaseSensitive == "FALSE" && ques.answer.toUpperCase() == possibleAnswers[i].toUpperCase()) {
-                    ques.isCorrect = true;
-                    break;
-                }
+                } else
+                    if (proceed && ques.isCaseSensitive == "FALSE" && ques.answer.toUpperCase() == possibleAnswers[i].toUpperCase()) {
+                        ques.isCorrect = true;
+                        break;
+                    }
             }
         }
     }
@@ -3404,28 +3404,28 @@ function loadLabel() {
     mockLabels.optSectResetMsg = $(xml).find('OptionalSectionWarningMessage').text();
     mockLabels.selSectToReset = $(xml).find('SectionSelectionToReset').text();
     $(xml).find('OptionalSectionSummary').each(function() {
-        mockLabels.optSectSummary = $(this).text();
-        mockLabels.optSectName = $(this).attr('OptionalSectionName');
-        mockLabels.secName = $(this).attr('SectionName');
-        mockLabels.noOfQues = $(this).attr('NoOfQuestions');
-        mockLabels.answered = $(this).attr('Answered');
-        mockLabels.notAnswered = $(this).attr('NotAnswered');
-        mockLabels.markReview = $(this).attr('MarkForReview');
-        mockLabels.notAttempted = $(this).attr('NotVisited');
-    });
+                                               mockLabels.optSectSummary = $(this).text();
+                                               mockLabels.optSectName = $(this).attr('OptionalSectionName');
+                                               mockLabels.secName = $(this).attr('SectionName');
+                                               mockLabels.noOfQues = $(this).attr('NoOfQuestions');
+                                               mockLabels.answered = $(this).attr('Answered');
+                                               mockLabels.notAnswered = $(this).attr('NotAnswered');
+                                               mockLabels.markReview = $(this).attr('MarkForReview');
+                                               mockLabels.notAttempted = $(this).attr('NotVisited');
+                                               });
     $(xml).find('ExamSummary').each(function() {
-        mockLabels.examSummary = $(this).text();
-        mockLabels.curGrp = $(this).attr('CurrentGroup');
-        mockLabels.keyStrokesCount = $(this).attr('GrossKeyStrokesCount');
-        mockLabels.backspaceCount = $(this).attr('BackSpaceCount');
-        mockLabels.elapsedTime = $(this).attr('ElapsedTime');
-        mockLabels.yetToAttempt = $(this).attr('YetToAttempt');
-        mockLabels.attemptedGrp = $(this).attr('AttemptedGroup');
-        mockLabels.canView = $(this).attr('ViewAllowed');
-        mockLabels.canNotView = $(this).attr('ViewNotAllowed');
-        mockLabels.canEdit = $(this).attr('EditAllowed');
-        mockLabels.canNotEdit = $(this).attr('EditNotAllowed');
-    });
+                                    mockLabels.examSummary = $(this).text();
+                                    mockLabels.curGrp = $(this).attr('CurrentGroup');
+                                    mockLabels.keyStrokesCount = $(this).attr('GrossKeyStrokesCount');
+                                    mockLabels.backspaceCount = $(this).attr('BackSpaceCount');
+                                    mockLabels.elapsedTime = $(this).attr('ElapsedTime');
+                                    mockLabels.yetToAttempt = $(this).attr('YetToAttempt');
+                                    mockLabels.attemptedGrp = $(this).attr('AttemptedGroup');
+                                    mockLabels.canView = $(this).attr('ViewAllowed');
+                                    mockLabels.canNotView = $(this).attr('ViewNotAllowed');
+                                    mockLabels.canEdit = $(this).attr('EditAllowed');
+                                    mockLabels.canNotEdit = $(this).attr('EditNotAllowed');
+                                    });
     mockLabels.deselectOptSect = $(xml).find('DeselectingMessage').text();
     mockLabels.breakTimeLeft = $(xml).find('BreakTimeLeft').text();
     mockLabels.markAnsTitle = $(xml).find('MarkedAndAnswered').text();
@@ -3435,18 +3435,18 @@ function loadLabel() {
     mockLabels.maxQuesCrossedWithMarkReview = $(xml).find('QuestionLimitMessageOnlyAnswered').text();
     mockLabels.maxQuesCrossedWithoutMarkReview = $(xml).find('QuestionLimitMessageWithMarkedForReview').text();
     $(xml).find('ScoreCard').each(function() {
-        mockLabels.candName = $(this).attr('CandidateName');
-        mockLabels.secScore = $(this).attr('SectionScore');
-        mockLabels.secPercent = $(this).attr('SectionPercentage');
-        mockLabels.gwpm = $(this).attr('GrossWPM');
-        mockLabels.nwpm = $(this).attr('NetWPM');
-        mockLabels.accuracy = $(this).attr('Accuracy');
-        mockLabels.attempted = $(this).attr('Attempted');
-        mockLabels.correct = $(this).attr('Correct');
-        mockLabels.incorrect = $(this).attr('Incorrect');
-        mockLabels.notEvaluated = $(this).attr('NotEvaluated');
-        mockLabels.proceedBtnLabel = $(this).attr('Proceed');
-    });
+                                  mockLabels.candName = $(this).attr('CandidateName');
+                                  mockLabels.secScore = $(this).attr('SectionScore');
+                                  mockLabels.secPercent = $(this).attr('SectionPercentage');
+                                  mockLabels.gwpm = $(this).attr('GrossWPM');
+                                  mockLabels.nwpm = $(this).attr('NetWPM');
+                                  mockLabels.accuracy = $(this).attr('Accuracy');
+                                  mockLabels.attempted = $(this).attr('Attempted');
+                                  mockLabels.correct = $(this).attr('Correct');
+                                  mockLabels.incorrect = $(this).attr('Incorrect');
+                                  mockLabels.notEvaluated = $(this).attr('NotEvaluated');
+                                  mockLabels.proceedBtnLabel = $(this).attr('Proceed');
+                                  });
     $('#proceedToNextGrp').val($(xml).find('ProceedToNextGroup').text());
     $('#sysInstruLabel').html($(xml).find('Instructions').text());
     $('#otherInstruLabel').html($(xml).find('OtherImportantInstructions').text());
@@ -3608,8 +3608,8 @@ function getCandIdFromCookie() {
         mockVar.candName = unescape(candName);
     } else {
         window.location.href = "error14.html?E103";
-    
-}
+        
+    }
     if (mockVar.storeCandResponse == 1 && mockVar.candId == "") {
         window.location.href = "error15.html?E108";
     }
@@ -3688,25 +3688,25 @@ function sendResponseToServlet() {
     google_news_articles.push(jsonString);
     $('#pWait').show();
     $.ajax({
-        type: "POST",
-        url: mockVar.candResponseUrl,
-        async: false,
-        data: {
-            'csrfmiddlewaretoken': cookieValue,
-            'google_news_articles[]': google_news_articles
-        },
-        dataType: "text",
-        success: function (data) {
-
-            alert("data");
-            $('#pWait').hide();
-            moveToScoreCardDisplay();
-        },
-        error: function () {
-            //alert(filePath)
-            window.location.href = "errorquizpost.html?E404";
-        }
-    });
+           type: "POST",
+           url: mockVar.candResponseUrl,
+           async: false,
+           data: {
+           'csrfmiddlewaretoken': cookieValue,
+           'google_news_articles[]': google_news_articles
+           },
+           dataType: "text",
+           success: function (data) {
+           
+           alert("data");
+           $('#pWait').hide();
+           moveToScoreCardDisplay();
+           },
+           error: function () {
+           //alert(filePath)
+           window.location.href = "errorquizpost.html?E404";
+           }
+           });
 }
 
 function compileCode() {

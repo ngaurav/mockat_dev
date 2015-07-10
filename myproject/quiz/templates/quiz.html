@@ -95,8 +95,8 @@
 					<font size="4em"><b id="profileDetails">Profile Details</b></font>
 					<br/>
 					<table style="border-bottom: #000 1px solid; border-left: #000 1px solid; font-size: 14px; border-top: #000 1px solid; border-right: #000 1px solid;">
-						<tr><td><b><span id="loginName"></span></b></td><td><b> : </b>11111</td></tr>
-						<tr><td><b id="candName">Name</b></td><td><b> : </b><span class="candOriginalName">John Smith</td></tr>
+						<tr><td><b><span id="loginName"></span></b></td><td><b> : </b>{{username}}</td></tr>
+						<tr><td><b id="candName">Name</b></td><td><b> : </b><span class="candOriginalName">{{fullname}}</td></tr>
 						<tr><td><b id="candDateOfBirth">Date of Birth (DD-MM-YYYY)</b></td><td><b> : </b>22-05-1988 </td></tr>
 						<tr><td id="emailIdText"></td><td id="emailId"></td></tr>
 						<tr><td id="contactNoText"></td><td id="contactNo"></td></tr>
@@ -148,7 +148,7 @@
 				<div id="timerRightSideDiv" style="width:50%;float:left;;padding-top:7px;padding-bottom:7px;">
 					<div style="height:50px;">
 						<div style="padding-top:8px;width:100%;" id="showTime"> &nbsp;</div>
-						<div style="width:100%"><i id="candidateName" class="candOriginalName">John Smith</i></div>
+						<div style="width:100%"><i id="candidateName" class="candOriginalName">{{fullname}}</i></div>
 					</div>
 					<div id="usefulDataDivRight" style="display:none;"><a class="blueBtn" href="#" onclick="showHelpContent(event);"><span>Useful Data</span></a></div>
 					<div id="showCalc" style="display:none;height:25px;padding-left:5px;float:left;position:relative;"><a class="blueBtn" href="#" onclick="loadCalculator()"><span>Calculator</span></a></div>
