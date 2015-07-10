@@ -17,7 +17,7 @@
   	  {% for answer in question.get_answers %}
   	    <tr class="success">
   		  <td>{{ answer.content|safe }}</td>
-  		  <td>{% trans "This is the correct answer" %}</td>
+  		  <td>{% if answer.correct %}{% trans "This is the correct answer" %}{% endif %}</td>
   	    </tr>
   	{% endfor %}
     </tbody>
