@@ -1,0 +1,31 @@
+{% extends "spirit/_base.html" %}
+{% load i18n %}
+{% block title %} {{ quiz.title }} {% endblock %}
+{% block head-extra %}
+<link rel="stylesheet" href="/static/quiz/css/quiz.css">
+{% endblock %}
+{% block content %}
+
+  {% if question.split_view %}
+    <p>{{ question.paragraph.content }}</p>
+  {% endif %}
+
+  <p>{{ question|safe }}</p>
+
+  <table>
+    <tbody>
+  	  {% for answer in question.get_answers() %}
+  	    <tr class="success">
+  		  <td>{{ answer.content|safe }}</td>
+  		  <td>{% trans "This is the correct answer" %}</td>
+  	    </tr>
+  	{% endfor %}
+    </tbody>
+  </table>
+
+	<p><strong>{% trans "Explanation" %}:</strong></p>
+	<div class="well " style="background-color: #fcf8e3;">
+	  <p>{{ question.explanation|safe }}</p>
+	</div>
+
+{% endblock %}
