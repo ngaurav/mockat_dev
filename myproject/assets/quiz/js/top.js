@@ -3176,7 +3176,7 @@ function showScoreCard() {
                     for (var j = 1; j <= totalQues; j++) {
                     quesLangId = eval(temp_iOAP.viewLang[i][j].langID);
                     ques = temp_iOAP.sections[i][quesLangId][j];
-                    obtainedMarks = eval(calcualteScore(ques, quesStatus));
+                    obtainedMarks = eval(calcualteScore(ques, temp_iOAP.viewLang[i][j].status));
                     qtr += "<tr><th width='20%'>" + ques.quesID + "</th><th width='10%'>" + ques.answer + "</th><th width='10%'>" + ques.quesAnsStatus + "</th><th width='10%'>" + obtainedMarks + "</th></tr>";
                     }
                     qtr += "</table>";
