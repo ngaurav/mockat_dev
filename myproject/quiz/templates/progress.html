@@ -82,5 +82,49 @@
 
   {% endif %}
 
+  {% if records %}
+
+  <hr>
+
+  <h1>{% trans "Previous Mockat Tests" %}</h1>
+  <p class="lead">
+        {% trans "Below are the results of timed tests that you have sat." %}
+  </p>
+
+  <table class="table table-bordered table-striped">
+
+        <thead>
+          <tr>
+                <th>{% trans "Test Title" %}</th>
+                <th>{% trans "Date" %}</th>
+                <th>{% trans "Score" %}</th>
+                <th>{% trans "Possible Score" %}</th>
+                <th>Percentile</th>
+                <th>No. of candidates</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          {% for record in records %}
+
+          <tr>
+             {% with percentile, current_score, total_strength = record.get_percentile %}
+                <td>{{ record.quiz.title }}</td>
+                <td>{{ record.end_date }}</td>
+                <td>{{ current_score }}</td>
+                <td>{{ record.quiz.max_score }}</td>
+                <td>{{ percentile }}</td>
+                <td>{{ total_strength }}</td>
+             {% endwith %}
+          </tr>
+
+          {% endfor %}
+
+        </tbody>
+
+  </table>
+
+  {% endif %}
 
 {% endblock %}
