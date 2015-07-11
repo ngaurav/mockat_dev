@@ -3133,6 +3133,7 @@ function showScoreCard() {
         }
     }
     var str = "<div class='examSummaryHeader' id='scoreCardHeader'><span class='header'>" + mockVar.mockName + "</span>", typingStr = '';
+    var qtr = "";
     str += "<table width='80%' align='center'><tr><td style='text-align:left'><b>" + mockLabels.candName + "</b>&nbsp;" + mockVar.my_fullname + "</td><td style='text-align:right'><b>" + mockVar.loginLabel + " : </b>"+mockVar.my_username+"</td></tr></table></div>";
     str += "<div id='sc_group_summary' style='width:100%;overflow:auto;text-align:left'>";
     for (var groupNo = 0; groupNo < mockVar.groups.length; groupNo++) {
@@ -3168,6 +3169,17 @@ function showScoreCard() {
                     if (mockVar.displayPercentageScore)
                         str += "<td width='10%'>" + ((temp_iOAP.secDetails[i].sectionScore / temp_iOAP.secDetails[i].totalSecMarks) * 100).toFixed(2) + "</td>";
                     str += "</tr>";
+                    qtr += "<table class='bordertable' cellspacing=0 width='80%' align='center'>";
+                    qtr += "<tr><th width='20%'>" + "Question Id" + "</th><th width='10%'>" + "Correct Answer" + "</th><th width='10%'>" + "Your Answer" + "</th><th width='10%'>" + "Marks Awarded" + "</th></tr>";
+                    var quesLangId = 0, totalQues = 0;
+                    totalQues = temp_iOAP.sections[i][langId].length - 1;
+                    for (var j = 1; j <= totalQues; j++) {
+                    quesLangId = eval(temp_iOAP.viewLang[i][j].langID);
+                    ques = temp_iOAP.sections[i][quesLangId][j];
+                    obtainedMarks = eval(calcualteScore(ques, quesStatus));
+                    qtr += "<tr><th width='20%'>" + ques.quesID + "</th><th width='10%'>" + ques.answer + "</th><th width='10%'>" + ques.quesAnsStatus + "</th><th width='10%'>" + obtainedMarks + "</th></tr>";
+                    }
+                    qtr += "</table>";
                     totalGrpQues += temp_iOAP.sections[i][langId].length - 1;
                     totalGrpAttempted += temp_iOAP.secDetails[i].answered;
                     totalGrpCorrect += temp_iOAP.secDetails[i].totalCorrectQues;
@@ -3190,7 +3202,7 @@ function showScoreCard() {
         str += "</table>";
         typingStr += "</table>";
     }
-    str = str + typingStr + "</div></center>";
+    str = str + typingStr + qtr + "</div></center>";
     $('#questionContent').hide();
     $("#scoreSummaryDiv").html(str);
     $('#scoreCardDiv').show();
