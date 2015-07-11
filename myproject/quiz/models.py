@@ -407,10 +407,10 @@ class UserTrackrecord(models.Model):
         dividend = float(sum(self.quiz.score_stats[0:current_score+100]))
         divisor = float(sum(self.quiz.score_stats))
         if divisor < 1:
-            return current_score,0,int(sum(self.quiz.score_stats)
+            return current_score,0,int(sum(self.quiz.score_stats))
 
         if dividend > divisor:
-            return current_score,100,int(sum(self.quiz.score_stats)
+            return current_score,100,int(sum(self.quiz.score_stats))
 
         correct = ((dividend / divisor) * 100)
 
