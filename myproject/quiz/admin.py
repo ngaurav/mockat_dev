@@ -85,7 +85,12 @@ class ProgressAdmin(admin.ModelAdmin):
             create a user section
     """
     search_fields = ('user', 'score', )
+    list_display = ('user', )
 
+class RecordAdmin(admin.ModelAdmin):
+    search_fields = ('user','end_date', )
+    list_display = ('user', 'quiz', 'end_date')
+    list_filter = ('quiz',)
 
 class TFQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
@@ -112,3 +117,4 @@ admin.site.register(Paragraph, ParagraphAdmin)
 admin.site.register(Progress, ProgressAdmin)
 admin.site.register(TF_Question, TFQuestionAdmin)
 admin.site.register(Essay_Question, EssayQuestionAdmin)
+admin.site.register(UserTrackrecord, RecordAdmin)
