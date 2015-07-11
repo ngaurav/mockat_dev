@@ -112,9 +112,9 @@
              {% with tmp=record.get_score_percentile %}
                 <td>{{ record.quiz.title }}</td>
                 <td>{{ record.end_date }}</td>
-                <td>{{ tmp.1 }}</td>
-                <td>{{ record.quiz.get_max_score }}</td>
                 <td>{{ tmp.0 }}</td>
+                <td>{{ record.quiz.get_max_score }}</td>
+                <td>{{ tmp.1 }}</td>
                 <td>{{ tmp.2 }}</td>
              {% endwith %}
           </tr>
