@@ -34,9 +34,6 @@ class solView(DetailView):
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
 
-def startView(request):
-    return render(request, 'start_page.html');
-
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
     @method_decorator(permission_required('quiz.view_sittings'))

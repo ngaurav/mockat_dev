@@ -15,6 +15,24 @@ from taggit.managers import TaggableManager
 from quiz.models import Category
 from datetime import date
 
+@python_2_unicode_compatible
+class StartPage(models.Model):
+
+    rank = models.IntegerField(default=0)
+
+    content = models.TextField(max_length=10000,
+                               blank=False,
+                               verbose_name=_("Content"))
+
+    name = models.CharField(max_length=100,
+                               unique=True,
+                               blank=False,
+                               help_text=_("Give a name to this html page"),
+                               verbose_name=_("Name"))
+
+    def __str__(self):
+        return self.name
+
 class Entry(TimeStampedModel):
     """
     Represents a blog Entry.
