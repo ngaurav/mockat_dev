@@ -7,19 +7,15 @@ body{
 	font-size:0.8em;
 	margin:0px;
 	-moz-user-select:none;
-	cursor:url("BLACK.cur"),auto;
 }
 textarea{
 	resize:none;
 }
 div{
-	cursor:url("BLACK.cur"),auto;
 }
 select{
-	cursor:url("BLACK.cur"),auto;
 }
 input{
-	cursor:url("BLACK.cur"),auto;
 	vertical-align:middle;
 }
 table{
