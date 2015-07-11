@@ -109,11 +109,11 @@
           {% for record in records %}
 
           <tr>
-             {% with percentile, current_score, total_strength = record.get_score_percentile %}
+             {% with (percentile, current_score, total_strength) = record.get_score_percentile %}
                 <td>{{ record.quiz.title }}</td>
                 <td>{{ record.end_date }}</td>
                 <td>{{ current_score }}</td>
-                <td>{{ record.quiz.max_score }}</td>
+                <td>{{ record.quiz.get_max_score }}</td>
                 <td>{{ percentile }}</td>
                 <td>{{ total_strength }}</td>
              {% endwith %}
