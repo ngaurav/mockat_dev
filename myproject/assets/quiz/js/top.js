@@ -3178,7 +3178,7 @@ function showScoreCard() {
                     quesLangId = eval(temp_iOAP.viewLang[i][j].langID);
                     ques = temp_iOAP.sections[i][quesLangId][j];
                     obtainedMarks = eval(calcualteScore(ques, temp_iOAP.viewLang[i][j].status));
-                    qtr += "<tr><th width='20%'>" + "<a onclick=\"window.open('http://mockat.com/solution/"+ques.quesID+"/','Answer with explaination','width=1000','height=600')\">"+ques.quesId+"</a>"+"</th><th width='10%'>" + ques.answer + "</th><th width='10%'>" + ques.quesAnsStatus + "</th><th width='10%'>" + obtainedMarks + "</th></tr>";
+                    qtr += "<tr><th width='20%'>" + "<a onclick=\"window.open('http://mockat.com/solution/"+ques.quesID+"/','Answer with explaination','width=1000,height=600')\">"+ques.quesId+"</a>"+"</th><th width='10%'>" + ques.answer + "</th><th width='10%'>" + ques.quesAnsStatus + "</th><th width='10%'>" + obtainedMarks + "</th></tr>";
                     }
                     qtr += "</table>";
                     totalGrpQues += temp_iOAP.sections[i][langId].length - 1;
