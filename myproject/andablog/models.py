@@ -15,7 +15,6 @@ from taggit.managers import TaggableManager
 from quiz.models import Category
 from datetime import date
 
-@python_2_unicode_compatible
 class StartPage(models.Model):
 
     rank = models.IntegerField(default=0)
