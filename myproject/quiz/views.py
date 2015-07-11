@@ -178,7 +178,7 @@ class QuizUserProgressView(TemplateView):
         progress, c = Progress.objects.get_or_create(user=self.request.user)
         context['cat_scores'] = progress.list_all_cat_scores
         context['exams'] = progress.show_exams()
-        records = UserTrackrecord.objects.get(user=self.request.user)
+        records = UserTrackrecord.objects.filter(user=self.request.user)
         context['records'] = records
         return context
 
