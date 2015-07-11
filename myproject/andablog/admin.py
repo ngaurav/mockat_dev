@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db.models import Q
 from django.contrib.auth import get_user_model
 
-from .models import Entry, EntryImage
+from .models import StartPage, Entry, EntryImage
 
 
 class EntryImageInline(admin.TabularInline):
@@ -42,6 +42,10 @@ class EntryAdmin(admin.ModelAdmin):
 
 class EntryImageAdmin(admin.ModelAdmin):
     pass
+
+class StartPageAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name','content',)
 
 admin.site.register(Entry, EntryAdmin)
 admin.site.register(EntryImage, EntryImageAdmin)
