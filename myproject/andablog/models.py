@@ -21,13 +21,13 @@ class StartPage(models.Model):
 
     content = models.TextField(max_length=10000,
                                blank=False,
-                               verbose_name=_("Content"))
+                               verbose_name=("Content"))
 
     name = models.CharField(max_length=100,
                                unique=True,
                                blank=False,
-                               help_text=_("Give a name to this html page"),
-                               verbose_name=_("Name"))
+                               help_text=("Give a name to this html page"),
+                               verbose_name=("Name"))
 
     def __str__(self):
         return self.name
