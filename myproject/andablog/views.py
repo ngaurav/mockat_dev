@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 def startView(request):
     top_page = models.StartPage.objects.order_by('rank').first()
-    return render(request, 'start_page.html', {'page':top_page});
+    return render(request, 'andablog/start_page.html', {'page':top_page});
 
 class EntriesList(ListView):
 
