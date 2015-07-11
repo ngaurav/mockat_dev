@@ -49,3 +49,4 @@ class StartPageAdmin(admin.ModelAdmin):
 
 admin.site.register(Entry, EntryAdmin)
 admin.site.register(EntryImage, EntryImageAdmin)
+admin.site.register(StartPage, StartPageAdmin)
