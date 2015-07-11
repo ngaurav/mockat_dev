@@ -3711,7 +3711,7 @@ function sendResponseToServlet() {
            dataType: "text",
            success: function (data) {
            
-           alert("Your response has been succesfully saved.");
+           alert("Your response has been succesfully saved");
            $('#pWait').hide();
            moveToScoreCardDisplay();
            },
