@@ -3169,15 +3169,16 @@ function showScoreCard() {
                     if (mockVar.displayPercentageScore)
                         str += "<td width='10%'>" + ((temp_iOAP.secDetails[i].sectionScore / temp_iOAP.secDetails[i].totalSecMarks) * 100).toFixed(2) + "</td>";
                     str += "</tr>";
+                    qtr += "<br><span style='margin-left:10%'><b>" + temp_iOAP.secDetails[i].secName + "</b></span>";
                     qtr += "<table class='bordertable' cellspacing=0 width='80%' align='center'>";
-                    qtr += "<tr><th width='20%'>" + "Question Id" + "</th><th width='10%'>" + "Correct Answer" + "</th><th width='10%'>" + "Your Answer" + "</th><th width='10%'>" + "Marks Awarded" + "</th></tr>";
+                    qtr += "<tr><th width='20%'>" + "Question Id" + "</th><th width='10%'>" + "Your Answer" + "</th><th width='10%'>" + "Result" + "</th><th width='10%'>" + "Marks Awarded" + "</th></tr>";
                     var quesLangId = 0, totalQues = 0;
                     totalQues = temp_iOAP.sections[i][langId].length - 1;
                     for (var j = 1; j <= totalQues; j++) {
                     quesLangId = eval(temp_iOAP.viewLang[i][j].langID);
                     ques = temp_iOAP.sections[i][quesLangId][j];
                     obtainedMarks = eval(calcualteScore(ques, temp_iOAP.viewLang[i][j].status));
-                    qtr += "<tr><th width='20%'>" + ques.quesID + "</th><th width='10%'>" + ques.answer + "</th><th width='10%'>" + ques.quesAnsStatus + "</th><th width='10%'>" + obtainedMarks + "</th></tr>";
+                    qtr += "<tr><th width='20%'>" + "<a onclick=\"window.open('http://mockat.com/solution/"+ques.quesID+"/','Answer with explaination','width=1000,height=600')\">"+ques.quesId+"</a>"+"</th><th width='10%'>" + ques.answer + "</th><th width='10%'>" + ques.quesAnsStatus + "</th><th width='10%'>" + obtainedMarks + "</th></tr>";
                     }
                     qtr += "</table>";
                     totalGrpQues += temp_iOAP.sections[i][langId].length - 1;
