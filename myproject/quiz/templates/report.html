@@ -17,6 +17,27 @@
     <p>No. of participants: {{ tmp.4 }}</p>
   {% endwith %}
 
+  <table>
+        <thead>
+          <tr>
+                <th>Question Id</th>
+                <th>Your choice</th>
+                <th>Marks Obtained</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for q in record.question_pks %}
+          <tr>
+                <td>record.q</td>
+                <td>record.given_ans.{{ forloop.counter }}</td>
+                <td>record.marks_obtained.{{ forloop.counter }}</td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+
+  </table>
 
 {% endblock %}
 

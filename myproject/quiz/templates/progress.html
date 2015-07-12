@@ -19,13 +19,11 @@
 		<th>{% trans "Category" %}</th>
 		<th>{% trans "Correctly answererd" %}</th>
 		<th>{% trans "Total attempted" %}</th>
-		<th>%</th>
+		<th>Percentage</th>
 	  </tr>
 	</thead>
 
 	<tbody>
-
-
 	  {% for cat, value in cat_scores.items %}
 	  <tr>
 		<td>{{ cat }}</td>
@@ -33,7 +31,6 @@
 		<td>{{ value.1 }}</td>
 		<td>{{ value.2 }}</td>
 	  </tr>
-
 	  {% endfor %}
 
 	</tbody>
