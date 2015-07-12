@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from quiz.views import solView
+from quiz.views import solView, reportView
 from andablog.views import startView
 
 urlpatterns = [
