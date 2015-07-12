@@ -173,6 +173,12 @@ class Quiz(models.Model):
         verbose_name=_("Negative Marks"))
 
     score_stats = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=401,default= [0]*401)
+    score_stats1 = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=401,default= [0]*401)
+    score_stats2 = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=401,default= [0]*401)
+
+    @property
+    def get_sec1count(self):
+        return self.question_set.all().filter(section_two=False).count()
 
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
         self.url = re.sub('\s+', '-', self.url).lower()
@@ -667,6 +673,10 @@ class Question(models.Model):
                                                "after the question has "
                                                "been answered."),
                                    verbose_name=_('Explanation'))
+
+    section_two = models.BooleanField(default = False, blank=False,
+        help_text=_("Verbal Ability Logical Reasoning section"),
+        verbose_name=_("Section II"))
 
     objects = InheritanceManager()
 

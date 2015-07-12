@@ -42,10 +42,6 @@ class MCQuestion(Question):
 
     para = models.ForeignKey(Paragraph, null=True, blank=True, verbose_name=_("Paragraph"))
 
-    section_two = models.BooleanField(default = False, blank=False,
-        help_text=_("Verbal Ability Logical Reasoning section"),
-        verbose_name=_("Section II"))
-
     answer_order = models.CharField(
         max_length=30, null=True, blank=True,
         choices=ANSWER_ORDER_OPTIONS,
