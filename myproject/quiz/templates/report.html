@@ -10,7 +10,7 @@
   <p>Date: {{ record.end_date }} </p>
   <p>Max Score: {{ record.get_max_score }} </p>
   {% with tmp=record.get_score_percentile %}
-    <p>Score: {{ tmp.0 }}</p>
+    <p>{{ tmp.0 }}</p>
     <p>Percentile: {{ tmp.1 }}</p>
     <p>Percentile (Section 1): {{ tmp.2 }}</p>
     <p>Percentile (Section 2): {{ tmp.3 }}</p>
