@@ -29,9 +29,9 @@
         <tbody>
           {% for q in record.question_pks %}
           <tr>
-                <td>record.q</td>
-                <td>record.given_ans.{{ forloop.counter }}</td>
-                <td>record.marks_obtained.{{ forloop.counter }}</td>
+                <td><a href = "/solution/{{ q }}/">{{ q }}</a></td>
+                <td>{{ record.given_ans.{{ forloop.counter }} }}</td>
+                <td>{{ record.marks_obtained.{{ forloop.counter }} }}</td>
           </tr>
           {% endfor %}
 
