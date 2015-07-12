@@ -38,7 +38,7 @@ class reportView(DetailView):
 
     model = UserTrackrecord
     slug_field = 'id'
-    context_object_name = 'report'
+    context_object_name = 'record'
     template_name = 'report.html'
 
     def get(self, request, *args, **kwargs):
