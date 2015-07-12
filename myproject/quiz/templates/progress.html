@@ -110,7 +110,7 @@
 
           <tr>
              {% with tmp=record.get_score_percentile %}
-                <td>{{ record.quiz.title }}</td>
+                <td><a href="/report/{{record.id}}/" >{{ record.quiz.title }}</a></td>
                 <td>{{ record.end_date }}</td>
                 <td>{{ tmp.0 }}</td>
                 <td>{{ tmp.1 }}</td>

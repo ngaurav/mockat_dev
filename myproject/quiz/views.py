@@ -34,6 +34,25 @@ class solView(DetailView):
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
 
+class reportView(DetailView):
+
+    model = UserTrackrecord
+    slug_field = 'id'
+    context_object_name = 'report'
+    template_name = 'report.html'
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+
+        if not request.user.is_authenticated():
+            raise PermissionDenied
+
+        if not request.user is self.object.user:
+            context = self.get_context_data(object=self.object)
+            return self.render_to_response(context)
+
+        raise PermissionDenied
+
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
     @method_decorator(permission_required('quiz.view_sittings'))

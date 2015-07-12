@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^content/', include('andablog.urls', namespace='andablog')),
     url(r'^forum/', include('spirit.urls')),
     url(r'^solution/(?P<slug>[A-Za-z0-9-_]+)', solView.as_view(), name="solution"),
+    url(r'^report/(?P<slug>[A-Za-z0-9-_]+)', reportView.as_view(), name="report"),
     url(r'^$', startView, name="home"),
 ]
