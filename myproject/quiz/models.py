@@ -410,7 +410,7 @@ class UserTrackrecord(models.Model):
 
     @property
     def get_tuple(self):
-        return zip(question_pks, given_ans, marks_obtained)
+        return zip(self.question_pks, self.given_ans, self.marks_obtained)
 
     @property
     def get_max_score(self):
