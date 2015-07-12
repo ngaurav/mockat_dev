@@ -404,7 +404,7 @@ class UserTrackrecord(models.Model):
 
     @property
     def get_max_score(self):
-        score = self.quiz.get_max_score() * self.quiz.mark
+        score = self.quiz.get_max_score * self.quiz.mark
         return score
 
     @property
