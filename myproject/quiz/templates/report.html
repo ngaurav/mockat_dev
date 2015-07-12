@@ -27,11 +27,11 @@
         </thead>
 
         <tbody>
-          {% for q in record.question_pks %}
+          {% for q in record.get_tuple %}
           <tr>
-                <td><a href = "/solution/{{ q }}/">{{ q }}</a></td>
-                <td>{{ record.given_ans.{{ forloop.counter }} }}</td>
-                <td>{{ record.marks_obtained.{{ forloop.counter }} }}</td>
+                <td><a href = "/solution/{{ q.0 }}/">{{ q.0 }}</a></td>
+                <td>{{ q.1 }}</td>
+                <td>{{ q.2 }}</td>
           </tr>
           {% endfor %}
 

@@ -409,6 +409,10 @@ class UserTrackrecord(models.Model):
     end_date = models.DateTimeField(auto_now_add=True,verbose_name=_("Date"),null=True,blank=True)
 
     @property
+    def get_tuple(self):
+        return zip(question_pks, given_ans, marks_obtained)
+
+    @property
     def get_max_score(self):
         score = self.quiz.get_max_score * self.quiz.mark
         return score
