@@ -1,0 +1,22 @@
+{% extends "spirit/_base.html" %}
+{% load i18n %}
+{% block title %} {{ quiz.title }} {% endblock %}
+{% block head-extra %}
+<link rel="stylesheet" href="/static/quiz/css/quiz.css">
+{% endblock %}
+{% block content %}
+
+  <p>Test Title: {{ record.quiz.title }} </p>
+  <p>Date: {{ record.end_date }} </p>
+  <p>Max Score: {{ record.get_max_score }} </p>
+  {% with tmp=record.get_score_percentile %}
+    <p>Score: {{ tmp.0 }}</p>
+    <p>Percentile: {{ tmp.1 }}</p>
+    <p>Percentile (Section 1): {{ tmp.2 }}</p>
+    <p>Percentile (Section 2): {{ tmp.3 }}</p>
+    <p>No. of participants: {{ tmp.4 }}</p>
+  {% endwith %}
+
+
+{% endblock %}
+
