@@ -98,9 +98,9 @@
                 <th>{% trans "Test Title" %}</th>
                 <th>{% trans "Date" %}</th>
                 <th>{% trans "Score" %}</th>
-                <th>{% trans "Possible Score" %}</th>
                 <th>Percentile</th>
-                <th>No. of candidates</th>
+                <th>Percentile1</th>
+                <th>Percentile2</th>
           </tr>
         </thead>
 
@@ -113,9 +113,9 @@
                 <td>{{ record.quiz.title }}</td>
                 <td>{{ record.end_date }}</td>
                 <td>{{ tmp.0 }}</td>
-                <td>{{ record.get_max_score }}</td>
                 <td>{{ tmp.1 }}</td>
                 <td>{{ tmp.2 }}</td>
+                <td>{{ tmp.3 }}</td>
              {% endwith %}
           </tr>
 

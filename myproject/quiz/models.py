@@ -416,20 +416,29 @@ class UserTrackrecord(models.Model):
     @property
     def get_score_percentile(self):
         current_score = sum(self.marks_obtained)
+        sec1count = self.quiz.get_sec1count
+        score1 = sum(self.marks_obtained[0:sec1count])
+        score2 = sum(self.marks_obtained[sec1count:])
         dividend = float(sum(self.quiz.score_stats[0:current_score+100]))
         divisor = float(sum(self.quiz.score_stats))
+        dividend1 = float(sum(self.quiz.score_stats1[0:score1+100]))
+        divisor1 = float(sum(self.quiz.score_stats1))
+        dividend2 = float(sum(self.quiz.score_stats2[0:score2+100]))
+        divisor2 = float(sum(self.quiz.score_stats2))
+
         if divisor < 1:
-            return current_score,0,int(sum(self.quiz.score_stats))
+            return current_score,0,0,0,int(sum(self.quiz.score_stats))
 
         if dividend > divisor:
-            return current_score,100,int(sum(self.quiz.score_stats))
+            return current_score,100,100,100,int(sum(self.quiz.score_stats))
 
         correct = ((dividend / divisor) * 100)
-
+        correct1 = ((dividend1 / divisor1) * 100)
+        correct2 = ((dividend2 / divisor2) * 100)
         if correct >= 0:
-            return current_score,correct,int(sum(self.quiz.score_stats))
+            return current_score,correct,correct1,correct2,int(sum(self.quiz.score_stats))
         else:
-            return current_score,0,0
+            return current_score,0,0,0,0
 
 class Sitting(models.Model):
     """
