@@ -66,6 +66,9 @@ class QuizDetailView(DetailView):
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
 
+        if self.object.is_exam:
+            raise PermissionDenied
+
         if self.object.draft and not request.user.has_perm('quiz.change_quiz'):
             raise PermissionDenied
 
@@ -130,7 +133,10 @@ def ResponseView(request):
             given_ans_list.append(int(question["givenAns"]))
             marks_list.append(int(question["marksObtained"]))
         logger.debug(marks_list)
-        UserTrackrecord.objects.create(user=request.user,quiz=Quiz.objects.get(url=objs.mockId),question_pks=question_list,given_ans=given_ans_list,marks_obtained=marks_list)
+        my_quiz = Quiz.objects.get(url=objs.mockId)
+        record = UserTrackrecord.objects.create(user=request.user,my_quiz,question_pks=question_list,given_ans=given_ans_list,marks_obtained=marks_list)
+        my_quiz.score_stats[int(sum(marks_list))+100] += 1
+        my_quiz.save()
         return HttpResponse("Your response was successfully saved!")
     else:
         return HttpResponse("Response submission failed")
@@ -226,6 +232,10 @@ class QuizTake(FormView):
 
     def dispatch(self, request, *args, **kwargs):
         self.quiz = get_object_or_404(Quiz, url=self.kwargs['quiz_name'])
+
+        if self.object.is_exam:
+            raise PermissionDenied
+
         if self.quiz.draft and not request.user.has_perm('quiz.change_quiz'):
             raise PermissionDenied
 
