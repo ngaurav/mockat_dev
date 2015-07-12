@@ -134,7 +134,7 @@ def ResponseView(request):
             marks_list.append(int(question["marksObtained"]))
         logger.debug(marks_list)
         my_quiz = Quiz.objects.get(url=objs.mockId)
-        record = UserTrackrecord.objects.create(user=request.user,my_quiz,question_pks=question_list,given_ans=given_ans_list,marks_obtained=marks_list)
+        record = UserTrackrecord.objects.create(user=request.user,quiz=my_quiz,question_pks=question_list,given_ans=given_ans_list,marks_obtained=marks_list)
         my_quiz.score_stats[int(sum(marks_list))+100] += 1
         my_quiz.save()
         return HttpResponse("Your response was successfully saved!")
