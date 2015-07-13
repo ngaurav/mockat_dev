@@ -93,9 +93,9 @@ class RecordAdmin(admin.ModelAdmin):
     list_filter = ('quiz',)
 
 class HistoryAdmin(admin.ModelAdmin):
-    search_fields = ('user' )
-    list_display = ('user')
-    list_filter = ('user')
+    search_fields = ('user',)
+    list_display = ('user',)
+    list_filter = ('user',)
 
 class TFQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
