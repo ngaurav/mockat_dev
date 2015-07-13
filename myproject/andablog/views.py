@@ -44,7 +44,7 @@ def CategoryEntryDetail(request,categ):
         cat = Category.objects.get(category=categ)
         entry = cat.entry_set.all()[page-1]
         #logger.debug(entry)
-        history, c = HistoryOfUser.objects.get_or_create(user=self.request.user)
+        history, c = HistoryOfUser.objects.get_or_create(user=request.user)
         history.category_list[cat.id]=max(history.category_list[cat.id],1)
         return render(request, 'andablog/entry_detail.html', {"entry": entry})
     else:
