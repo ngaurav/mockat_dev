@@ -2,7 +2,7 @@ from django import forms
 from django.contrib import admin
 from django.contrib.admin.widgets import FilteredSelectMultiple
 
-from .models import Quiz, Category, Domain, Progress, Question, UserTrackrecord
+from .models import Quiz, Category, Domain, Progress, Question, UserTrackrecord, HistoryOfAdmin
 from multichoice.models import MCQuestion, Answer, Paragraph
 from true_false.models import TF_Question
 from essay.models import Essay_Question
@@ -92,6 +92,11 @@ class RecordAdmin(admin.ModelAdmin):
     list_display = ('user', 'quiz', 'end_date')
     list_filter = ('quiz',)
 
+class HistoryAdmin(admin.ModelAdmin):
+    search_fields = ('user' )
+    list_display = ('user')
+    list_filter = ('user')
+
 class TFQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
     list_filter = ('category',)
@@ -118,3 +123,4 @@ admin.site.register(Progress, ProgressAdmin)
 admin.site.register(TF_Question, TFQuestionAdmin)
 admin.site.register(Essay_Question, EssayQuestionAdmin)
 admin.site.register(UserTrackrecord, RecordAdmin)
+admin.site.register(HistoryOfUser, HistoryAdmin)

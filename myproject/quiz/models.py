@@ -393,6 +393,9 @@ class SittingManager(models.Manager):
             sitting = self.filter(user=user, quiz=quiz, complete=False)[0]
         return sitting
 
+class HistoryOfUser(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"))
+    category_data = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=500,default= [0]*500)
 
 class UserTrackrecord(models.Model):
     """
