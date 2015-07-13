@@ -35,7 +35,7 @@ class EntryDetail(DetailView):
     slug_field = 'slug'
 
     def get_queryset(self):
-        cat = self.category
+        cat = self.object.category
         history, c = HistoryOfUser.objects.get_or_create(user=self.request.user)
         history.category_list[cat.id]=max(history.category_list[cat.id],1)
         return super(EntryDetail, self).get_queryset().filter(
