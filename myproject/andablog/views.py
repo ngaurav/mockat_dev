@@ -45,7 +45,6 @@ def CategoryEntryDetail(request,categ):
             page = int(page1)
         except KeyError:
             page = 1
-        logger.debug(page)
         cat = Category.objects.get(category=categ)
         entry = cat.entry_set.all()[page-1]
         #logger.debug(entry)
@@ -54,4 +53,9 @@ def CategoryEntryDetail(request,categ):
         history.save()
         return render(request, 'andablog/entry_detail.html', {"entry": entry})
     else:
-        return HttpResponse()
+        cat = Category.objects.get(category=categ)
+        entry = cat.entry_set.earliest
+        history, c = HistoryOfUser.objects.get_or_create(user=request.user)
+        history.category_data[cat.id]=max(history.category_data[cat.id],1)
+        history.save()
+        return render(request, 'andablog/entry_detail.html', {"entry": entry}

@@ -122,9 +122,7 @@
           <li class='has-sub'>
               <a href='#'><span>{{cat.category_display_name}}</span></a>
               <ul>
-                  {% with cat.entry_set.earliest as entry %}
-                  <li><a href="/content/{{ entry.slug }}"><span>Lessons</span></a></li>
-                  {% endwith %}
+                  <li><a href="/content/cat/{{ cat }}"><span>Lessons</span></a></li>
                   {% for q in cat.quiz_set.all %}
                   {% if not q.is_exam %}
                   {% if not q.draft %}
