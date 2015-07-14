@@ -40,7 +40,11 @@ class EntryDetail(DetailView):
 
 def CategoryEntryDetail(request,categ):
     if request.method=='POST':
-        page = int(request.POST.get('page','1'))
+        try:
+            page1 = request.POST['page'].strip()
+            page = int(page1)
+        except KeyError:
+            page = 1
         logger.debug(page)
         cat = Category.objects.get(category=categ)
         entry = cat.entry_set.all()[page-1]
