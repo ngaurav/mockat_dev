@@ -48,7 +48,7 @@ def CategoryEntryDetail(request,categ):
         cat = Category.objects.get(category=categ)
         entry = cat.entry_set.all()[page-1]
         one_or_two = 1
-        if page=cat.entry_set.count():
+        if page is cat.entry_set.count():
             one_or_two = 2
         #logger.debug(entry)
         history, c = HistoryOfUser.objects.get_or_create(user=request.user)

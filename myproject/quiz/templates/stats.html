@@ -1,0 +1,44 @@
+{% extends "spirit/_base.html" %}
+{% load i18n %}
+{% block title %} {{ quiz.title }} {% endblock %}
+{% block head-extra %}
+<link rel="stylesheet" href="/static/quiz/css/quiz.css">
+{% endblock %}
+{% block content %}
+
+{% for dom in dom_list %}
+{% if not dom.invisible %}
+  <p>{{ dom.domain }}</p>
+  {% for cat in cat_data %}
+  {% if cat.0.domain.domain=dom.domain %}
+  <table>
+        <thead>
+          <tr>
+                <th>Category</th>
+                <th>Lessons</th>
+                <th>Level 1</th>
+                <th>Level 2</th>
+                <th>Level 3</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td>{{ cat.0.category_display_name }}</td>
+                <td>{{ cat.1 }}</td>
+                <td>{{ cat.2 }}</td>
+                <td>{{ cat.3 }}</td>
+                <td>{{ cat.4 }}</td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+
+  </table>
+  {% endif %}
+  {% endfor %}
+{% endif %}
+{% endfor %}
+{% endblock %}
+
+
