@@ -45,7 +45,7 @@ class Entry(TimeStampedModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, editable=True)
     tags = TaggableManager(blank=True)
 
-    category = models.ForeignKey(Category, null=True, editable=True)
+    category = models.ForeignKey(Category, null=True, blank=False, editable=True)
     rank = models.DateField(
         default=date.today,
         verbose_name=("Page Rank"))

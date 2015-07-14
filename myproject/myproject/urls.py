@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from quiz.views import solView, reportView
+from quiz.views import solView, reportView, statsView
 from andablog.views import startView
 
 urlpatterns = [
@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^forum/', include('spirit.urls')),
     url(r'^solution/(?P<slug>[A-Za-z0-9-_]+)', solView.as_view(), name="solution"),
     url(r'^report/(?P<slug>[A-Za-z0-9-_]+)', reportView.as_view(), name="report"),
+    url(r'^progress/(?P<slug>[A-Za-z0-9-_]+)', statsView.as_view(), name="stats"),
     url(r'^$', startView, name="home"),
 ]

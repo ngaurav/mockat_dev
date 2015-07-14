@@ -396,6 +396,23 @@ class SittingManager(models.Manager):
 class HistoryOfUser(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"))
     category_data = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=500,default= [0]*500)
+    @property
+    def get_quiz_status(self, qid):
+        if Sitting.objects.filter(user=user,quiz=qid,complete=True).exists():
+            return "Complete"
+        if Sitting.objects.filter(user=user,quiz=qid,complete=False).exists():
+            return "In Progress"
+        else:
+            return "Not attempted"
+    @property
+    def get_lesson_status(self, catid):
+        num = category_data[catid]
+        if num is 0:
+            return "Not visited"
+        if num is 1:
+            return "In Progress"
+        else:
+            return "Complete"
 
 class UserTrackrecord(models.Model):
     """

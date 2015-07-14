@@ -7,7 +7,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, ListView, TemplateView, FormView
 
 from .forms import QuestionForm, EssayForm
-from .models import Quiz, Category, Progress, Sitting, Question, UserTrackrecord
+from .models import Quiz, Category, Progress, Sitting, Question, UserTrackrecord, HistoryOfUser
 from essay.models import Essay_Question
 from multichoice.models import MCQuestion, Paragraph
 
@@ -210,6 +210,20 @@ class QuizUserProgressView(TemplateView):
         context['records'] = records
         return context
 
+class statsView(TemplateView):
+    template_name = 'stats.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(statsView, self)\
+            .dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(statsView, self).get_context_data(**kwargs)
+        history, c = HistoryOfUser.objects.get_or_create(user=self.request.user)
+        context['history'] = history
+        context['cat_list'] = Category.objects.all()
+        return context
 
 class QuizMarkingList(QuizMarkerMixin, SittingFilterTitleMixin, ListView):
     model = Sitting
