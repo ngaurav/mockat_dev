@@ -47,9 +47,12 @@ def CategoryEntryDetail(request,categ):
             page = 1
         cat = Category.objects.get(category=categ)
         entry = cat.entry_set.all()[page-1]
+        one_or_two = 1
+        if page=cat.entry_set.count():
+            one_or_two = 2
         #logger.debug(entry)
         history, c = HistoryOfUser.objects.get_or_create(user=request.user)
-        history.category_data[cat.id-1]=max(history.category_data[cat.id-1],1)
+        history.category_data[cat.id-1]=max(history.category_data[cat.id-1],one_or_two)
         history.save()
         return render(request, 'andablog/entry_detail.html', {"entry": entry})
     else:

@@ -180,15 +180,6 @@ class Quiz(models.Model):
     def get_sec1count(self):
         return self.question_set.all().filter(section_two=False).count()
 
-    @property
-    def get_quiz_status(self, uid):
-        if Sitting.objects.filter(user=uid,quiz=self,complete=True).exists():
-            return "Complete"
-        if Sitting.objects.filter(user=uid,quiz=self,complete=False).exists():
-            return "In Progress"
-        else:
-            return "Not attempted"
-
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
         self.url = re.sub('\s+', '-', self.url).lower()
 
@@ -405,16 +396,6 @@ class SittingManager(models.Manager):
 class HistoryOfUser(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"))
     category_data = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=500,default= [0]*500)
-
-    @property
-    def get_lesson_status(self, catid):
-        num = category_data[catid]
-        if num is 0:
-            return "Not visited"
-        if num is 1:
-            return "In Progress"
-        else:
-            return "Complete"
 
 class UserTrackrecord(models.Model):
     """
