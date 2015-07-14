@@ -424,12 +424,12 @@ th {
   padding: 0; }
 
 ::selection {
-  background: #cecece;
+  background: #11dddd;
   color: #fefefe;
   text-shadow: none; }
 
 ::-moz-selection {
-  background: #cecece;
+  background: #11dddd;
   color: #fefefe;
   text-shadow: none; }
 
