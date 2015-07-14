@@ -58,4 +58,4 @@ def CategoryEntryDetail(request,categ):
         history, c = HistoryOfUser.objects.get_or_create(user=request.user)
         history.category_data[cat.id]=max(history.category_data[cat.id],1)
         history.save()
-        return render(request, 'andablog/entry_detail.html', {"entry": entry}
+        return render(request, 'andablog/entry_detail.html', {"entry": entry})
