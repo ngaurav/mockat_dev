@@ -40,12 +40,16 @@ class EntryDetail(DetailView):
 
 def CategoryEntryDetail(request,categ):
     if request.method=='POST':
-        page = int(request.POST['page'].strip())
+        try:
+            page = int(request.POST['page'].strip())
+        except:
+            page = 1
         cat = Category.objects.get(category=categ)
         entry = cat.entry_set.all()[page-1]
         #logger.debug(entry)
         history, c = HistoryOfUser.objects.get_or_create(user=request.user)
         history.category_data[cat.id]=max(history.category_data[cat.id],1)
+        history.save()
         return render(request, 'andablog/entry_detail.html', {"entry": entry})
     else:
         return HttpResponse()
