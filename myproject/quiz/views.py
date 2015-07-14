@@ -221,8 +221,13 @@ class statsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(statsView, self).get_context_data(**kwargs)
         history, c = HistoryOfUser.objects.get_or_create(user=self.request.user)
-        context['history'] = history
-        context['cat_list'] = Category.objects.all()
+        cat_list = Category.objects.all()
+        l0 = map(lambda t:'Not Visited' if t<1 else 'In Progress' if t<2 else 'Complete',history.category_data)
+        l1 = map(lambda t:'Complete' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=True).exists() else 'In Progress' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=False).exists() else 'Not attempted',map(lambda t: t.quiz_set.filter(is_exam=False,draft=False).all()[0],cat_list))
+        l2 = map(lambda t:'Complete' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=True).exists() else 'In Progress' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=False).exists() else 'Not attempted',map(lambda t: t.quiz_set.filter(is_exam=False,draft=False).all()[1],cat_list))
+        l3 = map(lambda t:'Complete' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=True).exists() else 'In Progress' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=False).exists() else 'Not attempted',map(lambda t: t.quiz_set.filter(is_exam=False,draft=False).all()[2],cat_list))
+        context['cat_data'] = zip(cat_list,l0,l1,l2,l3)
+        context['dom_list'] = Domain.objects.all()
         return context
 
 class QuizMarkingList(QuizMarkerMixin, SittingFilterTitleMixin, ListView):

@@ -49,13 +49,13 @@ def CategoryEntryDetail(request,categ):
         entry = cat.entry_set.all()[page-1]
         #logger.debug(entry)
         history, c = HistoryOfUser.objects.get_or_create(user=request.user)
-        history.category_data[cat.id]=max(history.category_data[cat.id],1)
+        history.category_data[cat.id-1]=max(history.category_data[cat.id-1],1)
         history.save()
         return render(request, 'andablog/entry_detail.html', {"entry": entry})
     else:
         cat = Category.objects.get(category=categ)
         entry = cat.entry_set.earliest
         history, c = HistoryOfUser.objects.get_or_create(user=request.user)
-        history.category_data[cat.id]=max(history.category_data[cat.id],1)
+        history.category_data[cat.id-1]=max(history.category_data[cat.id-1],1)
         history.save()
         return render(request, 'andablog/entry_detail.html', {"entry": entry})
