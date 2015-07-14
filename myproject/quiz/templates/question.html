@@ -6,6 +6,19 @@
 {% block title %} {{ quiz.title }} {% endblock %}
 {% block head-extra %}
 <link rel="stylesheet" href="/static/quiz/css/quiz.css">
+<script type="text/javascript">
+   function toggle_visibility(id) {
+       var b = document.getElementById("solution_button");
+       var e = document.getElementById(id);
+       if(e.style.display == 'block'){
+          e.style.display = 'none';
+          b.innerHTML = "Show solution";
+       } else {
+          e.style.display = 'block';
+          b.innerHTML = "Hide solution";
+       }
+   }
+</script>
 {% endblock %}
 {% block content %}
 {% if previous.answers %}
@@ -74,6 +87,13 @@
   <input type="submit" value={% trans "Check" %} class="button" >
 </form>
 
+<button id="solution_button" onclick="solution" class="button">Show solution</button>
+<div id="solution" style="display:none;">
+        <p><strong>{% trans "Explanation" %}:</strong></p>
+        <div class="well " style="background-color: #fcf8e3;">
+          <p>{{ question.explanation|safe }}</p>
+        </div>
+</div>
 {% endif %}
 
 <hr>
