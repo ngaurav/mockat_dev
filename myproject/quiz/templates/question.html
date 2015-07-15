@@ -88,8 +88,8 @@
 </form>
   <button id="solution_button" onclick="toggle_visibility('solution')" class="button" style="float:right;">Show solution</button>
 <br>
-<br>
 <div id="solution" style="display:none;">
+        <br>
         <p><strong>{% trans "Explanation" %}:</strong></p>
         <div class="well " style="background-color: #fcf8e3;">
           <p>{{ question.explanation|safe }}</p>
