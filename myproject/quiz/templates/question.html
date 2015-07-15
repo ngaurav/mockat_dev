@@ -86,7 +86,7 @@
   </ul>
   <input type="submit" value={% trans "Check" %} class="button" style="float:left">
 </form>
-  <button id="solution_button" onclick="solution" class="button" style="float:right;">Show solution</button>
+  <button id="solution_button" onclick="toggle_visibility('solution')" class="button" style="float:right;">Show solution</button>
 
 <div id="solution" style="display:none;">
         <p><strong>{% trans "Explanation" %}:</strong></p>
@@ -96,6 +96,5 @@
 </div>
 {% endif %}
 
-<hr>
 
 {% endblock %}
