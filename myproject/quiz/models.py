@@ -81,10 +81,6 @@ class Quiz(models.Model):
         help_text=_("a user friendly url"),
         verbose_name=_("user friendly url"))
 
-    domain = models.ForeignKey(
-        Domain, null=True, blank=True,
-        verbose_name=_("Domain"))
-
     category = models.ForeignKey(
         Category, null=True, blank=True,
         verbose_name=_("Category"))
@@ -666,11 +662,6 @@ class Question(models.Model):
                                  verbose_name=_("Category"),
                                  blank=True,
                                  null=True)
-
-    domain = models.ForeignKey(Domain,
-                                     verbose_name=_("Domain"),
-                                     blank=True,
-                                     null=True)
 
     figure = models.ImageField(upload_to='uploads/%Y/%m/%d',
                                blank=True,
