@@ -17,6 +17,7 @@ from datetime import date
 
 from django.core.mail import send_mail, BadHeaderError
 from django import forms
+from django.forms.widgets import Textarea
 
 # A simple contact form with four fields.
 class ContactForm(forms.Form):
