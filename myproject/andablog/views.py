@@ -23,7 +23,7 @@ def contactView(request):
                 send_mail('Feedback', subject + "$" + from_email + "$$" +message,'noreply@mockat.com', ['ngreloaded@gmail.com',],['srini.vignesh@gmail.com',])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return HttpResponseRedirect('/contact/thankyou/')
+            return render(request, 'contacts.html', {'message': "Your feedback has been saved. Thanks!!",'form': models.ContactForm()})
         else:
             return render_to_response('contacts.html', {'form': models.ContactForm()})
     else:
