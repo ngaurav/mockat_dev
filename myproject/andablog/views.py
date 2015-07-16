@@ -15,7 +15,7 @@ from django.template import RequestContext, Context
 from django import newforms as forms
 from django.newforms.widgets import *
 
-def aboutView(request):
+def contactView(request):
     if request.method=='POST':
         subject = request.POST.get('topic', '')
         message = request.POST.get('message', '')
