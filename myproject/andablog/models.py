@@ -16,6 +16,7 @@ from quiz.models import Category
 from datetime import date
 
 from django.core.mail import send_mail, BadHeaderError
+from django import forms
 
 # A simple contact form with four fields.
 class ContactForm(forms.Form):

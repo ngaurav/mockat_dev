@@ -12,6 +12,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from contacts.models import ContactForm
 from django.template import RequestContext, Context
+from django import forms
 
 def contactView(request):
     if request.method=='POST':
