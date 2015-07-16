@@ -8,7 +8,7 @@ from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 import logging
 logger = logging.getLogger(__name__)
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
 from django.template.loader import render_to_string
 from django.template import RequestContext, Context
 from django import forms
@@ -20,7 +20,7 @@ def contactView(request):
         from_email = request.POST.get('email', '')
         if subject and message and from_email:
             try:
-                send_mail('Feedback:'+subject, message, 'noreply@mockat.com', ['ngreloaded@gmail.com',],['srini.vignesh@gmail.com',],reply_to=[from_email,])
+                send_mail(subject, message, 'noreply@mockat.com', ['ngreloaded@gmail.com',],['srini.vignesh@gmail.com',],reply_to=[from_email,])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return HttpResponseRedirect('/contact/thankyou/')
