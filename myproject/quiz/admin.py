@@ -69,11 +69,11 @@ class ParagraphAdmin(admin.ModelAdmin):
 class MCQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
     list_filter = ('category','para',)
-    fields = ('content', 'category', 'domain', 'rank',
+    fields = ('content', 'category', 'rank',
               'figure', 'quiz', 'explanation', 'answer_order',
               'split_view', 'para', 'section_two')
 
-    search_fields = ('content', 'explanation')
+    search_fields = ('content', 'explanation', 'category')
     filter_horizontal = ('quiz',)
 
     inlines = [AnswerInline]
@@ -100,19 +100,19 @@ class HistoryAdmin(admin.ModelAdmin):
 class TFQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
     list_filter = ('category',)
-    fields = ('content', 'category', 'domain', 'rank',
+    fields = ('content', 'category', 'rank',
               'figure', 'quiz', 'explanation', 'correct',)
 
-    search_fields = ('content', 'explanation')
-    filter_horizontal = ('quiz','category')
+    search_fields = ('content', 'explanation', 'category',)
+    filter_horizontal = ('quiz',)
 
 
 class EssayQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
     list_filter = ('category',)
-    fields = ('content', 'category', 'domain', 'rank', 'quiz', 'explanation', )
-    search_fields = ('content', 'explanation')
-    filter_horizontal = ('quiz','category')
+    fields = ('content', 'category', 'rank', 'quiz', 'explanation', )
+    search_fields = ('content', 'explanation', 'category',)
+    filter_horizontal = ('quiz',)
 
 admin.site.register(Quiz, QuizAdmin)
 admin.site.register(Category, CategoryAdmin)
