@@ -20,7 +20,7 @@ def contactView(request):
         from_email = request.POST.get('email', '')
         if subject and message and from_email:
             try:
-                send_mail(subject, message, 'noreply@mockat.com', ['ngreloaded@gmail.com',],['srini.vignesh@gmail.com',],reply_to=[from_email,])
+                send_mail('Feedback', subject + "$" + from_email + "$$" +message,'noreply@mockat.com', ['ngreloaded@gmail.com',],['srini.vignesh@gmail.com',])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return HttpResponseRedirect('/contact/thankyou/')
