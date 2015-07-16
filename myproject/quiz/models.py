@@ -77,12 +77,12 @@ class Quiz(models.Model):
         blank=True, help_text=_("a description of the quiz"))
 
     url = models.SlugField(
-        max_length=60, blank=False,
+        max_length=60, blank=False, unique=True,
         help_text=_("a user friendly url"),
         verbose_name=_("user friendly url"))
 
     category = models.ForeignKey(
-        Category, null=True, blank=True,
+        Category, null=False, blank=False,
         verbose_name=_("Category"))
 
     random_order = models.BooleanField(
@@ -199,7 +199,7 @@ class Quiz(models.Model):
         verbose_name_plural = _("Quizzes")
 
     def __str__(self):
-        return self.title
+        return (self.title+self.category)
 
     def get_questions(self):
         return self.question_set.all().select_subclasses()
