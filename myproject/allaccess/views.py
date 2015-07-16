@@ -185,4 +185,5 @@ class OAuthCallback(OAuthClientMixin, View):
         AccountAccess.objects.filter(pk=access.pk).update(user=user)
         user = authenticate(provider=access.provider, identifier=access.identifier)
         login(self.request, user)
+        messages.info(request, _("We have sent you an emai which contains your login credentials. Thanks for registering with us!"))
         return redirect(self.get_login_redirect(provider, user, access, True))
