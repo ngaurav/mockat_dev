@@ -226,7 +226,6 @@ class statsView(TemplateView):
         l1 = map(lambda t:'Complete' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=True).exists() else 'In Progress' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=False).exists() else 'Not attempted',map(lambda t: t.quiz_set.filter(title='Proficiency Test 1'),cat_list))
         l2 = map(lambda t:'Complete' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=True).exists() else 'In Progress' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=False).exists() else 'Not attempted',map(lambda t: t.quiz_set.filter(title='Proficiency Test 2'),cat_list))
         l3 = map(lambda t:'Complete' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=True).exists() else 'In Progress' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=False).exists() else 'Not attempted',map(lambda t: t.quiz_set.filter(title='Proficiency Test 3',cat_list))
-        context['dom_list'] = Domain.objects.all()
         return context
 
 class QuizMarkingList(QuizMarkerMixin, SittingFilterTitleMixin, ListView):
