@@ -16,11 +16,10 @@
     {% endif %}
 <center>
  <form action="/content/cat/{{ entry.category }}" method="post" style="display:inline-block; line-height: 2; height:2em;margin-right:20px;">
- {% csrf_token %}
+  {% csrf_token %}
   <label style="display:inline-block">Go to
    <input type="number" name="page" style="width:90px;margin: 0 5px; padding:0  4px; height:1.5em; font-size:1em;" placeholder="Page no">
   </label>
-  {% csrf_token %}
   <button type="submit" style="font-size:1em; background:transparent;">
    <i class="fa fa-arrow-circle-right fa-lg"></i>
   </button>
