@@ -51,7 +51,7 @@ class QuizAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', )
     list_filter = ('category',)
     search_fields = ('description', 'category', )
-    filter_horizontal = ('title','category',)
+
 
 class CategoryAdmin(admin.ModelAdmin):
     search_fields = ('category', )
@@ -74,7 +74,7 @@ class MCQuestionAdmin(admin.ModelAdmin):
               'split_view', 'para', 'section_two')
 
     search_fields = ('content', 'explanation')
-    filter_horizontal = ('quiz','category',)
+    filter_horizontal = ('quiz',)
 
     inlines = [AnswerInline]
 
