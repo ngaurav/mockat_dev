@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
-   <center><h4><a href="/quiz/progress/">Click here</a> to track your progress.</h4></center>
+   <center><h4><a href="/quiz/progress/">Click here</a> to track your performance.</h4></center>
 {% endif %}
 <h2>{% trans "List of quizzes" %}</h2>
     {% if quiz_list %}
