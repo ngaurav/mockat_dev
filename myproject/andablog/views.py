@@ -23,7 +23,7 @@ def contactView(request):
                 send_mail(subject, message, from_email, ['ngreloaded@gmail.com',])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return HttpResponseRedirect('contact/thankyou/')
+            return HttpResponseRedirect('/contact/thankyou/')
         else:
             return render_to_response('contacts.html', {'form': models.ContactForm()})
     else:
