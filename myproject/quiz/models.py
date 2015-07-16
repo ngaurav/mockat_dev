@@ -199,7 +199,7 @@ class Quiz(models.Model):
         verbose_name_plural = _("Quizzes")
 
     def __str__(self):
-        return (self.title+self.category)
+        return (self.title+":"+self.category)
 
     def get_questions(self):
         return self.question_set.all().select_subclasses()
