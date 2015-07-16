@@ -10,7 +10,6 @@ import logging
 logger = logging.getLogger(__name__)
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from contacts.models import ContactForm
 from django.template import RequestContext, Context
 from django import forms
 
@@ -26,9 +25,9 @@ def contactView(request):
                 return HttpResponse('Invalid header found.')
             return HttpResponseRedirect('contact/thankyou/')
         else:
-            return render_to_response('contacts.html', {'form': ContactForm()})
+            return render_to_response('contacts.html', {'form': models.ContactForm()})
     else:
-        return render(request, 'contacts.html', {'form': ContactForm()})
+        return render(request, 'contacts.html', {'form': models.ContactForm()})
 
 def thankyou(request):
         return render_to_response('thankyou.html')
