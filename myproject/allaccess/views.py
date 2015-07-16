@@ -18,7 +18,7 @@ from .compat import get_user_model
 from .models import Provider, AccountAccess
 
 import random
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
 logger = logging.getLogger(__name__)
 
 class OAuthClientMixin(object):
@@ -126,9 +126,6 @@ class OAuthCallback(OAuthClientMixin, View):
 
     def get_or_create_user(self, provider, access, info):
         "Create a shell auth.User."
-        digest = hashlib.sha1(smart_bytes(access)).digest()
-        # Base 64 encode to get below 30 characters
-        # Removed padding characters
         User = get_user_model()
         if provider.name == 'google':
             fn = info['given_name']
@@ -136,13 +133,32 @@ class OAuthCallback(OAuthClientMixin, View):
         else :
             fn = info['first_name']
             ln = info['last_name']
+        un = fn+ln
+        username = force_text(base64.urlsafe_b64encode(un)).replace('=', '')
+        i = 0
+        MAX = 1000000
+        while(i < MAX):
+            suffix = str(random.randint(0,MAX))
+            try:
+                User.objects.get(username=(username+suffix))
+            except User.DoesNotExist:
+                username = username + suffix
+                break
+        email = info['email']
+        pwd = User.objects.make_random_password()
         kwargs = {
-            User.USERNAME_FIELD: un,
-            'email': info['email'],
+            User.USERNAME_FIELD: username,
+            'email': email,
             'first_name': fn,
             'last_name': ln,
-            'password': None
+            'password': pwd
         }
+        msg_plain = render_to_string('email.txt', **kwargs)
+        msg_html = render_to_string('email.html', **kwargs)
+        try:
+	    send_mail("Successful Registration: Mockat", msg_plain, 'no-reply@mockat.com', [email, ], html_message = msg_html, )
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
         return User.objects.create_user(**kwargs)
 
     def get_user_id(self, provider, info):

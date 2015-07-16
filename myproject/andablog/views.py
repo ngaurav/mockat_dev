@@ -4,10 +4,35 @@ from django.views.generic import ListView, DetailView
 from . import models
 
 from quiz.models import Category, HistoryOfUser
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, render_to_response
+from django.http import HttpResponse, HttpResponseRedirect
 import logging
 logger = logging.getLogger(__name__)
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from contacts.models import ContactForm
+from django.template import RequestContext, Context
+from django import newforms as forms
+from django.newforms.widgets import *
+
+def aboutView(request):
+    if request.method=='POST':
+        subject = request.POST.get('topic', '')
+        message = request.POST.get('message', '')
+        from_email = request.POST.get('email', '')
+        if subject and message and from_email:
+            try:
+                send_mail(subject, message, from_email, ['ngreloaded@gmail.com',])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return HttpResponseRedirect('contact/thankyou/')
+        else:
+            return render_to_response('contacts.html', {'form': ContactForm()})
+    else:
+        return render(request, 'contacts.html', {'form': ContactForm()})
+
+def thankyou(request):
+        return render_to_response('thankyou.html')
 
 def startView(request):
     top_page = models.StartPage.objects.order_by('rank').first()
