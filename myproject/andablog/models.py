@@ -15,8 +15,6 @@ from taggit.managers import TaggableManager
 from quiz.models import Category
 from datetime import date
 
-from django import newforms as forms
-from django.newforms.widgets import *
 from django.core.mail import send_mail, BadHeaderError
 
 # A simple contact form with four fields.

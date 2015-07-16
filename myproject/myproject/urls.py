@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^solution/(?P<slug>[A-Za-z0-9-_]+)', solView.as_view(), name="solution"),
     url(r'^report/(?P<slug>[A-Za-z0-9-_]+)', reportView.as_view(), name="report"),
     url(r'^progress/$', statsView.as_view(), name="stats"),
-    url(r'^contact/$', contactView, name="contact"),
     url(r'^contact/thankyou/$', thankyou, name="thankyou"),
+    url(r'^contact/$', contactView, name="contact"),
     url(r'^$', startView, name="home"),
 ]
