@@ -83,7 +83,7 @@
 <form action="." method="post">
     {% csrf_token %}
     <button class="button" type="submit" style="float:left">Sort By</button>
-    <select name='sort' style="background: transparent; width: 120px; margin-left: 10px; padding: 4px; font-size: 16px; line-height: 1; border: 0; border-radius: 0; -webkit-appearance: none;">
+    <select name='sort' style="background: transparent; width: 120px; margin-left: 10px; padding: 4px; font-size: 16px; border-radius: 0;">
         <option value='-likes_count'>Likes</option>
         <option value='date'>Oldest First</option>
         <option value='-date'>Newest First</option>
