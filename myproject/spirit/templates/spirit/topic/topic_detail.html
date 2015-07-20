@@ -83,8 +83,9 @@
 <form action="." method="post">
     {% csrf_token %}
     <select name='sort'>
-        <option value='date'>Date</option>
-        <option value='likes_count'>Likes</option>
+        <option value='-likes_count'>Likes</option>
+        <option value='date'>Oldest First</option>
+        <option value='-date'>Newest First</option>
     </select>
     <input type="submit">
 </form>
