@@ -80,6 +80,15 @@
 
         {% render_poll_form topic=topic user=user %}
 
+<form action="." method="post">
+    <select>
+        <option selected="selected" disabled>Sort By:</option>
+        <option value='date'>Date</option>
+        <option value='likes_count'>Likes</option>
+    </select>
+    <input type="submit" name="sort" value="Select">
+</form>
+
         {% include "spirit/comment/_render_list.html" %}
 
         <div class="container">
