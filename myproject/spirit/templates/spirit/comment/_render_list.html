@@ -59,7 +59,7 @@
                                 {% ifnotequal c.user user  %}
                                     <li class="comment-like"><a class="js-like" class="like" href="{% url "spirit:like-create" c.pk %}" data-count="{{ c.likes_count }}" ><i class="fa fa-thumbs-up"></i> {% trans "like" %} ({{ c.likes_count }})</a></li>
                                 {% else %}
-                                    <li class="comment-like"><i class="fa fa-heart"></i> ({{ c.likes_count }})</li>
+                                    <li class="comment-like"><i class="fa fa-thumbs-up"></i> ({{ c.likes_count }})</li>
                                 {% endifnotequal %}
                             {% endif %}
 
