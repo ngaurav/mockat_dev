@@ -728,7 +728,10 @@ input[type="submit"].button,
   left: 0;
   width: 0;
   /* hidden (for animation) */
-  max-width: 16%;
+  max-width: -moz-calc(5% + 10em);
+  max-width: -webkit-calc(5% + 10em);
+  max-width: -o-calc(5% + 10em);
+  max-width: calc(5% + 10em);
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
