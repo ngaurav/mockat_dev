@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, url
+from django.views.generic import TemplateView
 
 from .views import QuizListView, CategoriesListView,\
     ViewQuizListByCategory, QuizUserProgressView, QuizMarkingList,\
@@ -52,5 +53,9 @@ urlpatterns = patterns('',
 
                        url(regex=r'^(?P<slug>[\w-]+)/quiz.html$',
                            view=QuizDetailView3,
+                           name='test_start_page'),
+
+                       url(regex=r'^(?P<slug>[\w-]+)/Calculator.html$',
+                           view=TemplateView.as_view(template_name='Calculator.html'),
                            name='test_start_page'),
 )
