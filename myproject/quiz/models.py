@@ -422,11 +422,11 @@ class UserTrackrecord(models.Model):
         sec1count = self.quiz.get_sec1count
         score1 = sum(self.marks_obtained[0:sec1count])
         score2 = sum(self.marks_obtained[sec1count:])
-        dividend = float(sum(self.quiz.score_stats[0:current_score+100]))
+        dividend = float(sum(self.quiz.score_stats[0:current_score+101]))
         divisor = float(sum(self.quiz.score_stats))
-        dividend1 = float(sum(self.quiz.score_stats1[0:score1+100]))
+        dividend1 = float(sum(self.quiz.score_stats1[0:score1+101]))
         divisor1 = float(sum(self.quiz.score_stats1))
-        dividend2 = float(sum(self.quiz.score_stats2[0:score2+100]))
+        dividend2 = float(sum(self.quiz.score_stats2[0:score2+101]))
         divisor2 = float(sum(self.quiz.score_stats2))
 
         if divisor < 1:
@@ -544,7 +544,7 @@ class Sitting(models.Model):
 
     @property
     def get_percentile(self):
-        dividend = float(sum(self.quiz.score_stats[0:self.current_score+100]))
+        dividend = float(sum(self.quiz.score_stats[0:self.current_score+101]))
         divisor = float(sum(self.quiz.score_stats))
         if divisor < 1:
             return 0            # prevent divide by zero error
