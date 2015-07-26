@@ -439,7 +439,7 @@ class UserTrackrecord(models.Model):
         correct1 = ((dividend1 / divisor1) * 100)
         correct2 = ((dividend2 / divisor2) * 100)
         if correct >= 0:
-            return current_score,correct,correct1,correct2,int(sum(self.quiz.score_stats))
+            return current_score,round(correct,2),round(correct1,2),round(correct2,2),int(sum(self.quiz.score_stats))
         else:
             return current_score,0,0,0,0
 
@@ -555,7 +555,7 @@ class Sitting(models.Model):
         correct = ((dividend / divisor) * 100)
 
         if correct >= 0:
-            return correct
+            return round(correct,2)
         else:
             return 0
 
