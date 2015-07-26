@@ -119,7 +119,7 @@ def QuizDetailView2(request, slug):
 	fo = open("/home/ubuntu/public_html/mockat.com/myproject/media/" + slug +"/custInstructions.xml","w")
 	fo.write( xml )
         fo.close()
-	xml = render_to_string('confDetails.xml', {})
+	xml = render_to_string('confDetails.xml', {'time':q.time_limit})
         fo = open("/home/ubuntu/public_html/mockat.com/myproject/media/" + slug +"/confDetails.xml","w")
         fo.write( xml )
         fo.close()

@@ -423,16 +423,6 @@ td,
 th {
   padding: 0; }
 
-::selection {
-  background: #11dddd;
-  color: #fefefe;
-  text-shadow: none; }
-
-::-moz-selection {
-  background: #11dddd;
-  color: #fefefe;
-  text-shadow: none; }
-
 i {
   color: inherit; }
 
