@@ -2420,6 +2420,8 @@ function submitMock() {
 }
 
 function moveToScoreCardDisplay() {
+    setCookie(mockVar.langName);
+    document.cookie = "sessionid = 'abcd'; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"
     if (mockVar.displayScoreCard == 1) {
         showScoreCard();
     } else {
@@ -2428,8 +2430,6 @@ function moveToScoreCardDisplay() {
 }
 
 function moveToFeedback() {
-    setCookie(mockVar.langName);
-    document.cookie = "sessionid = 'abcd'; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"
     if (mockVar.isFeedBackRequired == "NO") {
         window.location.href = "close.html?" + mockVar.orgId + "@@" + mockVar.mockId + "#";
     } else {
