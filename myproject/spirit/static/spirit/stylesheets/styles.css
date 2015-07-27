@@ -725,7 +725,7 @@ input[type="submit"].button,
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
-  background: #333333;
+  background: #222426;
   -webkit-box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
   -moz-box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
   box-shadow: inset -1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.25);
