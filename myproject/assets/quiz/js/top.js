@@ -518,6 +518,7 @@ var mockLabels = {
 };
 
 var mockVar = {
+    submitted : false;
     candResponseUrl : '',
     mockName : '',
     loginLabel : '',
@@ -940,9 +941,13 @@ function readXMLQuestionPaper(xml) {
 
     mockVar.currentGrp = 0;
     mockVar.MaxGrpEnabled = 0;
-    iOAP = mockVar.groups[mockVar.currentGrp];
+    if (mockVar.submitted = false){
+        iOAP = mockVar.groups[mockVar.currentGrp];
+    }
     mockVar.groups[mockVar.currentGrp].isDisabled = false;
-    if (mockVar.groups[mockVar.currentGrp].maxTime > 0) {
+    if (mockVar.submitted = false){
+        mockVar.time = mockVar.completeTime;
+    } else if (mockVar.groups[mockVar.currentGrp].maxTime > 0) {
         mockVar.time = mockVar.groups[mockVar.currentGrp].maxTime;
     } else if (mockVar.groups.length > 1 && mockVar.groups[mockVar.currentGrp].maxTime == 0) {
         mockVar.time = mockVar.nonTimeBoundTime;
@@ -2422,7 +2427,6 @@ function submitMock() {
 function moveToScoreCardDisplay() {
     if (mockVar.displayScoreCard == 1) {
         showScoreCard();
-        mockVar=0;
     } else {
         moveToFeedback();
     }
@@ -3714,6 +3718,7 @@ function sendResponseToServlet() {
            
            alert("Your response has been succesfully saved");
            $('#pWait').hide();
+           mockVar.submitted = true;
            moveToScoreCardDisplay();
            },
            error: function () {
