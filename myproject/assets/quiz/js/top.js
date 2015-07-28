@@ -518,7 +518,7 @@ var mockLabels = {
 };
 
 var mockVar = {
-    submitted : false;
+    submitted : false,
     candResponseUrl : '',
     mockName : '',
     loginLabel : '',
