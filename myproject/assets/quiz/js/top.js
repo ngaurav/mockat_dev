@@ -941,7 +941,7 @@ function readXMLQuestionPaper(xml) {
 
     mockVar.currentGrp = 0;
     mockVar.MaxGrpEnabled = 0;
-    if (mockVar.submitted = false){
+    if (mockVar.submitted == false){
         iOAP = mockVar.groups[mockVar.currentGrp];
     }
     mockVar.groups[mockVar.currentGrp].isDisabled = false;
