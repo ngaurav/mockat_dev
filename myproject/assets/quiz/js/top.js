@@ -2421,14 +2421,8 @@ function submitMock() {
 
 function moveToScoreCardDisplay() {
     if (mockVar.displayScoreCard == 1) {
+        mockVar=0;
         showScoreCard();
-        iOAP = new createNewGroupObj();
-        result = {
-            candidateId : '',
-            mockId : 0,
-            orgId : 0,
-            questions : new Array()
-        };
     } else {
         moveToFeedback();
     }
