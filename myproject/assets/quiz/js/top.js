@@ -654,6 +654,10 @@ function quesParams(langID, status) {
 
 
 function validateQuizPageUrl(user_name, full_name) {
+    if(mockVar.submitted == True){
+        moveToScoreCardDisplay();
+        return;
+    }
     var url = document.URL;
     var params = url.split("quiz.html?");
     var orgId = $.trim(params[1]).split("@@")[0];
@@ -941,13 +945,9 @@ function readXMLQuestionPaper(xml) {
 
     mockVar.currentGrp = 0;
     mockVar.MaxGrpEnabled = 0;
-    if (mockVar.submitted == false){
-        iOAP = mockVar.groups[mockVar.currentGrp];
-    }
+    iOAP = mockVar.groups[mockVar.currentGrp];
     mockVar.groups[mockVar.currentGrp].isDisabled = false;
-    if (mockVar.submitted = false){
-        mockVar.time = mockVar.completeTime;
-    } else if (mockVar.groups[mockVar.currentGrp].maxTime > 0) {
+    if (mockVar.groups[mockVar.currentGrp].maxTime > 0) {
         mockVar.time = mockVar.groups[mockVar.currentGrp].maxTime;
     } else if (mockVar.groups.length > 1 && mockVar.groups[mockVar.currentGrp].maxTime == 0) {
         mockVar.time = mockVar.nonTimeBoundTime;
