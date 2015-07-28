@@ -654,7 +654,7 @@ function quesParams(langID, status) {
 
 
 function validateQuizPageUrl(user_name, full_name) {
-    if(mockVar.submitted == True){
+    if(mockVar.submitted == true){
         moveToScoreCardDisplay();
         return;
     }
