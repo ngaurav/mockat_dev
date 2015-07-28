@@ -326,7 +326,7 @@ function basicDetails(xml) {
     if ($(xml).find("USELOGINID").text().toLowerCase() == "no") {
         mockVar.loginLabel = $(xml).find("LOGINID").text();
     } else {
-        mockVar.loginLabel = "Roll No";
+        mockVar.loginLabel = "Username";
     }
     $("#loginName").prepend(mockVar.loginLabel);
     if ($(xml).find("USEDEFAULTCANDIDATEIMG").length > 0 && $(xml).find("USEDEFAULTCANDIDATEIMG").text() == "NO") {
@@ -3165,7 +3165,7 @@ function showScoreCard() {
                     str += "<tr><td width='20%'>" + temp_iOAP.secDetails[i].secName + "</td><td width='10%'>" + (temp_iOAP.sections[i][langId].length - 1) + "</td><td width='10%'>" + temp_iOAP.secDetails[i].answered + "</td><td width='10%'>" + temp_iOAP.secDetails[i].totalCorrectQues + "</td><td width='10%'>" + (temp_iOAP.secDetails[i].totalEvaluatedQues - temp_iOAP.secDetails[i].totalCorrectQues) + "</td>";
                     if (temp_iOAP.hasOfflineSect)
                         str += "<td width='10%'>" + (temp_iOAP.secDetails[i].answered - temp_iOAP.secDetails[i].totalEvaluatedQues) + "</td>";
-                    str += "<td width='10%'>" + temp_iOAP.secDetails[i].sectionScore + "/" + temp_iOAP.secDetails[i].totalSecMarks + "</td>";
+                    str += "<td width='10%'>" + temp_iOAP.secDetails[i].sectionScore + "</td>";
                     if (mockVar.displayPercentageScore)
                         str += "<td width='10%'>" + ((temp_iOAP.secDetails[i].sectionScore / temp_iOAP.secDetails[i].totalSecMarks) * 100).toFixed(2) + "</td>";
                     str += "</tr>";
@@ -3590,9 +3590,9 @@ function setCandCookie() {
     document.cookie = "path=/";
 }
 
-function getCandIdFromCookie() {
+function getCandIdFromCookie(user_name, full_name) {
     //setCandCookie();
-    var i, x, y, defLang = "", langName = "", candId = "123456", candName = "John Smith", ARRcookies = document.cookie;
+    var i, x, y, defLang = "", langName = "", candId = user_name, candName = full_name, ARRcookies = document.cookie;
     //alert((ARRcookies != null) +" and "+ (ARRcookies!=""));	
     if (ARRcookies != null && ARRcookies != "") {
         ARRcookies = ARRcookies.split(";");
