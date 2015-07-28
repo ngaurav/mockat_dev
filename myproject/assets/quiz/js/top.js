@@ -2420,7 +2420,7 @@ function submitMock() {
 }
 
 function moveToScoreCardDisplay() {
-    validateQuizPageUrl(mockVar.my_username, mockVar.my_fullname);
+    iOAP = new createNewGroupObj();
     if (mockVar.displayScoreCard == 1) {
         showScoreCard();
     } else {
