@@ -2421,8 +2421,8 @@ function submitMock() {
 
 function moveToScoreCardDisplay() {
     if (mockVar.displayScoreCard == 1) {
-        mockVar=0;
         showScoreCard();
+        mockVar=0;
     } else {
         moveToFeedback();
     }
