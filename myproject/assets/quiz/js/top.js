@@ -697,7 +697,7 @@ function validateQuizPageUrl(user_name, full_name) {
              * }else{ mockVar.isGroupDependentTime = true; }
              */
             if (iOAP.defaultLang == null || iOAP.defaultLang == "") {
-                //getCookie();
+                getCookie();
             }
             mockVar.orgId = orgId;
             mockVar.mockId = mockId;
