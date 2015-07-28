@@ -2420,9 +2420,9 @@ function submitMock() {
 }
 
 function moveToScoreCardDisplay() {
-    iOAP = new createNewGroupObj();
     if (mockVar.displayScoreCard == 1) {
         showScoreCard();
+        iOAP = new createNewGroupObj();
     } else {
         moveToFeedback();
     }
