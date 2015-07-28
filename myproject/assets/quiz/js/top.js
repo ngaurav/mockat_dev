@@ -654,10 +654,6 @@ function quesParams(langID, status) {
 
 
 function validateQuizPageUrl(user_name, full_name) {
-    if(mockVar.submitted == true){
-        moveToScoreCardDisplay();
-        return;
-    }
     var url = document.URL;
     var params = url.split("quiz.html?");
     var orgId = $.trim(params[1]).split("@@")[0];
@@ -709,6 +705,10 @@ function validateQuizPageUrl(user_name, full_name) {
             mockVar.my_fullname = full_name;
             restoreMockOnRefresh();
             loadLabel();
+            if(mockVar.submitted == true){
+                moveToScoreCardDisplay();
+                return;
+            }
             readSysInstructionsXMLQuizPage(xml, orgId, mockId);
         }
     } else {
