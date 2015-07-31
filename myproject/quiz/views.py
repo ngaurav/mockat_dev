@@ -153,11 +153,13 @@ def ResponseView(request):
             marks_list.append(int(question["marksObtained"]))
         logger.debug(marks_list)
         my_quiz = Quiz.objects.get(url=objs.mockId)
-        sec1count = my_quiz.get_sec1count
+        grp1count = my_quiz.get_grp1count
+        grp2count = my_quiz.get_grp2count + grp1count
         record = UserTrackrecord.objects.create(user=request.user,quiz=my_quiz,question_pks=question_list,given_ans=given_ans_list,marks_obtained=marks_list)
         my_quiz.score_stats[int(sum(marks_list))+100] += 1
-        my_quiz.score_stats1[int(sum(marks_list[0:sec1count]))+100] += 1
-        my_quiz.score_stats2[int(sum(marks_list[sec1count:]))+100] += 1
+        my_quiz.score_stats1[int(sum(marks_list[0:grp1count]))+100] += 1
+        my_quiz.score_stats2[int(sum(marks_list[grp1count:grp2count]))+100] += 1
+        my_quiz.score_stats3[int(sum(marks_list[grp2count:]))+100] += 1
         my_quiz.save()
         return HttpResponse("Your response was successfully saved!")
     else:

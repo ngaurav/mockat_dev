@@ -147,6 +147,17 @@ class Quiz(models.Model):
         help_text=_("Format will be like digialm.com"),
         verbose_name=_("Timed test"))
 
+    is_cat15 = models.BooleanField(
+        blank=False, default=False,
+        help_text=_("Will this quiz be in Cat 2015 format"),
+        verbose_name=_("Section 2"))
+
+    group_count = models.IntegerField(
+        blank=False, default=180,
+        help_text=_("Any number greater than 0 and less than 4."
+                    "Applicable only in 2015 cat format"),
+        verbose_name=_("No. of groups"))
+
     has_section2 = models.BooleanField(
         blank=False, default=False,
         help_text=_("Will this quiz have section 2. If unchecked all questions"
@@ -169,12 +180,21 @@ class Quiz(models.Model):
         verbose_name=_("Negative Marks"))
 
     score_stats = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=401,default= [0]*401)
-    score_stats1 = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=401,default= [0]*401)
-    score_stats2 = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=401,default= [0]*401)
+    score_stats1 = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=203,default= [0]*203)
+    score_stats2 = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=203,default= [0]*203)
+    score_stats3 = ArrayField(models.IntegerField(blank=False,null=False,default=0),size=203,default= [0]*203)
 
     @property
     def get_sec1count(self):
         return self.question_set.all().filter(section_two=False).count()
+
+    @property
+    def get_grp1count(self):
+        return self.question_set.all().filter(grp_no=1).count()
+
+    @property
+    def get_grp2count(self):
+        return self.question_set.all().filter(grp_no=2).count()
 
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
         self.url = re.sub('\s+', '-', self.url).lower()
@@ -419,29 +439,34 @@ class UserTrackrecord(models.Model):
     @property
     def get_score_percentile(self):
         current_score = sum(self.marks_obtained)
-        sec1count = self.quiz.get_sec1count
-        score1 = sum(self.marks_obtained[0:sec1count])
-        score2 = sum(self.marks_obtained[sec1count:])
+        grp1count = self.quiz.get_grp1count
+        grp2count = self.quiz.get_grp2count + grp1count
+        score1 = sum(self.marks_obtained[0:grp1count])
+        score2 = sum(self.marks_obtained[grp1count:grp2count])
+        score3 = sum(self.marks_obtained[grp2count:])
         dividend = float(sum(self.quiz.score_stats[0:current_score+101]))
         divisor = float(sum(self.quiz.score_stats))
         dividend1 = float(sum(self.quiz.score_stats1[0:score1+101]))
         divisor1 = float(sum(self.quiz.score_stats1))
         dividend2 = float(sum(self.quiz.score_stats2[0:score2+101]))
         divisor2 = float(sum(self.quiz.score_stats2))
+        dividend3 = float(sum(self.quiz.score_stats3[0:score3+101]))
+        divisor3 = float(sum(self.quiz.score_stats3))
 
         if divisor < 1:
-            return current_score,0,0,0,int(sum(self.quiz.score_stats))
+            return current_score,0,0,0,0,int(sum(self.quiz.score_stats))
 
         if dividend > divisor:
-            return current_score,100,100,100,int(sum(self.quiz.score_stats))
+            return current_score,100,100,100,100,int(sum(self.quiz.score_stats))
 
         correct = ((dividend / divisor) * 100)
         correct1 = ((dividend1 / divisor1) * 100)
         correct2 = ((dividend2 / divisor2) * 100)
+        correct3 = ((dividend3 / divisor3) * 100)
         if correct >= 0:
-            return current_score,round(correct,2),round(correct1,2),round(correct2,2),int(sum(self.quiz.score_stats))
+            return current_score,round(correct,2),round(correct1,2),round(correct2,2),round(correct3,2),int(sum(self.quiz.score_stats))
         else:
-            return current_score,0,0,0,0
+            return current_score,0,0,0,0,0
 
 class Sitting(models.Model):
     """
@@ -684,6 +709,10 @@ class Question(models.Model):
     section_two = models.BooleanField(default = False, blank=False,
         help_text=_("Verbal Ability Logical Reasoning section"),
         verbose_name=_("Section II"))
+
+    group_no = models.IntegerField(blank=False, default=1,
+        help_text=_("Only applicable in 2015 cat fromat"),
+        verbose_name=_("Group No."))
 
     objects = InheritanceManager()
 
