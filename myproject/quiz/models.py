@@ -711,7 +711,7 @@ class Question(models.Model):
         ('SA', 'ShortAnswer'),
     )
 
-    ques_type = models.CharField(max_length=2,choices=QUESTION_TYPES,default='MCQ')
+    ques_type = models.CharField(max_length=1,choices=QUESTION_TYPES,default='MCQ')
 
     section_two = models.BooleanField(default = False, blank=False,
         help_text=_("Verbal Ability Logical Reasoning section"),
