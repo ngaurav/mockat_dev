@@ -73,9 +73,9 @@
                 <ID><![CDATA[{{ question.pk }}]]></ID>
                 <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
                 <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
-                {% if question.type is 'SA'%}
+                {% if question.type == 'SA'%}
                 <KEYBOARDTYPE><![CDATA[1]]></KEYBOARDTYPE>
-                <ANSWER CASESENSITIVE="FALSE" TYPE="EQUALS"><![CDATA[{{question.get_answers[0].content}}]]></ANSWER>
+                <ANSWER CASESENSITIVE="FALSE" TYPE="EQUALS"><![CDATA[{{question.get_answers.0.content}}]]></ANSWER>
                 {% else %}
                 {% for choice in question.get_answers %}
                 <ANSWER {% if choice.correct %} CORRECT="TRUE" {% else %} CORRECT="FALSE" {% endif %} VALUE="{{forloop.counter}}"><![CDATA[{{choice.content}}]]></ANSWER>
@@ -113,9 +113,9 @@
                 <ID><![CDATA[{{ question.pk }}]]></ID>
                 <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
                 <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
-                {% if question.type is 'SA'%}
+                {% if question.type == 'SA'%}
                 <KEYBOARDTYPE><![CDATA[1]]></KEYBOARDTYPE>
-                <ANSWER CASESENSITIVE="FALSE" TYPE="EQUALS"><![CDATA[{{question.get_answers[0].content}}]]></ANSWER>
+                <ANSWER CASESENSITIVE="FALSE" TYPE="EQUALS"><![CDATA[{{question.get_answers.0.content}}]]></ANSWER>
                 {% else %}
                 {% for choice in question.get_answers %}
                 <ANSWER {% if choice.correct %} CORRECT="TRUE" {% else %} CORRECT="FALSE" {% endif %} VALUE="{{forloop.counter}}"><![CDATA[{{choice.content}}]]></ANSWER>
