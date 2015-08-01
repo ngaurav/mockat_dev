@@ -33,7 +33,7 @@
                     <ID><![CDATA[{{ question.pk }}]]></ID>
                     <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
                     <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
-                    {% if question.type == 'SA'%}
+                    {% if question.ques_type == 'SA'%}
                     <KEYBOARDTYPE><![CDATA[1]]></KEYBOARDTYPE>
                     <ANSWER CASESENSITIVE="FALSE" TYPE="EQUALS"><![CDATA[{{question.get_answers.0.content}}]]></ANSWER>
                     {% else %}
@@ -73,7 +73,7 @@
                 <ID><![CDATA[{{ question.pk }}]]></ID>
                 <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
                 <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
-                {% if question.type == 'SA'%}
+                {% if question.ques_type == 'SA'%}
                 <KEYBOARDTYPE><![CDATA[1]]></KEYBOARDTYPE>
                 <ANSWER CASESENSITIVE="FALSE" TYPE="EQUALS"><![CDATA[{{question.get_answers.0.content}}]]></ANSWER>
                 {% else %}
@@ -113,7 +113,7 @@
                 <ID><![CDATA[{{ question.pk }}]]></ID>
                 <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
                 <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
-                {% if question.type == 'SA'%}
+                {% if question.ques_type == 'SA'%}
                 <KEYBOARDTYPE><![CDATA[1]]></KEYBOARDTYPE>
                 <ANSWER CASESENSITIVE="FALSE" TYPE="EQUALS"><![CDATA[{{question.get_answers.0.content}}]]></ANSWER>
                 {% else %}
