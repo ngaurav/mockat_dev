@@ -150,11 +150,11 @@ class Quiz(models.Model):
     is_cat15 = models.BooleanField(
         blank=False, default=False,
         help_text=_("Will this quiz be in Cat 2015 format"),
-        verbose_name=_("Section 2"))
+        verbose_name=_("CAT 2015 Format"))
 
     group_count = models.IntegerField(
-        blank=False, default=180,
-        help_text=_("Any number greater than 0 and less than 4."
+        blank=False, default=3,
+        help_text=_("Currently don't change this. But in future we can have any number of groups. "
                     "Applicable only in 2015 cat format"),
         verbose_name=_("No. of groups"))
 
