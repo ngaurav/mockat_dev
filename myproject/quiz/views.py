@@ -112,7 +112,7 @@ def QuizDetailView2(request, slug):
             q = None
 #        logger.debug("after try-except")
         if q.is_cat15:
-            xml = render_to_string('cat_template.xml', {'time':q.time_limit,'mark':q.mark,'penalty':q.penalty,'query_set': q.get_questions().order_by('rank'),'section2_present':q.has_section2,'groups'=range(1,q.group_count+1)})
+            xml = render_to_string('cat_template.xml', {'time':q.time_limit,'mark':q.mark,'penalty':q.penalty,'query_set': q.get_questions().order_by('rank'),'section2_present':q.has_section2})
         else :
             xml = render_to_string('xml_template.xml', {'time':q.time_limit,'mark':q.mark,'penalty':q.penalty,'query_set': q.get_questions().order_by('rank'),'section2_present':q.has_section2})
         fo = open("/home/ubuntu/public_html/mockat.com/myproject/media/" + slug +"/quiz.xml", "w")
