@@ -190,11 +190,11 @@ class Quiz(models.Model):
 
     @property
     def get_grp1count(self):
-        return self.question_set.all().filter(grp_no=1).count()
+        return self.question_set.all().filter(group_no=1).count()
 
     @property
     def get_grp2count(self):
-        return self.question_set.all().filter(grp_no=2).count()
+        return self.question_set.all().filter(group_no=2).count()
 
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
         self.url = re.sub('\s+', '-', self.url).lower()
