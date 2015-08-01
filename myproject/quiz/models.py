@@ -707,8 +707,8 @@ class Question(models.Model):
                                    verbose_name=_('Explanation'))
                                    
     QUESTION_TYPES = (
-        (MCQ, 'Multiple Choice Single Correct'),
-        (SA, 'Short Answer'),
+        ('MCQ', 'Multiple Choice Single Correct'),
+        ('SA', 'Short Answer'),
     )
 
     ques_type = models.CharField(max_length=2,choices=QUESTION_TYPES,default=MCQ)
