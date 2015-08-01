@@ -705,6 +705,12 @@ class Question(models.Model):
                                                "after the question has "
                                                "been answered."),
                                    verbose_name=_('Explanation'))
+                                   
+    QUESTION_TYPES = (
+        (MCQ, 'Multiple Choice Single Correct'),
+        (MSQ, 'Multiple Choice Multiple Correct'),
+        (SA, 'Short Answer'),
+    )
 
     section_two = models.BooleanField(default = False, blank=False,
         help_text=_("Verbal Ability Logical Reasoning section"),

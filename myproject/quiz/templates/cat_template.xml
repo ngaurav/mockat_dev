@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QUIZ>
+<mcQName><![CDATA[Multiple Choice Question]]></mcQName>
+<msQName><![CDATA[ ]]></msQName>
+<compQName><![CDATA[Comprehension Question]]></compQName>
+<saQName><![CDATA[ ]]></saQName>
+<laQName><![CDATA[ ]]></laQName>
+<subjQName><![CDATA[ ]]></subjQName>
+<typingQName><![CDATA[ ]]></typingQName>
+<programingQName><![CDATA[ ]]></programingQName>
+<SHOWMARKS><![CDATA[YES]]></SHOWMARKS>
+
+<GROUP BREAKTIME="0" GROUPID="1" ISEDITABLE="N" ISVIEWABLE="Y" MAXTIME="0" MINTIME="0">
+<GROUPNAME><![CDATA[Group 1]]></GROUPNAME>
+<MAXNOOPTSEC><![CDATA[0]]></MAXNOOPTSEC>
+<SECTIONDETAILS>
+
+
+<SECTION ISOPTIONAL="N" MAXQUESTOANS="34" TYPE="ONLINE">
+<secName><![CDATA[Quantitative Ability]]></secName>
+<LANGID><![CDATA[1]]></LANGID>
+<LANGNAME><![CDATA[English]]></LANGNAME>
+<secID><![CDATA[1]]></secID>
+    {% for question in query_set %}
+        {% if question.group_no == 1 %}
+            {% if question.split_view %}
+                <QUESTION ISPARENT="Y" TYPE="COMPREHENSION@@{{question.ques_type}}">
+            {% else %}
+                <QUESTION TYPE="{{question.ques_type}}">
+            {% endif %}
+                    <KEYS/>
+                    <NAME><![CDATA[{% autoescape off %}{% if question.split_view %}{{ question.para.content }} @@&& {% endif %} {{ question.content }} {% endautoescape %}]]></NAME>
+                    <ID><![CDATA[{{ question.pk }}]]></ID>
+                    <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
+                    <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
+                    {% for choice in question.get_answers %}
+                    <ANSWER {% if choice.correct %} CORRECT="TRUE" {% else %} CORRECT="FALSE" {% endif %} VALUE="{{forloop.counter}}"><![CDATA[{{choice.content}}]]></ANSWER>
+                    {% endfor %}
+                </QUESTION>
+        {% endif %}
+    {% endfor %}                
+</SECTION>
+    
+</SECTIONDETAILS>
+</GROUP>
+<SHOWMARKS><![CDATA[YES]]></SHOWMARKS>
+
+<GROUP BREAKTIME="0" GROUPID="2" ISEDITABLE="N" ISVIEWABLE="Y" MAXTIME="0" MINTIME="0">
+<GROUPNAME><![CDATA[Group 2]]></GROUPNAME>
+<MAXNOOPTSEC><![CDATA[0]]></MAXNOOPTSEC>
+<SECTIONDETAILS>
+    
+    
+    <SECTION ISOPTIONAL="N" MAXQUESTOANS="34" TYPE="ONLINE">
+        <secName><![CDATA[Verbal Reasoning]]></secName>
+        <LANGID><![CDATA[1]]></LANGID>
+        <LANGNAME><![CDATA[English]]></LANGNAME>
+        <secID><![CDATA[1]]></secID>
+        {% for question in query_set %}
+        {% if question.group_no == 2 %}
+        {% if question.split_view %}
+        <QUESTION ISPARENT="Y" TYPE="COMPREHENSION@@{{question.ques_type}}">
+            {% else %}
+            <QUESTION TYPE="{{question.ques_type}}">
+                {% endif %}
+                <KEYS/>
+                <NAME><![CDATA[{% autoescape off %}{% if question.split_view %}{{ question.para.content }} @@&& {% endif %} {{ question.content }} {% endautoescape %}]]></NAME>
+                <ID><![CDATA[{{ question.pk }}]]></ID>
+                <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
+                <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
+                {% for choice in question.get_answers %}
+                <ANSWER {% if choice.correct %} CORRECT="TRUE" {% else %} CORRECT="FALSE" {% endif %} VALUE="{{forloop.counter}}"><![CDATA[{{choice.content}}]]></ANSWER>
+                {% endfor %}
+            </QUESTION>
+            {% endif %}
+            {% endfor %}
+        </SECTION>
+        
+    </SECTIONDETAILS>
+</GROUP>
+
+
+<GROUP BREAKTIME="0" GROUPID="3" ISEDITABLE="N" ISVIEWABLE="Y" MAXTIME="0" MINTIME="0">
+<GROUPNAME><![CDATA[Group 3]]></GROUPNAME>
+<MAXNOOPTSEC><![CDATA[0]]></MAXNOOPTSEC>
+<SECTIONDETAILS>
+    
+    
+    <SECTION ISOPTIONAL="N" MAXQUESTOANS="32" TYPE="ONLINE">
+        <secName><![CDATA[Data Interpretation]]></secName>
+        <LANGID><![CDATA[1]]></LANGID>
+        <LANGNAME><![CDATA[English]]></LANGNAME>
+        <secID><![CDATA[1]]></secID>
+        {% for question in query_set %}
+        {% if question.group_no == 3 %}
+        {% if question.split_view %}
+        <QUESTION ISPARENT="Y" TYPE="COMPREHENSION@@{{question.ques_type}}">
+            {% else %}
+            <QUESTION TYPE="{{question.ques_type}}">
+                {% endif %}
+                <KEYS/>
+                <NAME><![CDATA[{% autoescape off %}{% if question.split_view %}{{ question.para.content }} @@&& {% endif %} {{ question.content }} {% endautoescape %}]]></NAME>
+                <ID><![CDATA[{{ question.pk }}]]></ID>
+                <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
+                <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
+                {% for choice in question.get_answers %}
+                <ANSWER {% if choice.correct %} CORRECT="TRUE" {% else %} CORRECT="FALSE" {% endif %} VALUE="{{forloop.counter}}"><![CDATA[{{choice.content}}]]></ANSWER>
+                {% endfor %}
+            </QUESTION>
+            {% endif %}
+            {% endfor %}
+        </SECTION>
+        
+    </SECTIONDETAILS>
+</GROUP>
+
+</QUIZ>
+     
