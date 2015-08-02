@@ -3226,9 +3226,9 @@ function evaluateSAQues(ques) {
             proceed = false;
     }
     if (ques.answerType == 'SET' || ques.answerType == 'EQUALS') {
-        possibleAnswers = ques.correctAnswer[0].split('<sa_ans_sep>');
+        possibleAnswers = ques.correctAnswer[0].split(' OR ');
     } else if (ques.answerType == 'RANGE') {
-        splitedAnswer = ques.correctAnswer[0].split('<sa_ans_sep>');
+        splitedAnswer = ques.correctAnswer[0].split(' OR ');
         lowerLimit = splitedAnswer[0] < splitedAnswer[1] ? splitedAnswer[0] : splitedAnswer[1];
         upperLimit = splitedAnswer[0] < splitedAnswer[1] ? splitedAnswer[1] : splitedAnswer[0];
     }
