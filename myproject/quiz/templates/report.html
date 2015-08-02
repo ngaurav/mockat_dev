@@ -12,8 +12,14 @@
   {% with tmp=record.get_score_percentile %}
     <p>Score: {{ tmp.0 }}</p>
     <p>Percentile: {{ tmp.1 }}</p>
+  {% if record.quiz.is_cat15 %}
+    <p>Percentile ( Quantitative Aptitude ): {{ tmp.2 }}</p>
+    <p>Percentile ( Verbal Reasoning ): {{ tmp.3 }}</p>
+    <p>Percentile ( Data Interpretation ): {{ tmp.4 }}</p>
+  {% else %}
     <p>Percentile (Section 1): {{ tmp.2 }}</p>
     <p>Percentile (Section 2): {{ tmp.3 }}</p>
+  {% endif %}
     <p>No. of participants: {{ tmp.4 }}</p>
   {% endwith %}
 

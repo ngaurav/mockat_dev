@@ -436,11 +436,15 @@ class UserTrackrecord(models.Model):
         score = self.quiz.get_max_score * self.quiz.mark
         return score
 
-    @property
+   @property
     def get_score_percentile(self):
         current_score = sum(self.marks_obtained)
-        grp1count = self.quiz.get_grp1count
-        grp2count = self.quiz.get_grp2count + grp1count
+        if self.quiz.is_cat15:
+            grp1count = self.quiz.get_grp1count
+            grp2count = self.quiz.get_grp2count + grp1count
+        else:
+            grp1count = self.quiz.get_sec1count
+            grp2count = grp1count
         score1 = sum(self.marks_obtained[0:grp1count])
         score2 = sum(self.marks_obtained[grp1count:grp2count])
         score3 = sum(self.marks_obtained[grp2count:])
