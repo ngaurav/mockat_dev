@@ -54,6 +54,7 @@ AUTHENTICATION_BACKENDS = (
     'allaccess.backends.AuthorizedServiceBackend',
 )
 
+AUTH_USER_MODEL = 'spirit_user.User'
 MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': False})
 MARKITUP_SET = 'markitup/sets/markdown'
 
