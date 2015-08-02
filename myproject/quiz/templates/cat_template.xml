@@ -34,7 +34,7 @@
                     <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
                     <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
                     {% if question.ques_type == 'SA'%}
-                    <KEYBOARDTYPE><![CDATA[1]]></KEYBOARDTYPE>
+                    <KEYBOARDTYPE><![CDATA[2]]></KEYBOARDTYPE>
                     <ANSWER CASESENSITIVE="FALSE" TYPE="EQUALS"><![CDATA[{{question.get_answers.0.content}}]]></ANSWER>
                     {% else %}
                     {% for choice in question.get_answers %}
@@ -74,7 +74,7 @@
                 <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
                 <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
                 {% if question.ques_type == 'SA'%}
-                <KEYBOARDTYPE><![CDATA[1]]></KEYBOARDTYPE>
+                <KEYBOARDTYPE><![CDATA[2]]></KEYBOARDTYPE>
                 <ANSWER CASESENSITIVE="FALSE" TYPE="EQUALS"><![CDATA[{{question.get_answers.0.content}}]]></ANSWER>
                 {% else %}
                 {% for choice in question.get_answers %}
@@ -114,7 +114,7 @@
                 <ALLOTTEDMARKS><![CDATA[{{mark}}]]></ALLOTTEDMARKS>
                 <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
                 {% if question.ques_type == 'SA'%}
-                <KEYBOARDTYPE><![CDATA[1]]></KEYBOARDTYPE>
+                <KEYBOARDTYPE><![CDATA[2]]></KEYBOARDTYPE>
                 <ANSWER CASESENSITIVE="FALSE" TYPE="EQUALS"><![CDATA[{{question.get_answers.0.content}}]]></ANSWER>
                 {% else %}
                 {% for choice in question.get_answers %}
