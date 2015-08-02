@@ -444,7 +444,7 @@ class UserTrackrecord(models.Model):
             grp2count = self.quiz.get_grp2count + grp1count
         else:
             grp1count = self.quiz.get_sec1count
-            grp2count = grp1count
+            grp2count = grp1count #score3 will store the section2 score instead of score2
         score1 = sum(self.marks_obtained[0:grp1count])
         score2 = sum(self.marks_obtained[grp1count:grp2count])
         score3 = sum(self.marks_obtained[grp2count:])
