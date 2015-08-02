@@ -152,7 +152,7 @@ def ResponseView(request):
         marks_list = []
         for question in objs.questions:
             question_list.append(int(question["quesId"]))
-            given_ans_list.append(int(question["givenAns"]))
+            given_ans_list.append(question["givenAns"])
             marks_list.append(int(question["marksObtained"]))
         logger.debug(marks_list)
         my_quiz = Quiz.objects.get(url=objs.mockId)

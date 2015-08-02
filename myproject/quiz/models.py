@@ -423,7 +423,7 @@ class UserTrackrecord(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"))
     quiz = models.ForeignKey(Quiz, verbose_name=_("Quiz"))
     question_pks = ArrayField(models.IntegerField(blank=False,null=False,default=0),null=True,blank=True)
-    given_ans = ArrayField(models.IntegerField(blank=False,null=False,default=0),null=True,blank=True)
+    given_ans = ArrayField(models.CharField(max_length=32,default=''),null=True,blank=True)
     marks_obtained = ArrayField(models.IntegerField(blank=False,null=False,default=0),null=True,blank=True)
     end_date = models.DateTimeField(auto_now_add=True,verbose_name=_("Date"),null=True,blank=True)
 
