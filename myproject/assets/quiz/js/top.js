@@ -364,7 +364,7 @@ function basicDetails(xml) {
     if ($(xml).find('STORECANDRESPONSE').length > 0 && $(xml).find('STORECANDRESPONSE').text() == 'YES') {
         mockVar.storeCandResponse = 1;
     }
-    $("#footer").html("<div style='width:100%;padding-top:15px;'><center><font color='white'> Version : " + $(xml).find("VERSION").text() + "</font></center></div>");
+    $("#footer").html("<div style='width:100%;padding-top:15px;'><center><font color='white'> Mockat.com " + $(xml).find("VERSION").text() + "</font></center></div>");
     if ($(xml).find('SoftwareLangNames').length > 0 && $.trim($(xml).find('SoftwareLangNames').text()).length > 0) {
         for (var i = 0; i < $(xml).find('SoftwareLangNames').text().split(',').length; i++) {
             var value = $(xml).find('SoftwareLangNames').text().split(',')[i];
