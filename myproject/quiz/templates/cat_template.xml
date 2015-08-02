@@ -115,7 +115,7 @@
                 <NEGATIVEMARKS><![CDATA[{{penalty}}]]></NEGATIVEMARKS>
                 {% if question.ques_type == 'SA'%}
                 <KEYBOARDTYPE><![CDATA[2]]></KEYBOARDTYPE>
-                <ANSWER CASESENSITIVE="FALSE" TYPE=SET"><![CDATA[{{question.get_answers.0.content}}]]></ANSWER>
+                <ANSWER CASESENSITIVE="FALSE" TYPE="SET"><![CDATA[{{question.get_answers.0.content}}]]></ANSWER>
                 {% else %}
                 {% for choice in question.get_answers %}
                 <ANSWER {% if choice.correct %} CORRECT="TRUE" {% else %} CORRECT="FALSE" {% endif %} VALUE="{{forloop.counter}}"><![CDATA[{{choice.content}}]]></ANSWER>
