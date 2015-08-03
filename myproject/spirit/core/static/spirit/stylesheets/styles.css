@@ -809,7 +809,6 @@ input[type="submit"].button,
 .header-tab-link {
   color: #fefefe; }
 .header-tabs-content {
-  padding-left: 15px;
   clear: both; }
 
 .header-tab-content {
@@ -817,6 +816,7 @@ input[type="submit"].button,
   display: none;
   z-index: 600;
   width: 100%;
+  position: absolute;
   margin-top: 6px;
   padding-bottom: 12px;
   border-bottom: #c0c0c0 1px solid; }
