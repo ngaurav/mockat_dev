@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['mockat.com', 'www.mockat.com']
 
 # Application definition
 
-INSTALLED_APPS += (
+INSTALLED_APPS.extend([
     'quiz',
     'essay',
     'true_false',
@@ -39,20 +39,19 @@ INSTALLED_APPS += (
     'andablog',
     'markitup',  # For entry content
     'taggit', # For entry tags
-)
+])
 
-MIDDLEWARE_CLASSES += (
+MIDDLEWARE_CLASSES.extend([
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.middleware.security.SecurityMiddleware',
-)
+])
 
 ROOT_URLCONF = 'myproject.urls'
 
-AUTHENTICATION_BACKENDS = (
+AUTHENTICATION_BACKENDS.extend([
     'django.contrib.auth.backends.ModelBackend',
-    'spirit.backends.user.EmailAuthBackend',
     'allaccess.backends.AuthorizedServiceBackend',
-)
+])
 
 AUTH_USER_MODEL = 'spirit_user.User'
 MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': False})
