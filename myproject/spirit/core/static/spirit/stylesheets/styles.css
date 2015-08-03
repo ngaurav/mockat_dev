@@ -555,11 +555,15 @@ textarea {
 input[type="text"],
 input[type="password"],
 input[type="email"],
-input[type="search"],
 input[type="number"],
 select,
 textarea {
   width: 100%;
+  padding: 6px 12px;
+  border: 1px solid #cecece; }
+
+input[type="search"]{
+  width: 710px;
   padding: 6px 12px;
   border: 1px solid #cecece; }
 
@@ -781,27 +785,40 @@ input[type="submit"].button,
   color: #444444; }
 
 .header-link {
+  color: #fefefe;
   float: right;
-  line-height: 48px; }
+  margin-top: 5px;
+  line-height: 45px; }
 
 .header-tabs {
   float: right;
-  line-height: 48px; }
+  margin-top: 5px;
+  line-height: 45px; }
   .header-tabs li {
     margin-left: 24px; }
+
+.header-tab-link {
+  color: #fefefe; }
 
 .header-tab-link.is-selected {
   color: #1c1c1c; }
 .header-tab-link.is-highlighted {
   color: #c65555; }
-
+.header-tab-link {
+  color: #fefefe; }
 .header-tabs-content {
+  padding-left: 15px;
   clear: both; }
 
 .header-tab-content {
+  background-color: #ffffff;
   display: none;
-  padding-bottom: 24px;
-  border-bottom: #cecece 1px solid; }
+  z-index: 600;
+  width: 79%;
+  position: absolute;
+  margin-top: 6px;
+  padding-bottom: 12px;
+  border-bottom: #c0c0c0 1px solid; }
 
 @media screen and (min-width: 768px) {
   .header-nav {
