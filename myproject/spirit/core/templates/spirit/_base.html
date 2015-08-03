@@ -22,6 +22,8 @@
     <script src="{% static "spirit/scripts/postify.js" %}"></script>
     <script src="{% static "spirit/scripts/social_share.js" %}"></script>
 
+    <script src="{% static "quiz/js/script.js" %}"></script>
+
     {% if user.is_authenticated %}
         <script src="{% static "spirit/scripts/vendors/atwho/jquery.caret.min.js" %}"></script>
         <script src="{% static "spirit/scripts/vendors/atwho/jquery.atwho.min.js" %}"></script>
@@ -43,7 +45,18 @@
     <script>
 
 	$( document ).ready(function() {
-
+    $(document).on("contextmenu",function(e){
+        e.preventDefault();
+    });
+    $(document).keydown(function(event) { 
+        var pressedKey = String.fromCharCode(event.keyCode).toLowerCase();
+        
+        if (event.ctrlKey && (pressedKey == "c" || pressedKey == "u")) {
+            //alert('Sorry, This Functionality Has Been Disabled!'); 
+            //disable key press porcessing
+            return false; 
+        }
+    });
         $.tab();
 
         $( 'a.js-post' ).postify( {
@@ -68,6 +81,9 @@
 
     {% block head-extra %}{% endblock %}
 
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} }); </script>
+
     <!--[if (lt IE 9) & (!IEMobile)]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
@@ -79,9 +95,15 @@
 
     {% include 'spirit/_header.html' %}
     {% render_messages messages %}
+    {% block sidebar %}{% include "_side_menu.html" %}{% endblock %}
+  <div id="container">
+  <div id="maincolumn">
     {% block content %}{% endblock %}
-    {% include 'spirit/_footer.html' %}
-
+  </div>
+  <div id="adcolumn">
+  </div>
+  </div>
+  {% include 'spirit/_footer.html' %}
   </body>
 
 </html>
