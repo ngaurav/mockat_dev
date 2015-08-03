@@ -508,8 +508,8 @@ float: right;
   color: #337AB7;
   background-color: #ffffff;
   font-size: 22px;
-  padding-right: 15px;
-  padding-left: 10px;
+  padding-right: 10px;
+  padding-left: 15px;
   margin-top: 3px;
   margin-left: 0;
   margin-right: 10em;
@@ -794,7 +794,7 @@ input[type="submit"].button,
 
 .header-tabs {
   float: right;
-  margib-right: 4em;
+  margin-right: 4em;
   margin-top: 5px;
   line-height: 45px; }
   .header-tabs li {
