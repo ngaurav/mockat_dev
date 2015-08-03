@@ -508,9 +508,8 @@ float: right;
   color: #337AB7;
   background-color: #ffffff;
   font-size: 24px;
-  margin-left: 14px;
-  margin-right: 100px;
-  line-height: 52px;
+  margin-left: 0;
+  margin-right: 10em;
 }
 
 #header-button:hover {
@@ -773,9 +772,9 @@ input[type="submit"].button,
 
 .header {
   z-index: -5;
-  padding-left: 16%;
+  padding-left: 0;
   border-bottom: 3px solid #47c9b4;
-  padding-right: 4.5%;
+  padding-right: 5em;
   background-color: #428bca; }
 
 .header-logo {
@@ -953,6 +952,10 @@ input[type="submit"].button,
         margin-right: 0; } }
 
 .tab-content {
+  z-index: 500;
+  background-color: #ffffff;
+  border-bottom: #c0c0c0 1px solid;
+  position: absolute;
   display: none; }
 
 .new-topic {
