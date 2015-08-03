@@ -507,7 +507,10 @@ float: right;
   float: left;
   color: #337AB7;
   background-color: #ffffff;
-  font-size: 24px;
+  font-size: 22px;
+  padding-right: 15px;
+  padding-left: 10px;
+  margin-top: 3px;
   margin-left: 0;
   margin-right: 10em;
 }
@@ -760,7 +763,7 @@ input[type="submit"].button,
 
 .side-menu-close {
   font-size: 35px;
-  line-height: 75px;
+  line-height: 72px;
   margin-left: 15px;
   color: #cccccc; }
   .side-menu-close:focus, .side-menu-close:hover {
@@ -813,8 +816,7 @@ input[type="submit"].button,
   background-color: #ffffff;
   display: none;
   z-index: 600;
-  width: 79%;
-  position: absolute;
+  width: 100%;
   margin-top: 6px;
   padding-bottom: 12px;
   border-bottom: #c0c0c0 1px solid; }
