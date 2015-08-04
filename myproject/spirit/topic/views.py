@@ -91,30 +91,62 @@ def update(request, pk):
 
 
 def detail(request, pk, slug):
-    topic = Topic.objects.get_public_or_404(pk, request.user)
 
-    if topic.slug != slug:
-        return HttpResponsePermanentRedirect(topic.get_absolute_url())
+    if request.method=='GET':
 
-    utils.topic_viewed(request=request, topic=topic)
+        topic = Topic.objects.get_public_or_404(pk, request.user)
 
-    comments = Comment.objects\
-        .for_topic(topic=topic)\
-        .with_likes(user=request.user)\
-        .order_by('date')
+        if topic.slug != slug:
+            return HttpResponsePermanentRedirect(topic.get_absolute_url())
 
-    comments = paginate(
-        comments,
-        per_page=config.comments_per_page,
-        page_number=request.GET.get('page', 1)
-    )
+        utils.topic_viewed(request=request, topic=topic)
 
-    context = {
-        'topic': topic,
-        'comments': comments
-    }
+        comments = Comment.objects\
+            .for_topic(topic=topic)\
+            .with_likes(user=request.user)\
+            .order_by('date')
 
-    return render(request, 'spirit/topic/detail.html', context)
+        comments = paginate(
+            comments,
+            per_page=config.comments_per_page,
+            page_number=request.GET.get('page', 1)
+        )
+
+        context = {
+            'topic': topic,
+            'comments': comments
+        }
+
+        return render(request, 'spirit/topic/detail.html', context)
+
+    else:
+
+        sort_order = request.POST.get('sort', 'likes_count')
+        topic = Topic.objects.get_public_or_404(pk, request.user)
+
+        if topic.slug != slug:
+            return HttpResponsePermanentRedirect(topic.get_absolute_url())
+
+        utils.topic_viewed(request=request, topic=topic)
+
+        comments = Comment.objects\
+            .for_topic(topic=topic)\
+            .with_likes(user=request.user)\
+            .order_by(sort_order)
+
+        comments = paginate(
+            comments,
+            per_page=config.comments_per_page,
+            page_number=request.GET.get('page', 1)
+        )
+
+        context = {
+            'topic': topic,
+            'comments': comments
+        }
+
+        return render(request, 'spirit/topic/topic_detail.html', context)
+
 
 
 def index_active(request):

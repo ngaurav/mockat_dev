@@ -80,6 +80,16 @@
 
         {% render_poll_form topic=topic user=user %}
 
+ <form action="." method="post">
+     {% csrf_token %}
+     <button class="button" type="submit" style="float:left">Sort By</button>
+     <select name='sort' style="background: transparent; width: 120px; margin-left: 10px; padding: 4px; font-size: 16px; height: 32px;">
+         <option value='-likes_count'>Likes</option>
+         <option value='date'>Oldest First</option>
+         <option value='-date'>Newest First</option>
+     </select>
+ </form>
+ <br>
         {% include "spirit/comment/_render_list.html" %}
 
         <div class="container">
