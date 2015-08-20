@@ -33,6 +33,12 @@ tr:nth-child(even) td {
 background: #FBFBFB;
 }
 
+label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 16px; 
+}
+
 .muted {
 font-weight: lighter;
 }
