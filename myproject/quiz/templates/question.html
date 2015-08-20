@@ -62,8 +62,7 @@
 {% endif %}
 
 <p>
-  <small class="muted">{% trans "Question category" %}:</small>
-  <strong>{{ question.category.category_display_name }}</strong>
+  <strong>{{ question.category.category_display_name }}" - "{{ quiz.title }}</strong>
 </p>
 
 <p class="lead">{{ question.content|safe }}</p>

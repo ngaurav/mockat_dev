@@ -33,6 +33,10 @@ tr:nth-child(even) td {
 background: #FBFBFB;
 }
 
+.muted {
+font-weight: lighter;
+}
+
 .text-muted {
 color: #777;
 }
