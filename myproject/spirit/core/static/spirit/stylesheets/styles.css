@@ -484,7 +484,7 @@ textarea {
   background: #fff; }
 
 html {
-  font-family: "ubuntu-light-webfont";
+  font-family: "myriad-set-pro";
   font-size: 16px;
   line-height: 24px;
   color: #444444;
@@ -593,11 +593,11 @@ label {
     margin-bottom: 0; }
 
 @font-face {
-  font-family: ubuntu-light-webfont;
+  font-family: myriad-set-pro;
   font-weight: normal;
   font-style: normal;
-  src: url("vendors/fonts/ubuntu-light-webfont.eot");
-  src: url("vendors/fonts/ubuntu-light-webfont.eot?#iefix") format("embedded-opentype"), url("vendors/fonts/ubuntu-light-webfont.woff") format("woff"), url("vendors/fonts/ubuntu-light-webfont.ttf") format("truetype"), url("vendors/fonts/ubuntu-light-webfont.svg#ubuntu-light-webfont") format("svg"); }
+  src: url("vendors/fonts/myriad-set-pro_thin.woff");
+  src: url("vendors/fonts/ubuntu-light-webfont.eot?#iefix") format("embedded-opentype"), url("vendors/fonts/myriad-set-pro_thin.woff") format("woff"), url("vendors/fonts/ubuntu-light-webfont.ttf") format("truetype"), url("vendors/fonts/ubuntu-light-webfont.svg#ubuntu-light-webfont") format("svg"); }
 a {
   color: #337AB7;
   text-decoration: none;
