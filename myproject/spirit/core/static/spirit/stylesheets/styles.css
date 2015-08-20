@@ -596,8 +596,15 @@ label {
   font-family: myriad-set-pro;
   font-weight: normal;
   font-style: normal;
-  src: url("vendors/fonts/myriad-set-pro_thin.woff");
-  src: url("vendors/fonts/ubuntu-light-webfont.eot?#iefix") format("embedded-opentype"), url("vendors/fonts/myriad-set-pro_thin.woff") format("woff"), url("vendors/fonts/ubuntu-light-webfont.ttf") format("truetype"), url("vendors/fonts/ubuntu-light-webfont.svg#ubuntu-light-webfont") format("svg"); }
+  src: url("vendors/fonts/myriad-set-pro_text.woff");
+  src: url("vendors/fonts/ubuntu-light-webfont.eot?#iefix") format("embedded-opentype"), url("vendors/fonts/myriad-set-pro_text.woff") format("woff"), url("vendors/fonts/ubuntu-light-webfont.ttf") format("truetype"), url("vendors/fonts/ubuntu-light-webfont.svg#ubuntu-light-webfont") format("svg"); }
+
+@font-face {
+  font-family: myriad-set-pro;
+  font-weight: bold;
+  font-style: normal;
+  src: url("vendors/fonts/myriad-set-pro_semibold.woff");}
+
 a {
   color: #337AB7;
   text-decoration: none;
