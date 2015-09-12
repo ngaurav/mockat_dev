@@ -18,7 +18,7 @@
  <form action="/content/cat/{{ entry.category }}" method="post" style="display:inline-block; line-height: 2; height:2em;margin-right:20px;">
   {% csrf_token %}
   <label style="display:inline-block">Go to
-   <input type="number" name="page" style="width:90px;margin: 0 5px; padding:0  4px; height:1.5em; font-size:1em;" placeholder="Page no">
+   <input type="number" name="page" style="width:90px;margin: 0 5px; padding:0  4px; height:1.5em; font-size:1em;" min="1" value="{{ entry.get_rank }}" placeholder="Page no">
   </label>
   <button type="submit" style="font-size:1em; background:transparent;">
    <i class="fa fa-arrow-circle-right fa-lg"></i>

@@ -61,6 +61,10 @@ class Entry(TimeStampedModel):
         default=date.today,
         verbose_name=("Page Rank"))
 
+    @property
+    def get_rank(self):
+        return self.category.entry_set.filter(rank<=self.rank).count()
+
     def __str__(self):
         return self.title
 
