@@ -62,6 +62,10 @@ class Entry(TimeStampedModel):
         verbose_name=("Page Rank"))
 
     @property
+    def get_total(self):
+        return self.category.entry_set.filter(is_published = True).count()
+
+    @property
     def get_rank(self):
         return self.category.entry_set.count()
 
