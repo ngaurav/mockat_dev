@@ -63,7 +63,7 @@ class Entry(TimeStampedModel):
 
     @property
     def get_total(self):
-        return self.category.entry_set.filter(is_published = True).count()
+        return self.category.entry_set.filter(is_published=True).count()
 
     @property
     def get_rank(self):
