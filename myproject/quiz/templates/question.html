@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/static/quiz/css/quiz.css">
 <script type="text/javascript">
    function toggle_visibility(id) {
+     if ($('input[name=answers]:checked').length > 0) {
        var b = document.getElementById("solution_button");
        var e = document.getElementById(id);
        if(e.style.display == 'block'){
@@ -17,6 +18,10 @@
           e.style.display = 'block';
           b.innerHTML = "Hide solution";
        }
+       $('input[name=answers]').attr("disabled",true);
+     } else {
+       alert("Please select any option to view the solution.");
+     }
    }
 </script>
 {% endblock %}
