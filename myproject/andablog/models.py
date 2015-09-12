@@ -67,7 +67,7 @@ class Entry(TimeStampedModel):
 
     @property
     def get_rank(self):
-        return self.category.entry_set.count()
+        return self.category.entry_set.filter(rank<self.rank)count()
 
     def __str__(self):
         return self.title
