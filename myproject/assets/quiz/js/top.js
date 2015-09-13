@@ -3170,7 +3170,7 @@ function showScoreCard() {
                     str += "<tr><td width='20%'>" + temp_iOAP.secDetails[i].secName + "</td><td width='10%'>" + (temp_iOAP.sections[i][langId].length - 1) + "</td><td width='10%'>" + temp_iOAP.secDetails[i].answered + "</td><td width='10%'>" + temp_iOAP.secDetails[i].totalCorrectQues + "</td><td width='10%'>" + (temp_iOAP.secDetails[i].totalEvaluatedQues - temp_iOAP.secDetails[i].totalCorrectQues) + "</td>";
                     if (temp_iOAP.hasOfflineSect)
                         str += "<td width='10%'>" + (temp_iOAP.secDetails[i].answered - temp_iOAP.secDetails[i].totalEvaluatedQues) + "</td>";
-                    str += "<td width='10%'>" + temp_iOAP.secDetails[i].sectionScore + "/" + temp_iOAP.secDetails[i].totalSecMark + "</td>";
+                    str += "<td width='10%'>" + temp_iOAP.secDetails[i].sectionScore + "/" + temp_iOAP.secDetails[i].totalSecMarks + "</td>";
                     if (mockVar.displayPercentageScore)
                         str += "<td width='10%'>" + ((temp_iOAP.secDetails[i].sectionScore / temp_iOAP.secDetails[i].totalSecMarks) * 100).toFixed(2) + "</td>";
                     str += "</tr>";
