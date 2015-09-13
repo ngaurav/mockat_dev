@@ -6,11 +6,10 @@
 {% endblock %}
 
 {% block title %}
-    Latest Updated Pages
+    Latest News Updates
 {% endblock %}
 
 {% block andablog_content %}
-<center><h4><a href="/progress/">Click here</a> to view your progress.</h4></center>
 <h3>Latest News Updates</h4>
     {% for entry in entries %}
       {% if entry.category == 'news' %}
