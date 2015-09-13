@@ -3077,7 +3077,7 @@ function mockScoreCalc() {
                     var quesLangId = temp_iOAP.viewLang[i][j].langID;
                     ques = temp_iOAP.sections[i][quesLangId][j];
                     if (j == 1)
-                        totalSecMarks += eval(ques.allottedMarks * temp_iOAP.secDetails[i].maxOptQuesToAns);
+                        totalSecMarks += eval(ques.allottedMarks * totalQues);
                     if (questionStatus == "answered" || (questionStatus == "marked" && ques.answer != "" && mockVar.isMarkedForReviewConsidered == "YES")) {
                         if (ques.quesType == "SA" || ques.quesType == "COMPREHENSION@@SA" || ques.quesType == "LA@@SA") {
                             evaluateSAQues(ques);
