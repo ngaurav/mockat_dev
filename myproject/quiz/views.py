@@ -227,15 +227,15 @@ class statsView(TemplateView):
         context = super(statsView, self).get_context_data(**kwargs)
         history, c = HistoryOfUser.objects.get_or_create(user=self.request.user)
         cat_list = Category.objects.all()
-        l0 = map(lambda t:'Not Visited' if t<1 else 'In Progress' if t<2 else 'Complete',history.category_data)
-        l1 = map(lambda t:'Complete' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=True).exists() else 
-                    'In Progress' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=False).exists() else 'Not attempted',
+        l0 = map(lambda t:'<i class="fa fa-minus-circle" style="color:red"></i>' if t<1 else 'In Progress' if t<2 else '<i class="fa fa-check-circle" style="color:green"></i>',history.category_data)
+        l1 = map(lambda t:'<i class="fa fa-check-circle" style="color:green"></i>' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=True).exists() else 
+                    'In Progress' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=False).exists() else '<i class="fa fa-minus-circle" style="color:red"></i>',
                     map(lambda t: t.quiz_set.filter(title='Level 1'),cat_list))
-        l2 = map(lambda t:'Complete' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=True).exists() else 
-                    'In Progress' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=False).exists() else 'Not attempted',
+        l2 = map(lambda t:'<i class="fa fa-check-circle" style="color:green"></i>' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=True).exists() else 
+                    'In Progress' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=False).exists() else '<i class="fa fa-minus-circle" style="color:red"></i>',
                     map(lambda t: t.quiz_set.filter(title='Level 2'),cat_list))
-        l3 = map(lambda t:'Complete' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=True).exists() else 
-                    'In Progress' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=False).exists() else 'Not attempted',
+        l3 = map(lambda t:'<i class="fa fa-check-circle" style="color:green"></i>' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=True).exists() else 
+                    'In Progress' if Sitting.objects.filter(user=self.request.user,quiz=t,complete=False).exists() else '<i class="fa fa-minus-circle" style="color:red"></i>',
                     map(lambda t: t.quiz_set.filter(title='Level 3'),cat_list))
         context['cat_data'] = zip(cat_list,l0,l1,l2,l3)
         context['dom_list'] = Domain.objects.all()
