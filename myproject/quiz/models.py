@@ -53,6 +53,7 @@ class Category(models.Model):
     category = models.SlugField(unique=True, editable=False)
 
     class Meta:
+        ordering = ['rank']
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
 
