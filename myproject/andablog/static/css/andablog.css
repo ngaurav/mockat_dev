@@ -2,6 +2,14 @@
  * Blog name and description
  */
 
+.cexample {
+background-color: #DCEFFF;
+border-radius: 3px;
+line-height: 1.5;
+margin: 15px auto;
+padding: 15px;
+}
+
 .andablog-header {
   padding-top: 20px;
   padding-bottom: 20px;
