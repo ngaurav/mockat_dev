@@ -4,9 +4,9 @@
 
 {% block title %}{% trans "Basic Settings" %}{% endblock %}
 
-{% block content %}
+{% block sidebar %}{% include "spirit/admin/_side_menu.html" with active="dashboard" %}{% endblock %}
 
-    {% include "spirit/admin/_side_menu.html" with active="basic_settings" %}
+{% block content %}
 
     <h1 class="headline">{% trans "Basic Settings" %}</h1>
 
