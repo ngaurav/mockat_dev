@@ -4,9 +4,9 @@
 
 {% block title %}{% trans "Dashboard" %}{% endblock %}
 
-{% block content %}
+{% block sidebar %}{% include "spirit/admin/_side_menu.html" with active="dashboard" %}{% endblock %}
 
-    {% include "spirit/admin/_side_menu.html" with active="dashboard" %}
+{% block content %}
 
     <h1 class="headline">{% trans "Dashboard" %}</h1>
 
