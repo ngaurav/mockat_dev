@@ -118,7 +118,7 @@
    <li class='has-sub {% ifequal opened dom %} open{% endifequal %}'><a href='#'><span>{{ dom.domain }}</span></a>
       <ul{% ifequal opened dom %} style="display: block;"{% endifequal %}>
         {% for cat in dom.category_set.all %}
-          <li class='has-sub{% ifequal active cat.category %} is-selected{% endifequal %}'>
+          <li class='has-sub{% ifequal active cat.category %} open{% endifequal %}'>
               <a href='#'><span>{{cat.category_display_name}}</span></a>
               <ul{% ifequal active cat.category %} style="display: block;"{% endifequal %}>
                   <li><a href="/content/cat/{{ cat }}"><span>Lessons</span></a></li>
