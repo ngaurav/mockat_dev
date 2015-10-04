@@ -64,7 +64,7 @@ class MCQuestion(Question):
         if self.answer_order == 'random':
             return queryset.order_by('?')
         if self.answer_order == 'none':
-            return queryset.order_by('-id')
+            return queryset.order_by('id')
         return queryset
 
     def get_answers(self):
