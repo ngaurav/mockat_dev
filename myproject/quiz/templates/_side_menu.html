@@ -115,11 +115,11 @@
 <ul>
 {% for dom in domain_list %}
 {% if not dom.invisible %}
-   <li class='has-sub{% ifequal opened "{{dom.domain}}" %} open{% endifequal %}'><a href='#'><span>{{ dom.domain }}</span></a>
+   <li class='has-sub{% ifequal opened {{dom.domain}} %} open{% endifequal %}'><a href='#'><span>{{ dom.domain }}</span></a>
       <ul>
         {% for cat in dom.category_set.all %}
           <li class='has-sub'>
-              <a class="side-menu-category{% ifequal active "{{cat.category}}" %} is-selected{% endifequal %}" href='#'><span>{{cat.category_display_name}}</span></a>
+              <a class="side-menu-category{% ifequal active {{cat.category}} %} is-selected{% endifequal %}" href='#'><span>{{cat.category_display_name}}</span></a>
               <ul>
                   <li><a href="/content/cat/{{ cat }}"><span>Lessons</span></a></li>
                   {% for q in cat.quiz_set.all %}
