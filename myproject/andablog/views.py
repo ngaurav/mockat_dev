@@ -74,14 +74,16 @@ def CategoryEntryDetail(request,categ):
         if page is cat.entry_set.count():
             one_or_two = 2
         #logger.debug(entry)
-        history, c = HistoryOfUser.objects.get_or_create(user=request.user)
-        history.category_data[cat.id-1]=max(history.category_data[cat.id-1],one_or_two)
-        history.save()
+        if request.user.is_authenticated():
+            history, c = HistoryOfUser.objects.get_or_create(user=request.user)
+            history.category_data[cat.id-1]=max(history.category_data[cat.id-1],one_or_two)
+            history.save()
         return render(request, 'andablog/entry_detail.html', {"entry": entry})
     else:
         cat = Category.objects.get(category=categ)
         entry = cat.entry_set.earliest
-        history, c = HistoryOfUser.objects.get_or_create(user=request.user)
-        history.category_data[cat.id-1]=max(history.category_data[cat.id-1],1)
-        history.save()
+        if request.user.is_authenticated():
+            history, c = HistoryOfUser.objects.get_or_create(user=request.user)
+            history.category_data[cat.id-1]=max(history.category_data[cat.id-1],1)
+            history.save()
         return render(request, 'andablog/entry_detail.html', {"entry": entry})
