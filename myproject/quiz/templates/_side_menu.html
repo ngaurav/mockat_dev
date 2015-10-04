@@ -115,7 +115,7 @@
 <ul>
 {% for dom in domain_list %}
 {% if not dom.invisible %}
-   <li class='has-sub {{opened}}{% ifequal opened dom.domain %} open{% endifequal %}'><a href='#'><span>{{ dom.domain }}</span></a>
+   <li class='has-sub {{opened}}{% ifequal opened dom %} open{% endifequal %}'><a href='#'><span>{{ dom.domain }}</span></a>
       <ul>
         {% for cat in dom.category_set.all %}
           <li class='has-sub{% ifequal active cat.category %} open{% endifequal %}'>
