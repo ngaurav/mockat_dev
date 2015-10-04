@@ -10,7 +10,6 @@ from essay.models import Essay_Question
 
 class AnswerInline(admin.TabularInline):
     model = Answer
-    extra = 4
 
 class QuizAdminForm(forms.ModelForm):
     """
