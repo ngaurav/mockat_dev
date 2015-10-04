@@ -81,7 +81,7 @@
   <ul class="list-group">
 
 	{% for answer in form.answers %}
-	  <li>
+	  <li id="{% forloop.counter %}">
 	    {{ answer }}
 	  </li>
 	{% endfor %}
