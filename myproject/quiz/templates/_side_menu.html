@@ -119,7 +119,7 @@
       <ul>
         {% for cat in dom.category_set.all %}
           <li class='has-sub'>
-              <a class="side-menu-category{{active}} '{{cat.category_display_name}}' is-selected{% endifequal %}" href='#'><span>{{cat.category_display_name}}</span></a>
+              <a class="side-menu-category{{active}} '{{cat.category_display_name}}' is-selected" href='#'><span>{{cat.category_display_name}}</span></a>
               <ul>
                   <li><a href="/content/cat/{{ cat }}"><span>Lessons</span></a></li>
                   {% for q in cat.quiz_set.all %}
