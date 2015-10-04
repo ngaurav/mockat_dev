@@ -78,7 +78,7 @@ def CategoryEntryDetail(request,categ):
             history, c = HistoryOfUser.objects.get_or_create(user=request.user)
             history.category_data[cat.id-1]=max(history.category_data[cat.id-1],one_or_two)
             history.save()
-        return render(request, 'andablog/entry_detail.html', {"entry": entry})
+        return render(request, 'andablog/entry_detail.html', {"entry": entry, "opened": cat.domain, "active":categ})
     else:
         cat = Category.objects.get(category=categ)
         entry = cat.entry_set.earliest
@@ -86,4 +86,4 @@ def CategoryEntryDetail(request,categ):
             history, c = HistoryOfUser.objects.get_or_create(user=request.user)
             history.category_data[cat.id-1]=max(history.category_data[cat.id-1],1)
             history.save()
-        return render(request, 'andablog/entry_detail.html', {"entry": entry})
+        return render(request, 'andablog/entry_detail.html', {"entry": entry, "opened": cat.domain, "active":categ})
